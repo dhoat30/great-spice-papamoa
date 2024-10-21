@@ -4,12 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "../../../utils/themeSettings";
-import BeforeAfter from "../BeforeAfterSlider/BeforeAfter";
-import Link from "next/link";
-import Button from "@mui/material/Button";
-import Image from "next/image";
+
 function CustomTabPanel(props) {
   const {
     children,
@@ -49,37 +44,35 @@ export default function ScrollableTabs({ tabsData }) {
     return <Tab key={index} label={item.title} />;
   });
   return (
-    <ThemeProvider theme={theme}>
-      <Container>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs"
-          textColor="secondary"
-          indicatorColor="secondary"
-          className="tabs-wrapper"
-        >
-          {tabs}
-        </Tabs>
-        {/* content panels  */}
-        {tabsData.map((item, index) => {
-          return (
-            <CustomTabPanel
-              key={100 + index}
-              value={value}
-              index={index}
-              className="description-wrapper"
-              description={item.description}
-              title={item.title}
-              ctaArray={item.buttons}
-              images={item.images}
-            ></CustomTabPanel>
-          );
-        })}
-      </Container>
-    </ThemeProvider>
+    <Container>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="scrollable"
+        scrollButtons="auto"
+        aria-label="scrollable auto tabs"
+        textColor="secondary"
+        indicatorColor="secondary"
+        className="tabs-wrapper"
+      >
+        {tabs}
+      </Tabs>
+      {/* content panels  */}
+      {tabsData.map((item, index) => {
+        return (
+          <CustomTabPanel
+            key={100 + index}
+            value={value}
+            index={index}
+            className="description-wrapper"
+            description={item.description}
+            title={item.title}
+            ctaArray={item.buttons}
+            images={item.images}
+          ></CustomTabPanel>
+        );
+      })}
+    </Container>
   );
 }
 

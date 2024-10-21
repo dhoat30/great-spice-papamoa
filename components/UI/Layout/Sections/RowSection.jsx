@@ -30,10 +30,19 @@ export default function RowSection({
             className="content-wrapper"
             style={{ gridColumn: contentAlignment }}
           >
-            <Typography variant="h6" component="div" className="subtitle">
-              {subtitle}
-            </Typography>
-            <Typography variant="h3" component="h2" className="title">
+            <Image
+              src={"/title-pattern.png"}
+              alt={image.alt}
+              width={120}
+              height={51}
+            />
+            {subtitle && (
+              <Typography variant="h6" component="div" className="subtitle">
+                {subtitle}
+              </Typography>
+            )}
+
+            <Typography variant="h2" component="h2" className="title mt-8">
               {title}
             </Typography>
 
@@ -42,7 +51,7 @@ export default function RowSection({
               dangerouslySetInnerHTML={{ __html: description }}
             />
 
-            {bulletPoints.length > 0 &&
+            {bulletPoints?.length > 0 &&
               bulletPoints.map((item, index) => {
                 return (
                   <div
@@ -81,7 +90,7 @@ export default function RowSection({
             </div>
           ) : (
             <div
-              className="image-wrapper border-radius-12"
+              className="image-wrapper"
               style={{ paddingBottom: `${imgPadding}%` }}
             >
               <Image
@@ -99,7 +108,7 @@ export default function RowSection({
 }
 
 const Section = styled.section`
-  background: var(--light-surface-container-lowest);
+  background: var(--dark-surface-container-lowest);
   padding: 80px 0;
   @media (max-width: 900px) {
     padding: 40px 0;
@@ -133,8 +142,6 @@ const Section = styled.section`
     }
     .image-wrapper,
     .image-container {
-      border-radius: 12px;
-      overflow: hidden;
       @media (min-width: 1100px) {
         grid-row: 1 / 2;
       }

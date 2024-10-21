@@ -1,13 +1,22 @@
 "use client";
-import * as React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
-import BeforeAfterMasonry from "../BeforeAfterSlider/BeforeAfterMasonry";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import Image from "next/image";
+import Container from "@mui/material/Container";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Gallery({ galleryData }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isTablet = useMediaQuery("(max-width:750px)"); // Use 'sm' for small screens
+
   if (!galleryData) return null;
+
   // Extract unique tags for the tabs, and add a "Show All" option
   const uniqueTags = [
     { value: "all", label: "All" },
@@ -18,6 +27,7 @@ export default function Gallery({ galleryData }) {
       return tag;
     }),
   ];
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -30,39 +40,62 @@ export default function Gallery({ galleryData }) {
           (item) => item.tag.value === uniqueTags[value].value
         );
 
+  const handleThumbnailClick = (index) => {
+    setCurrentIndex(index);
+    setOpen(true);
+  };
+
   return (
     <Section>
       {/* Tabs for filtering */}
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons="auto"
-        aria-label="scrollable auto tabs"
-        textColor="secondary"
-        indicatorColor="secondary"
-        className="tabs-wrapper"
-      >
-        {uniqueTags.map((tag, index) => (
-          <Tab key={index} label={tag.label} />
-        ))}
-      </Tabs>
+      <Container maxWidth="xl">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant={isTablet ? "scrollable" : "fullWidth"} // Use scrollable on mobile and fullWidth on desktop
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs"
+          textColor="secondary"
+          indicatorColor="secondary"
+          className="tabs-wrapper"
+        >
+          {uniqueTags.map((tag, index) => (
+            <Tab key={index} label={tag.label} />
+          ))}
+        </Tabs>
 
-      {/* Filtered gallery grid */}
-      <div className="grid-wrapper">
-        {filteredGalleryData.map((item, index) => (
-          <div key={index} className="image-container">
-            <BeforeAfterMasonry
-              priority={index === 0}
-              showTitle={false}
-              data={{
-                beforeImage: item.before_image,
-                afterImage: item.after_image,
-              }}
-            />
-          </div>
-        ))}
-      </div>
+        {/* Filtered gallery grid */}
+        <div className="cards-wrapper mt-24">
+          {filteredGalleryData.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="image-wrapper"
+                style={{ paddingBottom: `90%` }}
+                onClick={() => handleThumbnailClick(index)} // Handle click to open lightbox
+              >
+                <Image
+                  src={item.image.sizes.medium_large}
+                  alt={item.image.alt}
+                  fill
+                  style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Lightbox Component */}
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={filteredGalleryData.map((item) => ({
+            src: item.image.sizes.large,
+            alt: item.image.alt,
+          }))}
+          index={currentIndex}
+        />
+      </Container>
     </Section>
   );
 }
@@ -72,27 +105,21 @@ const Section = styled.section`
   .tabs-wrapper {
     .MuiTabs-flexContainer {
     }
-
+    svg {
+      path {
+        fill: var(--dark-on-surface);
+      }
+    }
     button {
-      border-bottom: 1px solid var(--light-outline-variant);
+      border-bottom: 1px solid var(--dark-on-surface);
     }
   }
-  .grid-wrapper {
-    column-count: 5;
-    column-gap: 24px;
-
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    @media (max-width: 1300px) {
-      column-count: 4;
-    }
-    @media (max-width: 900px) {
-      column-count: 2;
-    }
-    @media (max-width: 600px) {
-      column-count: 1;
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
     }
   }
   .image-container {

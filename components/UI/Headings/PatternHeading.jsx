@@ -10,7 +10,7 @@ export default function PatternHeading({ title, description, centerAlign }) {
         centerAlign ? "center-align" : "left-align"
       } title-description-wrapper`}
     >
-      <div className="title-wrapper">
+      <div className={`title-wrapper`}>
         <Image
           src="/title-pattern.png"
           alt="title pattern"
@@ -30,7 +30,7 @@ export default function PatternHeading({ title, description, centerAlign }) {
         <Typography
           variant="body1"
           component="p"
-          className="description"
+          className="description mt-16"
           textAlign={centerAlign ? "center" : "left"}
         >
           {description}
@@ -39,4 +39,24 @@ export default function PatternHeading({ title, description, centerAlign }) {
     </Div>
   );
 }
-const Div = styled.div``;
+const Div = styled.div`
+  &.center-align {
+    max-width: 1000px;
+    margin: 0 auto;
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &.left-align {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 40px;
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+`;

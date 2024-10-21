@@ -8,27 +8,7 @@ import Package from "../../Card/Package";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Madala from "../../Patterns/Madala";
 
-export default function ComboDealsSection({ title, description, cards }) {
-  const [value, setValue] = useState(0);
-  const isTablet = useMediaQuery("(max-width:750px)"); // Use 'sm' for small screens
-
-  if (!cards) return null;
-  // Extract unique tags for the tabs without the "Show All" option
-  const uniqueTags = Array.from(
-    new Set(cards.map((item) => item.tag.value)) // Get unique tag values
-  ).map((tagValue) => {
-    const tag = cards.find((item) => item.tag.value === tagValue)?.tag; // Find the first matching tag object
-    return tag;
-  });
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  // Filter gallery items based on selected tab
-  const filterDealsData = cards.filter(
-    (item) => item.tag.value === uniqueTags[value].value
-  );
-
+export default function CateringPackageSection({ title, description, cards }) {
   return (
     <Section className="mt-8">
       <Madala className="pattern" />
@@ -40,24 +20,10 @@ export default function ComboDealsSection({ title, description, cards }) {
         />
         <div className="tabs mt-24">
           {/* Tabs for filtering */}
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant={isTablet ? "scrollable" : "fullWidth"} // Use scrollable on mobile and fullWidth on desktop
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs"
-            textColor="secondary"
-            indicatorColor="secondary"
-            className="tabs-wrapper"
-          >
-            {uniqueTags.map((tag, index) => (
-              <Tab key={index} label={tag.label} />
-            ))}
-          </Tabs>
 
           {/* Filtered combo deals grid */}
           <div className="cards grid-wrapper">
-            {filterDealsData.map((item, index) => (
+            {cards.map((item, index) => (
               <Package
                 key={index}
                 packageName={item.combo_name}

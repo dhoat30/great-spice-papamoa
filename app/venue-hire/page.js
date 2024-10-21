@@ -1,20 +1,18 @@
-import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
-import TechLogos from '@/components/UI/TechLogos/TechLogos'
-import USP from '@/components/UI/USP/USP'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplate'
-import { all } from 'axios'
-
-
+import SmallGallery from '@/components/UI/Gallery/SmallGallery'
+import BackgroundImageHero from '@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero'
+import Testimonials from '@/components/UI/Testimonials/Testimonials'
+import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
     const slug = params.slug
 
     // fetch data
-    const data = await getSinglePostData("residential-cleaning", "/wp-json/wp/v2/pages")
+    const data = await getSinglePostData("venue-hire", "/wp-json/wp/v2/pages")
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -48,26 +46,30 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 }
 
-export default async function Contact({ params }) {
-    const slug = params.slug
-    const postData = await getSinglePostData("residential-cleaning", "/wp-json/wp/v2/pages")
-    const allPosts = await getAllPosts("wp-json/wp/v2/residential-cleaning")
+export default async function Contact() {
+
+    const postData = await getSinglePostData("venue-hire", "/wp-json/wp/v2/pages")
     const options = await getOptions()
+    const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+
     if (!postData) {
         return {
             notFound: true,
         }
     }
-
+    const contactInfo = options.contact_info
     return (
         <>
             <Header />
             <main>
-                <OptimizedHero data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-                <TechLogos data={options.clients_logos} />
-                <ServicesCardsTemplate title={postData[0]?.acf.service_cards_section.title} description={postData[0]?.acf.service_cards_section.description} cards={allPosts} archivePageSlug="residential-cleaning" />
-                <Layout sections={postData[0]?.acf?.sections} />
-                <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
+                <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
+                <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
+
+                <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} cateringPackagesData={options.catering_packages} />
+                <Testimonials testimonialsData={options?.testimonials} />
+                {/* <FaqAccordionSection title={options?.faq?.section_title} description={options.faq?.section_description} qaData={options.faq?.items} /> */}
+
+                <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
 
             </main>
             <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />

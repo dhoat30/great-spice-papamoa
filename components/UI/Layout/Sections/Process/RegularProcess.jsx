@@ -15,7 +15,7 @@ export default function RegularProcess({ title, description, cards }) {
             <Typography
               variant="h6"
               component="h3"
-              color="var(--dark-on-secondary-container)"
+              color="var(--dark-primary-container)"
             >
               {item.title}
             </Typography>
@@ -27,7 +27,7 @@ export default function RegularProcess({ title, description, cards }) {
           <Typography
             variant="body1"
             component="div"
-            className="description"
+            className="description body1"
             dangerouslySetInnerHTML={{ __html: item.description }}
           ></Typography>
         </div>
@@ -57,7 +57,6 @@ export default function RegularProcess({ title, description, cards }) {
 const Section = styled.section`
   padding: 40px 0;
   overflow: hidden !important;
-  background: var(--dark-secondary-container);
   .title-wrapper {
     display: grid;
     grid-template-columns: auto 600px;
@@ -101,7 +100,7 @@ const Section = styled.section`
           gap: 16px;
 
           .step-number {
-            background: var(--dark-on-secondary-container);
+            background: var(--dark-primary-container);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -109,17 +108,17 @@ const Section = styled.section`
             font-weight: 700;
             justify-content: center;
             align-items: center;
-            border: 2px solid var(--dark-on-secondary-container);
+            border: 2px solid var(--dark-primary-container);
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            color: var(--dark-secondary-container) !important;
+            color: var(--dark-on-primary-container) !important;
           }
         }
       }
       .border {
         margin-top: 24px;
-        border-top: 2px solid var(--dark-on-secondary-container);
+        border-top: 2px solid var(--dark-primary-container);
         height: 1px;
         @media (max-width: 600px) {
           margin-top: 16px;
@@ -128,19 +127,6 @@ const Section = styled.section`
     }
     .content {
       color: var(--white);
-      .description {
-        p {
-          color: var(--dark-on-surface-variant);
-          font-size: 1rem;
-          font-weight: 400 !important;
-          line-height: 1.5rem;
-          margin-top: 8px;
-          margin-bottom: 8px;
-        }
-        li {
-          margin-top: 4px;
-        }
-      }
     }
     h2 {
     }

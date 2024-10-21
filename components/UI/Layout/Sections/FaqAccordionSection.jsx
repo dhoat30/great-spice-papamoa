@@ -31,6 +31,7 @@ function FaqAccordionSection({ title, description, qaData }) {
 
 export default FaqAccordionSection;
 const Section = styled.section`
+  background: var(--dark-surface-container-high);
   padding: 80px 0;
 
   @media (max-width: 900px) {

@@ -109,6 +109,8 @@ function DesktopNavbar() {
               left: "-16px",
               paddingLeft: 0,
               display: `${showMenu === index ? "block" : "none"} `,
+              background: "var(--dark-surface-container)",
+              borderRadius: "0",
             }}
           >
             {item.subLinks.map((subLink, subIndex) => (
@@ -163,11 +165,11 @@ function DesktopNavbar() {
               >
                 {menuItems}
               </Box>
-              <Link href="/get-a-quote">
+              {/* <Link href="/get-a-quote">
                 <Button size="large" variant="contained">
                   GET A QUOTE
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </Toolbar>
         </Container>
@@ -227,16 +229,16 @@ const AppBarContainer = styled(AppBar)`
   .link {
     a {
       &:hover {
-        color: var(--light-primary);
+        color: var(--dark-primary);
         svg {
-          color: var(--light-primary);
+          color: var(--dark-primary);
         }
       }
       span {
         &:hover {
-          color: var(--light-primary);
+          color: var(--dark-primary);
           svg {
-            color: var(--light-primary);
+            color: var(--dark-primary);
           }
         }
       }
@@ -244,7 +246,7 @@ const AppBarContainer = styled(AppBar)`
     > a {
       display: flex;
       align-items: center;
-      color: var(--light-on-surface);
+      color: var(--dark-on-surface);
       padding: 16px 24px;
       @media (max-width: 1366px) {
         padding: 16px 16px;
@@ -258,7 +260,7 @@ const AppBarContainer = styled(AppBar)`
           position: absolute;
           width: 100%;
           height: 2px;
-          background: var(--light-primary);
+          background: var(--dark-on-surface);
           bottom: 0;
           left: 0;
         }
@@ -266,9 +268,8 @@ const AppBarContainer = styled(AppBar)`
     }
   }
   .sublinks-container {
-    border-radius: 12px;
     padding: 8px 0;
-    width: 300px;
+    width: 250px;
     .subLink {
       display: block;
       padding: 8px 16px;

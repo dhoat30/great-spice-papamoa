@@ -48,8 +48,12 @@ export default function BreadCrumb({ className }) {
   );
 }
 const Nav = styled.nav`
+  span {
+    color: var(--dark-on-surface);
+  }
   a {
-    color: var(--light-secondary);
+    color: var(--dark-on-surface-variant);
+
     .link-text {
       text-decoration: underline;
     }

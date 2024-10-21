@@ -9,6 +9,9 @@ import ServiceSelectorTabs from '@/components/UI/Tabs/ServicesSelectorTabs/Servi
 import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
 import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
 import BackgroundImageHero from '@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero'
+import Testimonials from '@/components/UI/Testimonials/Testimonials'
+import Gallery from '@/components/UI/Gallery/Gallery'
+import SmallGallery from '@/components/UI/Gallery/SmallGallery'
 
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -54,6 +57,8 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export default async function Page() {
 
   const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages")
+  const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+
   const options = await getOptions()
   if (!postData) {
     return {
@@ -68,11 +73,14 @@ export default async function Page() {
       <main>
         <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
         <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-        <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} />
+        <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} cateringPackagesData={options.catering_packages} />
+        <Testimonials testimonialsData={options?.testimonials} />
+
+        <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
+        {/* <Gallery galleryData={galleryData[0]} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} /> */}
         {/* <USP showTitle={true} statsArray={options?.stats?.items} cards={options?.usp?.items} title={options.usp?.section_title} description={options.usp?.section_description} /> */}
-        <FaqAccordionSection title={options?.faq?.section_title} description={options.faq?.section_description} qaData={options.faq?.items} />
       </main>
-      {/* <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} /> */}
+      <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
     </>
 
   )

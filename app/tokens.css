@@ -1,7 +1,7 @@
 :root {
   /* Color styles */
-  --material-theme--white: rgba(255, 255, 255, 1);
-  --material-theme--black: rgba(0, 0, 0, 1);
+  --white: rgba(255, 255, 255, 1);
+  --black: rgba(0, 0, 0, 1);
   --light-primary: rgb(1 31 81);
   --light-surface-tint: rgb(71 93 146);
   --light-on-primary: rgb(255 255 255);
@@ -76,7 +76,7 @@
   --dark-surface-variant: rgb(68 70 79);
   --dark-on-surface-variant: #c5c6d0;
   --dark-outline: rgb(201 202 212);
-  --dark-outline-variant: rgb(201 202 212);
+  --dark-outline-variant: rgb(59, 60, 65);
   --dark-shadow: rgb(0 0 0);
   --dark-scrim: rgb(0 0 0);
   --dark-inverse-surface: rgb(226 226 233);

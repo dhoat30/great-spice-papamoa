@@ -42,6 +42,7 @@ var settings = {
     },
   ],
 };
+
 export default function TechLogos({ data }) {
   if (!data) return null;
   const logos = data.logos.map((item, index) => {

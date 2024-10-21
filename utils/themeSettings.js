@@ -71,7 +71,8 @@ export const theme = createTheme({
             fontFamily: 'var(--font-cormorant)',
         },
         body1: {
-            color: "var( --dark-on-surface-variant)"
+            color: "var( --dark-on-surface-variant)",
+            fontWeight: 300,
         },
         body2: {
             fontWeight: 300,

@@ -114,26 +114,7 @@ export default function Footer({
                 })}
               </ul>
             </div>
-            <div className="footer-useful-links links-container">
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ marginBottom: "8px" }}
-              >
-                Information
-              </Typography>
-              <ul component="ul" sx={{ margin: 0, padding: 0 }}>
-                {informationLinks.map((link, index) => {
-                  return (
-                    <li key={index}>
-                      <Link href={link.url} className="body2">
-                        {link.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+
             <div className="contact-wrapper">
               <div className="contact-section">
                 <ContactInfo contactInfo={contactInfo} />
@@ -176,7 +157,7 @@ export default function Footer({
 }
 const FooterSection = styled.section`
   padding: 40px 0;
-  background: var(--light-surface-container-high);
+  background: var(--dark-surface-container-lowest);
   @media (max-width: 900px) {
     padding: 32px 0;
   }

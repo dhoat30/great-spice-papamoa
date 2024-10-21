@@ -1,13 +1,10 @@
 import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
-import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
-import TechLogos from '@/components/UI/TechLogos/TechLogos'
-import USP from '@/components/UI/USP/USP'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplate'
 import ContactHero from '@/components/UI/Hero/OptimizedHero/ContactHero'
-
+import SmallGallery from '@/components/UI/Gallery/SmallGallery'
+import Testimonials from '@/components/UI/Testimonials/Testimonials'
 
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
@@ -52,6 +49,8 @@ export default async function Contact() {
 
     const postData = await getSinglePostData("contact-us", "/wp-json/wp/v2/pages")
     const options = await getOptions()
+    const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+
     if (!postData) {
         return {
             notFound: true,
@@ -62,12 +61,14 @@ export default async function Contact() {
         <>
             <Header />
             <main>
-                <ContactHero data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} contactInfoData={contactInfo} />
-                <TechLogos data={options.clients_logos} />
+                <ContactHero data={postData[0]?.acf?.hero_section} contactInfoData={contactInfo} />
                 <Layout sections={postData[0]?.acf?.sections} />
-                <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
+                <Testimonials testimonialsData={options?.testimonials} />
+
+                <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
+
             </main>
-            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
+            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} showFooterCta={false} />
         </>
 
     )

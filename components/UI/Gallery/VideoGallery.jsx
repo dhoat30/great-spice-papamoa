@@ -37,7 +37,8 @@ export default function VideoGallery({ galleryData }) {
 }
 
 const Section = styled.section`
-  margin-top: 16px;
+  padding-top: 24px;
+  background: var(--dark-surface-container-highest);
   .tabs-wrapper {
     .MuiTabs-flexContainer {
     }

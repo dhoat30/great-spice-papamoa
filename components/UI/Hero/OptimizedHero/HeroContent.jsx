@@ -19,7 +19,7 @@ export default function HeroContent({
   heroUSP,
 }) {
   let ctaComponent = null;
-  if (ctaArray.length > 0) {
+  if (ctaArray?.length > 0) {
     ctaComponent = ctaArray.map((cta, index) => {
       return (
         <Link href={cta.cta_link.url} key={index} target="_blank">

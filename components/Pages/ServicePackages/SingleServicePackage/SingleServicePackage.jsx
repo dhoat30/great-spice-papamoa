@@ -3,7 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import ServiceCTA from "@/components/UI/CTA/ServiceCTA";
 import ServiceSection from "./ServiceSection";

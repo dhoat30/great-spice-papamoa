@@ -5,6 +5,8 @@ import './tokens.css'
 // Import slick css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "yet-another-react-lightbox/styles.css";
+
 import { Work_Sans, Cormorant } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../utils/themeSettings'

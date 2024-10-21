@@ -18,6 +18,6 @@ export default function Contact() {
 const ContainerStyled = styled(Paper)`
   padding: 0 16px 0 16px;
   border-radius: 16px;
-  background: var(--light-surface-container-lowest);
+  background: var(--dark-surface-container-lowest);
   min-height: 440px;
 `;

@@ -1,22 +1,20 @@
-import { getAllPosts, getOptions, getSinglePostData, getSinglePostDataWithID, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
-import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
-import TechLogos from '@/components/UI/TechLogos/TechLogos'
-import USP from '@/components/UI/USP/USP'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import ServiceSelectorTabs from '@/components/UI/Tabs/ServicesSelectorTabs/ServiceSelectorTabs'
-import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
-import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
-
+import ContactHero from '@/components/UI/Hero/OptimizedHero/ContactHero'
+import SmallGallery from '@/components/UI/Gallery/SmallGallery'
+import Testimonials from '@/components/UI/Testimonials/Testimonials'
+import BreadcrumbHero from '@/components/UI/Hero/BreadcrumbHero'
+import Script from 'next/script';
+import ReservationForm from '@/components/UI/Forms/ReservationForm'
 
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
     const slug = params.slug
 
     // fetch data
-    const data = await getSinglePostData("blogs", "/wp-json/wp/v2/pages")
-
+    const data = await getSinglePostData("reservation", "/wp-json/wp/v2/pages")
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -50,33 +48,31 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 }
 
-export default async function Page() {
+export default async function Contact() {
 
-    const postData = await getSinglePostData("blogs", "/wp-json/wp/v2/pages")
+    const postData = await getSinglePostData("reservation", "/wp-json/wp/v2/pages")
     const options = await getOptions()
+    const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+
     if (!postData) {
         return {
             notFound: true,
         }
     }
-
-    // get all blogs 
-    const allBlogsData = await getAllPosts("wp-json/wp/v2/posts")
-
-
-
+    const contactInfo = options.contact_info
     return (
         <>
             <Header />
             <main>
-                <BlogsArchive blogsData={allBlogsData} />
-
-                <TechLogos data={options.clients_logos} />
+                <BreadcrumbHero title={postData[0].acf.hero_section.title} description={postData[0].acf.hero_section.description} />
+                <ReservationForm />
                 <Layout sections={postData[0]?.acf?.sections} />
-                <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
-                <FaqAccordionSection title={options.faq.section_title} description={options.faq.section_description} qaData={options.faq.items} />
+                <Testimonials testimonialsData={options?.testimonials} />
+
+                <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
+
             </main>
-            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
+            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} showFooterCta={false} />
         </>
 
     )

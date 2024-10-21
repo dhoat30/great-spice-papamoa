@@ -5,18 +5,19 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import React from "react";
-
+import Image from "next/image";
+import Madala from "../Patterns/Madala";
 export default function FooterCta({ title, description, cta }) {
   return (
     <Section component="section">
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <div className="wrapper">
+          <Madala className="pattern" />
           <div className="content-wrapper">
             <Typography
               component="h2"
               variant="h2"
               sx={{ fontWeight: 700 }}
-              align="center"
               color="white"
               className="title"
             >
@@ -25,7 +26,6 @@ export default function FooterCta({ title, description, cta }) {
             <Typography
               component="p"
               variant="body1"
-              align="center"
               color="white"
               className="description mt-16"
             >
@@ -47,22 +47,6 @@ export default function FooterCta({ title, description, cta }) {
                   {cta.title}
                 </Button>
               </Link>
-
-              {/* <Link href="/get-a-quote">
-              <Button
-                size="large"
-                variant="outlined"
-                sx={{
-                  border: "1px solid white",
-                  color: "white",
-                  "&:hover": {
-                    border: "1px solid #eaeaea",
-                  },
-                }}
-              >
-                {cta.label}
-              </Button>
-            </Link> */}
             </div>
           </div>
         </div>
@@ -76,25 +60,69 @@ const Section = styled(Box)`
     padding: 24px 0;
   }
   .wrapper {
-    padding: 120px 0;
-    background: linear-gradient(97deg, #147ae7 2.05%, #000872 98.81%);
-    border-radius: 32px;
-    @media (max-width: 900px) {
-      padding: 56px 16px;
+    background: linear-gradient(102deg, #041783 0.72%, #047898 96.8%);
+    border: 1px solid #047898;
+    border-radius: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    .pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      right: -50%;
+      /* add rotation animation */
+      animation: rotate 100s linear infinite;
+      z-index: 0;
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      path {
+        fill: #035369;
+      }
     }
     .content-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      padding: 80px 32px;
+      max-width: 700px;
+      @media (max-width: 600px) {
+        padding: 32px 16px;
+      }
+      .title {
+        font-weight: 600;
+      }
+      .button-wrapper {
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
     }
-    .title {
-      font-weight: 600;
-    }
-    .button-wrapper {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      margin-top: 32px;
-      flex-wrap: wrap;
+    .image-wrapper {
+      border: solid red;
+
+      svg {
+        /* add rotation animation */
+        animation: rotate 100s linear infinite;
+        @keyframes rotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
     }
   }
 `;
