@@ -57,6 +57,7 @@ export default function Testimonials({ testimonialsData }) {
   };
   const testimonialCardsJSX = testimonialsData.testimonial.map(
     (item, index) => {
+      if (index > 5) return null;
       return (
         <TestimonialCard
           key={index}

@@ -11,13 +11,10 @@ export default function Video({
   showCompressedImage,
 }) {
   const imageURL = showCompressedImage
-    ? placeholderImage.sizes.large
+    ? placeholderImage.sizes.medium_large
     : placeholderImage.url;
-  const [isClient, setIsClient] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+
   // Function to load and play the video
   const handleImageClick = () => {
     setVideoLoaded(true);
@@ -33,6 +30,7 @@ export default function Video({
               src={imageURL} // Replace with your placeholder image path
               fill
               sizes="100vw"
+              quality="50"
               alt={placeholderImage.alt}
               style={{
                 objectFit: "cover", // cover, contain, none

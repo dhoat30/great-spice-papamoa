@@ -8,9 +8,9 @@ import Container from "@mui/material/Container";
 import Image from "next/image";
 import MenuItem from "./MenuItem/MenuItem";
 export default function RestaurantMenu({ menuData, orderOnlineLink }) {
-  if (!menuData) return null;
   const [value, setValue] = useState(0);
-  console.log(menuData);
+
+  if (!menuData) return null;
   // Extract unique menu categories for the tabs
   const uniqueCategories = Array.from(
     new Set(menuData.map((item) => item.menu_category.value))
@@ -53,7 +53,7 @@ export default function RestaurantMenu({ menuData, orderOnlineLink }) {
         </Tabs>
 
         {/* Filtered Menu Section */}
-        <div className="menu-section">
+        <div className="menu-section mt-40">
           {filteredMenuData.map((menuSection, index) => (
             <div key={index} className="menu-category-wrapper">
               <div className="menu-wrapper">
@@ -118,7 +118,6 @@ const Section = styled.section`
   }
   .container {
     .menu-section {
-      margin-top: 24px;
       .menu-category-wrapper {
         margin-bottom: 40px;
         display: grid;

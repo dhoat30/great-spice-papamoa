@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Typography } from "@mui/material";
 import PatternHeading from "../../Headings/PatternHeading";
 import MenuCard from "../../Card/MenuCard";
-export default function MenuSection({ title, description, cards }) {
+export default function MenuSection({ title, description, cards, className }) {
   if (cards.length === 0) {
     return;
   }
@@ -22,7 +22,7 @@ export default function MenuSection({ title, description, cards }) {
     );
   });
   return (
-    <Section>
+    <Section className={className}>
       <Container className="container" maxWidth="xl">
         <PatternHeading title={title} description={description} />
         <div className="cards-wrapper mt-40">{cardsComponent}</div>

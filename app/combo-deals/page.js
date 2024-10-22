@@ -19,7 +19,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const slug = params.slug
 
   // fetch data
-  const data = await getSinglePostData("menu", "/wp-json/wp/v2/pages")
+  const data = await getSinglePostData("specials", "/wp-json/wp/v2/pages")
 
 
   // optionally access and extend (rather than replace) parent metadata
@@ -56,7 +56,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 export default async function Page() {
 
-  const postData = await getSinglePostData("menu", "/wp-json/wp/v2/pages")
+  const postData = await getSinglePostData("specials", "/wp-json/wp/v2/pages")
   const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
 
   const options = await getOptions()
@@ -71,10 +71,7 @@ export default async function Page() {
     <>
       <Header />
       <main>
-
-        <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-        <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-        <div className="pt-32" style={{ background: "var(--dark-surface-container-lowest" }}></div>
+        <div className='pt-32'></div>
         <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} cateringPackagesData={options.catering_packages} />
         <Testimonials testimonialsData={options?.testimonials} />
 

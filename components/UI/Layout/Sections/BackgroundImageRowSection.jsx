@@ -8,7 +8,8 @@ import Container from "@mui/material/Container";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 import Stats from "../../Stats/Stats";
-import Madala from "../../Patterns/Madala";
+import dynamic from "next/dynamic";
+const Madala = dynamic(() => import("../../Patterns/Madala"));
 
 export default function BackgroundImageRowSection({
   title,

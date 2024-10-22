@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={`${work_sans.variable} ${cormorant.variable}`}>
-      <GoogleTagManager gtmId="GTM-NDXM6D" />
+      <GoogleTagManager gtmId="GTM-NMB3V6C" />
       <body >
         <ThemeProvider theme={theme}>
 

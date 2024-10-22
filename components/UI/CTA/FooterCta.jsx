@@ -5,8 +5,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
-import Madala from "../Patterns/Madala";
+import dynamic from "next/dynamic";
+const Madala = dynamic(() => import("../Patterns/Madala"));
+
 export default function FooterCta({ title, description, cta }) {
   return (
     <Section component="section">

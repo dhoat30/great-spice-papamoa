@@ -18,6 +18,7 @@ export default function Layout({
   sections,
   comboDealsData,
   cateringPackagesData,
+  className,
 }) {
   if (!sections) return null;
   console.log(sections);
@@ -175,5 +176,5 @@ export default function Layout({
     }
   });
 
-  return <div>{sectionsJSX} </div>;
+  return <div className={className}>{sectionsJSX} </div>;
 }

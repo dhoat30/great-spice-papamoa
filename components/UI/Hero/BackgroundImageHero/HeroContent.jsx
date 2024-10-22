@@ -10,6 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+
 export default function HeroContent({
   title,
   subtitle,
@@ -21,18 +23,18 @@ export default function HeroContent({
   let ctaComponent = null;
   if (ctaArray.length > 0) {
     ctaComponent = ctaArray.map((cta, index) => {
+      // Determine the icon based on the URL
+      let secondIcon = <LocalMallOutlinedIcon />;
+      if (cta.cta_link.url === "/contact") {
+        console.log(cta.cta_link.url);
+        secondIcon = <LocalPhoneOutlinedIcon />;
+      }
       return (
         <Link href={cta.cta_link.url} key={index} target="_blank">
           <Button
             variant={`${index === 0 ? "contained" : "outlined"}`}
             size="large"
-            startIcon={
-              index === 0 ? (
-                <CalendarMonthOutlinedIcon />
-              ) : (
-                <LocalMallOutlinedIcon />
-              )
-            }
+            startIcon={index === 0 ? <CalendarMonthOutlinedIcon /> : secondIcon}
           >
             {cta.cta_link.title}
           </Button>

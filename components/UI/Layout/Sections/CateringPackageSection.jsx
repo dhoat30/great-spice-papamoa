@@ -6,7 +6,8 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Package from "../../Card/Package";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Madala from "../../Patterns/Madala";
+import dynamic from "next/dynamic";
+const Madala = dynamic(() => import("../../Patterns/Madala"));
 
 export default function CateringPackageSection({ title, description, cards }) {
   return (
