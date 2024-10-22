@@ -16,6 +16,14 @@ export const headerLinks = [
         url: "/"
     },
     {
+        id: 6,
+        label: "MENU",
+        url: "/menu",
+        subLinks: [
+            { label: "Takeaway Menu", url: "/menu/takeaway-menu" },
+        ]
+    },
+    {
         id: 2,
         label: "CATERING",
         url: "/catering"

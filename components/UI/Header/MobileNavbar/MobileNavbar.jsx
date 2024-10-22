@@ -72,20 +72,22 @@ export default function MobileNavbar() {
         className="flex-auto text-center relative parent-list-item"
         key={index}
       >
-        <a
+        <Link
           href={item.url}
-          className={`parent-link ${pathname === item.url ? "active" : ""}`}
+          className={`parent-link body1 ${
+            pathname === item.url ? "active" : ""
+          }`}
           onClick={(event) => handleClick(event, item, index)}
         >
           {item.label}
           {item.subLinks && <ArrowIcon className="arrow" />}
-        </a>
+        </Link>
 
         {item.subLinks && (
           <ul
             className={`${
               showMenu === index ? "block" : "hidden"
-            } bg-primary-light text-surface-light top-8 dropdown`}
+            } bg-primary-dark text-surface-dark top-8 dropdown`}
           >
             {item.subLinks.map((subLink, subIndex) => (
               <li key={subIndex} className="text-left child-list-item">
@@ -93,7 +95,7 @@ export default function MobileNavbar() {
                   key={subIndex + 100}
                   style={{ borderColor: "rgba(255,255,255,0.1)" }}
                 />
-                <Link href={subLink.url} className="child-link">
+                <Link href={subLink.url} className="child-link body1">
                   {subLink.label}
                 </Link>
               </li>
@@ -102,7 +104,7 @@ export default function MobileNavbar() {
         )}
         <Divider
           key={index + 122}
-          light={true}
+          dark={true}
           style={{ borderColor: "rgba(255,255,255,0.5)" }}
         />
       </li>
@@ -119,8 +121,8 @@ export default function MobileNavbar() {
             lg: "none",
           },
           background: pathname.includes("blogs")
-            ? "var(--light-surface-container-lowest)"
-            : "var(--light-surface-container-lowest)",
+            ? "var(--dark-surface-container)"
+            : "var(--dark-surface-container)",
         }}
       >
         <Container maxWidth="xl" sx={{ padding: "0 6px !important" }}>
@@ -133,7 +135,6 @@ export default function MobileNavbar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleDrawerOpen}
-                  color="primary"
                   disableRipple={true}
                   className="hamburger-icon"
                 >
@@ -169,7 +170,7 @@ export default function MobileNavbar() {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
-              backgroundColor: "var(--light-on-primary-fixed-variant, #295000)",
+              backgroundColor: "var(--dark-surface-container-high)",
             },
           }}
           anchor="left"
@@ -186,7 +187,7 @@ export default function MobileNavbar() {
             </IconButton>
           </DrawerHeader>
           <ListContainer>{menuItems}</ListContainer>
-          <Link href="/get-a-quote" style={{ margin: "16px" }}>
+          <Link href="/reservation" style={{ margin: "16px" }}>
             <Button
               size="large"
               variant="outlined"
@@ -201,7 +202,7 @@ export default function MobileNavbar() {
                 },
               }}
             >
-              GET A QUOTE
+              MAKE RESERVATION
             </Button>
           </Link>
         </Drawer>
@@ -223,6 +224,7 @@ const AppBarStyled = styled(AppBar)`
   .hamburger-icon {
     svg {
       path {
+        fill: var(--dark-primary);
       }
     }
   }
@@ -244,13 +246,12 @@ const ListContainer = styled.ul`
 
   .parent-list-item {
     .parent-link {
-      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
       display: block;
       text-align: left;
       padding: 16px 16px;
       color: white;
       font-weight: 500;
-      letter-spacing: 0.005rem;
+
       position: relative;
       &:hover {
         color: #ebebeb;

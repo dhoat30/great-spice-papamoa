@@ -82,15 +82,6 @@ export default function HeroContent({
   return (
     <Div className={className}>
       <Typography
-        className="subtitle"
-        component="div"
-        variant="h5"
-        color="var(--light-on-primary-fixed-variant)"
-        align="center"
-      >
-        {subtitle}
-      </Typography>
-      <Typography
         component="h1"
         variant="h1"
         className="title"
@@ -99,15 +90,7 @@ export default function HeroContent({
       >
         {title}
       </Typography>
-      <Typography
-        component="p"
-        variant="body1"
-        color="var(--light-on-primary-fixed-variant)"
-        className="description"
-        align="center"
-      >
-        {description}
-      </Typography>
+
       <div className="button-wrapper">{ctaComponent}</div>
       {heroUSPComponent}
     </Div>

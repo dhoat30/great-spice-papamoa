@@ -1,6 +1,6 @@
 const { siteUrl } = require('./next-sitemap.config');
-const cmsDomain = process.env.NODE_ENV === 'production' ? 'cms.greatspice.co.nz' : "great-spice-papamoa.local";
-const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+const cmsDomain = process.env.NODE_ENV === 'production' ? 'cms.greatspice.co.nz' : "cms.greatspice.co.nz";
+const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'https';
 // bundle analyzer 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',

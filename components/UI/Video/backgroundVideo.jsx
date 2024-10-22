@@ -15,7 +15,9 @@ export default function BackgroundVideo({
     : placeholderImage.url;
   const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
   useEffect(() => {
-    setVideoLoaded(true);
+    setTimeout(() => {
+      setVideoLoaded(true);
+    }, 4000);
   }, []);
   return (
     <ContainerStyled className={className}>
@@ -28,6 +30,7 @@ export default function BackgroundVideo({
               src={imageURL} // Replace with your placeholder image path
               fill
               alt={placeholderImage.alt}
+              sizes="100vw"
               style={{
                 objectFit: "cover", // cover, contain, none
               }}

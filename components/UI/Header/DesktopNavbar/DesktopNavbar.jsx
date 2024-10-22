@@ -203,7 +203,7 @@ const AppBarContainer = styled(AppBar)`
     } else if (scrollposition < 600) {
       return "none";
     } else {
-      return "#11141b";
+      return "var(--dark-surface-container-highest)";
     }
   }};
   transform: ${({ scrollposition }) => {

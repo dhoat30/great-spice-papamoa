@@ -32,6 +32,7 @@ export default function Video({
               onClick={handleImageClick}
               src={imageURL} // Replace with your placeholder image path
               fill
+              sizes="100vw"
               alt={placeholderImage.alt}
               style={{
                 objectFit: "cover", // cover, contain, none
