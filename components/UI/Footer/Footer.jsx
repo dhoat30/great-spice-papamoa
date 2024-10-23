@@ -7,10 +7,8 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import NewsletterForm from "../Forms/NewsletterForm";
-import { services, commercialLinks, informationLinks } from "./FooterLinks";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHub from "@mui/icons-material/GitHub";
-import YouTube from "@mui/icons-material/YouTube";
+import { menus, usefulLinks, informationLinks } from "./FooterLinks";
+
 import Copyright from "./Copyright";
 import ContactInfo from "./ContactInfo";
 import FooterCta from "../CTA/FooterCta";
@@ -32,7 +30,7 @@ export default function Footer({
       )}
 
       <FooterSection>
-        <ContainerStyled maxWidth="xl" className="row">
+        <ContainerStyled maxWidth="lg" className="row">
           {/* logo wrapper */}
           <div className="footer-wrapper">
             <div className="certification-wrapper">
@@ -80,10 +78,10 @@ export default function Footer({
                 component="div"
                 sx={{ marginBottom: "8px" }}
               >
-                Services
+                Menus
               </Typography>
               <ul component="ul" sx={{ margin: 0, padding: 0 }}>
-                {services.map((link, index) => {
+                {menus.map((link, index) => {
                   return (
                     <li key={index}>
                       <Link href={link.url} className="body2">
@@ -100,10 +98,10 @@ export default function Footer({
                 component="div"
                 sx={{ marginBottom: "8px" }}
               >
-                Commercial
+                Useful Links
               </Typography>
               <ul component="ul" sx={{ margin: 0, padding: 0 }}>
-                {commercialLinks.map((link, index) => {
+                {usefulLinks.map((link, index) => {
                   return (
                     <li key={index}>
                       <Link href={link.url} className="body2">
@@ -167,7 +165,7 @@ const ContainerStyled = styled(Container)`
     display: grid;
     gap: 40px;
     justify-content: space-between;
-    grid-template-columns: 250px 200px 200px 200px 250px;
+    grid-template-columns: 250px 200px 200px 250px;
     @media (max-width: 1366px) {
       gap: 24px;
     }
@@ -194,7 +192,7 @@ const ContainerStyled = styled(Container)`
           margin: 0;
           padding: 6px 0;
           &:hover {
-            color: var(--light-primary);
+            color: var(--dark-primary);
           }
         }
       }
@@ -214,7 +212,7 @@ const ContainerStyled = styled(Container)`
           &:hover {
             svg {
               path {
-                fill: var(--dark-secondary);
+                fill: var(--dark-primary);
               }
             }
           }

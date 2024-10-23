@@ -14,7 +14,7 @@ export default function Video({
     ? placeholderImage.sizes.medium_large
     : placeholderImage.url;
   const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
-
+  console.log(placeholderImage);
   // Function to load and play the video
   const handleImageClick = () => {
     setVideoLoaded(true);
@@ -30,8 +30,11 @@ export default function Video({
               src={imageURL} // Replace with your placeholder image path
               fill
               sizes="100vw"
-              quality="50"
+              quality="40"
               alt={placeholderImage.alt}
+              placeholder="blur" // Add the blur placeholder attribute
+              blurDataURL={placeholderImage.sizes.thumbnail}
+              priority // Ensure image loads as soon as possible
               style={{
                 objectFit: "cover", // cover, contain, none
               }}

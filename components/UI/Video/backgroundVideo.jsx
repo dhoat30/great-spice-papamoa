@@ -10,15 +10,15 @@ export default function BackgroundVideo({
   className,
   showCompressedImage,
 }) {
+  const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
+
+  // Add a callback function to trigger when the video is ready
+  const handleVideoReady = () => {
+    setVideoLoaded(true);
+  };
   const imageURL = showCompressedImage
     ? placeholderImage.sizes.large
     : placeholderImage.url;
-  const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
-  useEffect(() => {
-    setTimeout(() => {
-      setVideoLoaded(true);
-    }, 4000);
-  }, []);
   return (
     <ContainerStyled className={className}>
       <div className="overlay"></div>
@@ -31,6 +31,10 @@ export default function BackgroundVideo({
               fill
               alt={placeholderImage.alt}
               sizes="100vw"
+              placeholder="blur" // Add the blur placeholder attribute
+              blurDataURL={placeholderImage.sizes.thumbnail} // Low-resolution version of the image for blur effect
+              priority // Ensure image loads as soon as possible
+              onLoad={handleVideoReady}
               style={{
                 objectFit: "cover", // cover, contain, none
               }}

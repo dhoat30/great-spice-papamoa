@@ -52,12 +52,12 @@ const Container = styled.div`
     &:hover {
       svg {
         circle {
-          fill: var(--light-primary);
+          fill: var(--dark-primary);
         }
       }
       span,
       div {
-        color: var(--light-primary);
+        color: var(--dark-primary);
       }
     }
   }
