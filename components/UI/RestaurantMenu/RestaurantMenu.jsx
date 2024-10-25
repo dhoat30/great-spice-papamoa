@@ -1,126 +1,150 @@
-import { Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+"use client";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
-import GlutenFreeIcon from "../../Icons/GlutenFreeIcon";
-import VeganIcon from "../../Icons/VeganIcon";
-import VegetarianIcon from "../../Icons/VegetarianIcon";
-import DairyFreeIcon from "../../Icons/DariyFreeIcon";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Image from "next/image";
+import MenuItem from "./MenuItem/MenuItem";
+export default function RestaurantMenu({ menuData, orderOnlineLink }) {
+  console.log(menuData)
+  const [value, setValue] = useState(0);
 
-function MenuItem({
-  dishName,
-  dishDescription,
-  dishPrice,
-  condition,
-  dietaryInformation,
-}) {
-  const [glutenFree, setGlutenFree] = useState(false);
-  const [vegetarian, setVegetarian] = useState(false);
-  const [vegan, setVegan] = useState(false);
-  const [dairyFree, setDairyFree] = useState(false);
-  const dietaryIcons = dietaryInformation.map((item,index)=>{ 
-    if(item.value==='vegetarian'){ 
-      return  <Tooltip title="Vegetarian" arrow>
-      <Button>
-        <VegetarianIcon className="inline-block" />
-      </Button>
-    </Tooltip>
-    }
-    if(item.value==="vegan"){ 
-      return  <Tooltip title="Vegan" arrow>
-                  <Button>
-                    <VeganIcon className="inline-block" />
-                  </Button>
-                </Tooltip>
-    }
-    if(item.value==="glutenFree"){ 
-      return  <Tooltip title="Gluten Free" arrow>
-      <Button>
-        <GlutenFreeIcon className="inline-block" />
-      </Button>
-    </Tooltip>
-    }
-    if(item.value==="dairyFree"){ 
-      return  <Tooltip title="Dairy Free" arrow>
-      <Button>
-        <DairyFreeIcon className="inline-block" />
-      </Button>
-    </Tooltip>
-    }
-  })
+  if (!menuData) return null;
+  // Extract unique menu categories for the tabs
+  const uniqueCategories = Array.from(
+    new Set(menuData.map((item) => item.menu_category.value))
+  ).map((categoryValue) => {
+    const category = menuData.find(
+      (item) => item.menu_category.value === categoryValue
+    )?.menu_category;
+    return category;
+  });
 
-  // console.log(dietaryInformation);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-  // console.log(glutenFree, vegetarian, vegan, dairyFree);
+  // Filter menu items based on selected category
+  const filteredMenuData =
+    value === 0
+      ? menuData // Show all items if "All" tab is selected
+      : menuData.filter(
+          (item) => item.menu_category.value === uniqueCategories[value].value
+        );
+
   return (
-    <Container className="menu-item ">
-      <div className="dish-wrapper">
-        <div className="dish-name-wrapper">
-          <Typography className="dish-name" variant="h6" component="h3">
-            {dishName}
-            <span className="icon-wrapper">
-             {dietaryIcons}
-            </span>
-          </Typography>
-          {condition && (
-            <Typography variant="body2" component="div">
-              *{condition}
-            </Typography>
-          )}
+    <Section>
+      <Container maxWidth="xl" className="container">
+        {/* Tabs for filtering */}
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs"
+          textColor="secondary"
+          indicatorColor="secondary"
+          className="tabs-wrapper"
+        >
+          {uniqueCategories.map((category, index) => (
+            <Tab key={index} label={category.label} />
+          ))}
+        </Tabs>
+
+        {/* Filtered Menu Section */}
+        <div className="menu-section mt-40">
+          {filteredMenuData.map((menuSection, index) => (
+            <div key={index} className="menu-category-wrapper">
+              <div className="menu-wrapper">
+                <Typography variant="h3" className="menu-category-title">
+                  {menuSection.menu_category.label}
+                </Typography>
+
+                <ul className="menu-items mt-24">
+                  {menuSection.menu_item.map((item, itemIndex) => {
+                                        console.log(item)
+                                        return  (
+                                          <MenuItem
+                                            key={itemIndex}
+                                            dishName={item.dish_name}
+                                            dishDescription={item.dish_description}
+                                            dishPrice={item.dish_price}
+                                            dietaryInformation={item.dietry_information}
+                                          />
+                                        )
+                  })}
+                </ul>
+              </div>
+
+              {/* Menu Image */}
+              {menuSection.menu_image && (
+                <div
+                  className="image-wrapper"
+                  style={{
+                    paddingBottom: `${
+                      (menuSection.menu_image.height /
+                        menuSection.menu_image.width) *
+                      100
+                    }%`,
+                  }}
+                >
+                  <Image
+                    src={menuSection.menu_image.sizes.medium_large}
+                    alt={menuSection.menu_image.alt}
+                    fill
+                  />
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-        <Typography variant="subtitle1" component="div" className="dish-price">
-          ${dishPrice}
-        </Typography>
-      </div>
-      <Typography variant="body1" component="p" className="description mt-8">
-        {dishDescription}
-      </Typography>
-      <div className="dish-border mt-16"></div>
-    </Container>
+      </Container>
+    </Section>
   );
 }
 
-export default MenuItem;
-const Container = styled.li`
-  .dish-wrapper {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 16px;
-    justify-content: space-between;
-    .dish-name {
-      display: flex;
-      align-items: center;
-      @media (max-width: 640px) {
-        flex-direction: column;
-        align-items: flex-start;
+const Section = styled.section`
+  background: var(--dark-surface-container-lowest);
+  padding: 16px 0;
+  .tabs-wrapper {
+    .MuiTabs-flexContainer {
+    }
+    svg {
+      path {
+        fill: var(--dark-on-surface);
       }
-      /* tool tip  */
-      button {
-        display: inline-block;
-        padding: 0 8px !important;
-        height: 16px !important;
-        font-size: 0;
-        line-height: 0;
-        min-width: 16px;
-        svg {
-          margin-left: 4px;
-          width: 16px;
-          height: 16px;
-          path {
-            fill: var(--dark-on-surface);
+    }
+    button {
+      border-bottom: 1px solid var(--dark-on-surface);
+    }
+  }
+  .container {
+    .menu-section {
+      .menu-category-wrapper {
+        margin-bottom: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: 56px;
+        @media (max-width: 1000px) {
+          grid-template-columns: 1fr;
+        }
+        .menu-wrapper {
+          .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+          }
+        }
+        .image-wrapper {
+          @media (min-width: 1000px) {
+            position: sticky;
+            top: 100px;
           }
         }
       }
     }
   }
-  .description {
-    width: 80%;
-  }
-  .dish-border {
-    border-bottom: 1px solid var(--dark-outline);
-    opacity: 0.6;
-  }
 `;
-

@@ -1,5 +1,4 @@
 import { Typography } from "@mui/material";
-import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import GlutenFreeIcon from "../../Icons/GlutenFreeIcon";
 import VeganIcon from "../../Icons/VeganIcon";
@@ -15,24 +14,38 @@ function MenuItem({
   condition,
   dietaryInformation,
 }) {
-  const [glutenFree, setGlutenFree] = useState(false);
-  const [vegetarian, setVegetarian] = useState(false);
-  const [vegan, setVegan] = useState(false);
-  const [dairyFree, setDairyFree] = useState(false);
-  useEffect(() => {
-    dietaryInformation.map((item, index) => {
-      console.log(item);
-      if (item.value === "vegetarian") {
-        setVegetarian(true);
-      } else if (item.value === "vegan") {
-        setVegan(true);
-      } else if (item.value === "glutenFree") {
-        setGlutenFree(true);
-      } else if (item.value === "dairyFree") {
-        setDairyFree(true);
-      }
-    });
-  }, []);
+
+  const dietaryIcons = dietaryInformation.map((item,index)=>{ 
+    if(item.value==='vegetarian'){ 
+      return  <Tooltip title="Vegetarian" arrow>
+      <Button>
+        <VegetarianIcon className="inline-block" />
+      </Button>
+    </Tooltip>
+    }
+    if(item.value==="vegan"){ 
+      return  <Tooltip title="Vegan" arrow>
+                  <Button>
+                    <VeganIcon className="inline-block" />
+                  </Button>
+                </Tooltip>
+    }
+    if(item.value==="glutenFree"){ 
+      return  <Tooltip title="Gluten Free" arrow>
+      <Button>
+        <GlutenFreeIcon className="inline-block" />
+      </Button>
+    </Tooltip>
+    }
+    if(item.value==="dairyFree"){ 
+      return  <Tooltip title="Dairy Free" arrow>
+      <Button>
+        <DairyFreeIcon className="inline-block" />
+      </Button>
+    </Tooltip>
+    }
+  })
+
   // console.log(dietaryInformation);
 
   // console.log(glutenFree, vegetarian, vegan, dairyFree);
@@ -43,34 +56,7 @@ function MenuItem({
           <Typography className="dish-name" variant="h6" component="h3">
             {dishName}
             <span className="icon-wrapper">
-              {glutenFree && (
-                <Tooltip title="Gluten Free" arrow>
-                  <Button>
-                    <GlutenFreeIcon className="inline-block" />
-                  </Button>
-                </Tooltip>
-              )}
-              {vegan && (
-                <Tooltip title="Vegan" arrow>
-                  <Button>
-                    <VeganIcon className="inline-block" />
-                  </Button>
-                </Tooltip>
-              )}
-              {vegetarian && (
-                <Tooltip title="Vegetarian" arrow>
-                  <Button>
-                    <VegetarianIcon className="inline-block" />
-                  </Button>
-                </Tooltip>
-              )}
-              {dairyFree && (
-                <Tooltip title="Dairy Free" arrow>
-                  <Button>
-                    <DairyFreeIcon className="inline-block" />
-                  </Button>
-                </Tooltip>
-              )}
+             {dietaryIcons}
             </span>
           </Typography>
           {condition && (
@@ -92,6 +78,7 @@ function MenuItem({
 }
 
 export default MenuItem;
+
 const Container = styled.li`
   .dish-wrapper {
     display: grid;
@@ -102,11 +89,16 @@ const Container = styled.li`
     .dish-name {
       display: flex;
       align-items: center;
+      gap: 8px; 
+      .icon-wrapper{ 
+      position:relative; 
+      top: -2px; 
+      }
       @media (max-width: 640px) {
         flex-direction: column;
         align-items: flex-start;
       }
-      /* tool tip  */
+    
       button {
         display: inline-block;
         padding: 0 8px !important;
@@ -133,3 +125,4 @@ const Container = styled.li`
     opacity: 0.6;
   }
 `;
+
