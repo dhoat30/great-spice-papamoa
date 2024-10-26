@@ -65,14 +65,23 @@ function MenuItem({
             </Typography>
           )}
         </div>
-        <Typography variant="subtitle1" component="div" className="dish-price">
-          ${dishPrice}
-        </Typography>
+        {dishPrice && 
+         <Typography variant="subtitle1" component="div" className="dish-price">
+         ${dishPrice}
+       </Typography>
+        }
+       
       </div>
-      <Typography variant="body1" component="p" className="description mt-8">
-        {dishDescription}
-      </Typography>
+      {dishDescription && 
+      <>
+     
+      {/* set html dangerously  */}
+      <div className="body1"  dangerouslySetInnerHTML={{ __html: dishDescription }}
+      />
       <div className="dish-border mt-16"></div>
+      </>
+      }
+    
     </Container>
   );
 }

@@ -10,7 +10,11 @@ export const headerLinks = [
         label: "MENU",
         url: "/menu",
         subLinks: [
+            { label: "Combo Lunch Menu", url: "/menu/lunch-menu" },
             { label: "Takeaway Menu", url: "/menu/takeaway-menu" },
+            { label: "Dine-In Menu", url: "/menu/dine-in-menu" },
+
+
         ]
     },
     {

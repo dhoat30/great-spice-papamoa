@@ -15,6 +15,7 @@ export default function Package({
   cta,
   isItPopular,
   highlightLabel,
+  
 }) {
   return (
     <Div className={`package ${isItPopular && "highlighted-package"}`}>
@@ -75,16 +76,13 @@ export default function Package({
           );
         })}
       </ul>
-      <Link
-        href={{
-          pathname: "/book-now",
-        }}
-        className="cta-wrapper mt-16"
-      >
-        <Button variant="contained" disableElevation>
-          ORDER NOW
+      {cta && 
+      <Link href={cta.url} target={cta.target} className="cta-wrapper mt-24">
+ <Button variant="contained" disableElevation >
+          {cta.title}
         </Button>
       </Link>
+      }
     </Div>
   );
 }
