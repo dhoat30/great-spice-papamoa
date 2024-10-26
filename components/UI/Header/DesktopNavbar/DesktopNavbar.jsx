@@ -92,7 +92,8 @@ function DesktopNavbar() {
           </Typography>
           {item.subLinks && (
             <KeyboardArrowDownRoundedIcon
-              className={`${showMenu === index && "arrow-up"} arrow `}
+              className={`${showMenu === index && "arrow-up"} arrow sublink-arrow`}
+             
             />
           )}
         </Link>
@@ -254,6 +255,18 @@ const AppBarContainer = styled(AppBar)`
       @media (max-width: 1366px) {
         padding: 16px 8px;
       }
+      .sublink-arrow{ 
+        path{ 
+          fill: var(--dark-on-surface-variant); 
+        }
+      }
+      &:hover{ 
+        .sublink-arrow{ 
+        path{ 
+          fill: var(--dark-on-surface); 
+        }
+      }
+      }
       &.active {
         &::before {
           content: "";
@@ -265,6 +278,8 @@ const AppBarContainer = styled(AppBar)`
           left: 0;
         }
       }
+
+
     }
   }
   .sublinks-container {

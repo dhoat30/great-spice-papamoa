@@ -4,10 +4,10 @@ import styled from "@emotion/styled";
 import CustomAccordion from "../../Accordion/CustomAccordion";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-function FaqAccordionSection({ title, description, qaData }) {
+function FaqAccordionSection({ title, description, qaData, className }) {
   if (!qaData) return null;
   return (
-    <Section>
+    <Section className={className}>
       <Container maxWidth="xl">
         <div className="grid-wrapper ">
           <div className="title-wrapper">

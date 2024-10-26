@@ -32,6 +32,7 @@ export default function CateringPackageSection({ title, description, cards }) {
                 packageItems={item.included}
                 termsAndConditions={item.terms_and_conditions}
                 isItPopular={item.is_this_combo_popular}
+                cta={item.cta}
               />
             ))}
           </div>

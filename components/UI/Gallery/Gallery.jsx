@@ -77,6 +77,7 @@ export default function Gallery({ galleryData }) {
                 <Image
                   src={item.image.sizes.medium_large}
                   alt={item.image.alt}
+                  sizes="(max-width: 870px) 50vw, (max-width: 1300px) 50vw, 33vw"
                   fill
                   style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable
                 />

@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import StarIcon from "@mui/icons-material/Star";
 import GoogleIcon from "../Icons/GoogleIcon";
 
-export default function TestimonialCard({ name, description, customerPic }) {
+export default function TestimonialCard({ name, description, customerPic, className }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const numberOfStars = 5;
   const starsJSX = Array.from({ length: numberOfStars }, (_, index) => (
@@ -25,7 +25,7 @@ export default function TestimonialCard({ name, description, customerPic }) {
       : description;
 
   return (
-    <Div>
+    <Div className={className}>
       <div className="profile-wrapper">
         <Image
           src={customerPic.url}

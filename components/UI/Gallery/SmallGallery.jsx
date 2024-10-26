@@ -33,6 +33,8 @@ export default function SmallGallery({ title, description, galleryData }) {
                 onClick={() => handleThumbnailClick(index)} // Handle click to open lightbox
               >
                 <Image
+                                  sizes="(max-width: 870px) 50vw, (max-width: 1300px) 50vw, 33vw"
+
                   src={item.image.sizes.medium_large}
                   alt={item.image.alt}
                   fill
