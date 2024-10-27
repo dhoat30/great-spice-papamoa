@@ -68,8 +68,8 @@ export default function ContactForm({ className, formName = "Contact Form" }) {
             email: formData.email,
             formName: formName,
             message: `First Name: ${formData.firstname} \nEmail: ${formData.email} \nPhone: ${formData.phone} \nMessage: ${formData.message}`,
-            portalID: "145323047",
-            hubspotFormID: "55e20349-3d71-45ed-a6be-62524384a7dd",
+            portalID: "43718365",
+            hubspotFormID: "579146dd-adde-40a0-b6ef-6cce71322df9",
             hubspotFormObject: [
                 {
                     name: "firstname",
@@ -121,7 +121,7 @@ export default function ContactForm({ className, formName = "Contact Form" }) {
             .then(function (responses) {
                 console.log(responses)
                 // responses[1] is the response from sendmail
-                if (responses[0].status === 200) {
+                if (responses[0].status === 200 && responses[1].status === 200) {
                     setIsLoading(false)
                     setIsSuccess(true)
                     setNewSubmission(false)

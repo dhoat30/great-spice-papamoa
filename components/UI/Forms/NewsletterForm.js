@@ -52,8 +52,8 @@ function NewsletterForm({ emailTo, formName, emailRoute, btnLabel, className }) 
 
         const data = {
             formName: formName,
-            portalID: "145323047",
-            hubspotFormID: "20dafc89-4d01-43d3-9b6d-48c22e334ef4",
+            portalID: "43718365",
+            hubspotFormID: "b90415b5-2643-4e30-8fad-7be60ad3d79f",
             hubspotFormObject: [
                 {
                     name: "email",

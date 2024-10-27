@@ -23,7 +23,7 @@ export default function ThankYou({
             variant="h4"
             component="h1"
             align="center"
-            color="var(--light-on-surface)"
+            color="var(--dark-on-surface)"
           >
             {title}
           </Typography>
@@ -31,7 +31,7 @@ export default function ThankYou({
             variant="subtitle1"
             component="p"
             align="center"
-            color="var(--light-on-surface-variant)"
+            color="var(--dark-on-surface-variant)"
           >
             {description}
           </Typography>
@@ -41,11 +41,7 @@ export default function ThankYou({
                 Go back to Home
               </Button>
             </Link>
-            <Link href="/blogs">
-              <Button variant="contained" color="primary" size="large">
-                Read our blogs
-              </Button>
-            </Link>
+        
           </div>
         </div>
       </Container>
@@ -53,14 +49,15 @@ export default function ThankYou({
   );
 }
 const Section = styled.section`
-  background: var(--light-surface-container-low);
+  background: var(--dark-surface-container-low);
   min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
+padding-top: 80px; 
+padding-bottom: 40px; 
   .container {
-    background: var(--light-surface-container);
+    background: var(--dark-surface-container);
     padding: 24px;
     border-radius: 12px;
     .image-container {
