@@ -29,10 +29,45 @@ const nextConfig = {
     async redirects() {
         return [
             {
-                source: '/gallery',
+                source: '/booking.html',
+                destination: '/reservation',
+                permanent: true,
+            }, 
+            {
+                source: '/takeaway-menu-papamoa-east.html',
+                destination: '/menu/takeaway-menu',
+                permanent: true,
+            },
+            {
+                source: '/gallery.html',
                 destination: '/gallery/image-gallery',
                 permanent: true,
-            }
+            },
+            {
+                source: '/dine-in-menu-papamoa-east.html',
+                destination: '/menu/dine-in-menu',
+                permanent: true,
+            },
+            {
+                source: '/papamoa-plaza-takeaway-menu.pdf',
+                destination: '/menu/takeaway-menu',
+                permanent: true,
+            },
+            {
+                source: '/Dine-In-Menu-1.pdf',
+                destination:  '/menu/dine-in-menu',
+                permanent: true,
+            },
+            {
+                source: '/dine-in-lunch-menu.pdf',
+                destination: '/menu/dine-in-menu',
+                permanent: true,
+            },
+            {
+                source: '/take-away-menu-great-spice-papamoa-east.pdf',
+                destination: '/menu/takeaway-menu',
+                                permanent: true,
+            },
 
         ];
     },
