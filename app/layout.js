@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
       <body >
         <ThemeProvider theme={theme}>
        {/* Wrap main content with Suspense */}
-\            {children}
+         {children}
 
         </ThemeProvider>
 

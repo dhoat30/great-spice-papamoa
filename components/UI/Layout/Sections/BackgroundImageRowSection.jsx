@@ -5,10 +5,10 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import Container from "@mui/material/Container";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
-import Stats from "../../Stats/Stats";
-import dynamic from "next/dynamic";
+// import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+// import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
+// import Stats from "../../Stats/Stats";
+// import dynamic from "next/dynamic";
 // const Madala = dynamic(() => import("../../Patterns/Madala"));
 
 export default function BackgroundImageRowSection({
