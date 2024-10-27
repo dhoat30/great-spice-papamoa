@@ -1,16 +1,12 @@
 import { getAllPosts, getOptions, getSinglePostData, getSinglePostDataWithID, getSingleServicePackage } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
-import TechLogos from '@/components/UI/TechLogos/TechLogos'
-import USP from '@/components/UI/USP/USP'
+
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import ServiceSelectorTabs from '@/components/UI/Tabs/ServicesSelectorTabs/ServiceSelectorTabs'
-import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
-import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
+
 import BackgroundImageHero from '@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero'
 import Testimonials from '@/components/UI/Testimonials/Testimonials'
-import Gallery from '@/components/UI/Gallery/Gallery'
 import SmallGallery from '@/components/UI/Gallery/SmallGallery'
 
 

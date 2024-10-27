@@ -104,7 +104,7 @@ export default function MobileNavbar() {
         )}
         <Divider
           key={index + 122}
-          dark={true}
+          dark={"true"}
           style={{ borderColor: "rgba(255,255,255,0.5)" }}
         />
       </li>

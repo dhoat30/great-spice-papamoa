@@ -63,7 +63,7 @@ export default async function Contact({ params }) {
         <>
             <Header />
             <main>
-                <Testimonials testimonialsData={options.testimonials} showGrid={true}/>
+                <Testimonials testimonialsData={options.testimonials} showGrid={true} />
                 <Layout sections={postData[0]?.acf?.sections} />
 
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />

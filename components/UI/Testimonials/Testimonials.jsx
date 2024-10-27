@@ -9,7 +9,6 @@ import CarouselArrows from "../CarouselArrows/CarouselArrows";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
-import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 var settings = {
   dots: false,
   arrows: false,
@@ -106,11 +105,14 @@ export default function Testimonials({ testimonialsData, showGrid=false }) {
             {testimonialsData.write_a_review_url.title}
           </Button>
         </Link>
-        <Link href={testimonialsData.view_all_url.url}>
+        {!showGrid && 
+          <Link href={testimonialsData.view_all_url.url}>
           <Button variant={`outlined`}>
             {testimonialsData.view_all_url.title}
           </Button>
         </Link>
+        }
+      
       </Container>
     </Section>
   );
