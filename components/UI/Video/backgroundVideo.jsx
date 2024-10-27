@@ -10,12 +10,15 @@ export default function BackgroundVideo({
   className,
   showCompressedImage,
 }) {
-  const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
-
+const [hideBackgroundImage, setHideBackgroundImage] =useState(false)
   // Add a callback function to trigger when the video is ready
   const handleVideoReady = () => {
-    setVideoLoaded(true);
+    setTimeout(()=> { 
+      setHideBackgroundImage(true)
+    },2000)
+
   };
+
   const imageURL = showCompressedImage
     ? placeholderImage.sizes.large
     : placeholderImage.url;
@@ -23,7 +26,7 @@ export default function BackgroundVideo({
     <ContainerStyled className={className}>
       <div className="overlay"></div>
       <div className="video-wrapper">
-        {!videoLoaded && (
+        
           <>
             <div className="video-overlay"></div>
             <Image
@@ -40,9 +43,9 @@ export default function BackgroundVideo({
               }}
             />
           </>
-        )}
+      
 
-        {videoLoaded && (
+        {hideBackgroundImage && (
           <ReactPlayer
             url={videoURL}
             width="100%"
@@ -50,6 +53,7 @@ export default function BackgroundVideo({
             playing
             loop
             muted
+            style={{position:"absolute", zIndex: 7}}
           />
         )}
       </div>
@@ -71,6 +75,7 @@ const ContainerStyled = styled.div`
     z-index: 8;
   }
   .img-wrapper {
+
     img {
       object-fit: cover;
     }

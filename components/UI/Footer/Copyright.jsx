@@ -37,7 +37,7 @@ export default function Copyright() {
 }
 const PaperStyle = styled.div`
   padding: 8px 0;
-  background: var(--dark-primary-container);
+  background: var(--dark-surface-container-low);
   .content-wrapper {
     display: flex;
     justify-content: space-between;

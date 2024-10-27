@@ -11,9 +11,12 @@ import { Work_Sans, Cormorant } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../utils/themeSettings'
 
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 
 import { GoogleTagManager } from '@next/third-parties/google'
+import Loader from '@/components/UI/Loader/Loader';
 
 // fonts settings
 
@@ -32,14 +35,30 @@ const cormorant = Cormorant({
 
 export default function RootLayout({ children }) {
 
+  const [loading, setLoading] = useState(false);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setLoading(true);
+
+    // Artificially delay the loader visibility to create a better user experience
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [pathname, searchParams]);
 
   return (
     <html lang="en" className={`${work_sans.variable} ${cormorant.variable}`}>
       <GoogleTagManager gtmId="GTM-NMB3V6C" />
       <body >
         <ThemeProvider theme={theme}>
-
-          {children}
+        {loading && <Loader />}
+        {children}
 
         </ThemeProvider>
 

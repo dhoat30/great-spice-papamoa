@@ -84,7 +84,7 @@ export default function Footer({
                 {menus.map((link, index) => {
                   return (
                     <li key={index}>
-                      <Link href={link.url} className="body2">
+                      <Link href={link.url} className="body2" target={link.target && link.target}>
                         {link.label}
                       </Link>
                     </li>
@@ -104,7 +104,7 @@ export default function Footer({
                 {usefulLinks.map((link, index) => {
                   return (
                     <li key={index}>
-                      <Link href={link.url} className="body2">
+                      <Link href={link.url} className="body2" target={link.target && link.target}>
                         {link.label}
                       </Link>
                     </li>
