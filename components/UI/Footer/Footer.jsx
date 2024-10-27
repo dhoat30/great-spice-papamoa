@@ -8,7 +8,7 @@ import React from "react";
 import Image from "next/image";
 import NewsletterForm from "../Forms/NewsletterForm";
 import { menus, usefulLinks, informationLinks } from "./FooterLinks";
-
+import Map from "../Map/Map";
 import Copyright from "./Copyright";
 import ContactInfo from "./ContactInfo";
 import FooterCta from "../CTA/FooterCta";
@@ -28,6 +28,8 @@ export default function Footer({
           cta={footerCtaData.cta_link}
         />
       )}
+    <Map/> 
+      
 
       <FooterSection>
         <ContainerStyled maxWidth="lg" className="row">

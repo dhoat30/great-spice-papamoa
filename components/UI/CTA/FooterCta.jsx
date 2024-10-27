@@ -21,6 +21,7 @@ export default function FooterCta({ title, description, cta }) {
               sx={{ fontWeight: 700 }}
               color="white"
               className="title"
+                 align="center"
             >
               {title}
             </Typography>
@@ -29,6 +30,7 @@ export default function FooterCta({ title, description, cta }) {
               variant="body1"
               color="white"
               className="description mt-16"
+              align="center"
             >
               {description}
             </Typography>
@@ -97,7 +99,8 @@ const Section = styled(Box)`
       position: relative;
       z-index: 2;
       padding: 80px 32px;
-      max-width: 700px;
+      max-width: 900px; 
+      margin: 0 auto; 
       @media (max-width: 600px) {
         padding: 32px 16px;
       }
@@ -107,6 +110,8 @@ const Section = styled(Box)`
       .button-wrapper {
         margin-top: 32px;
         flex-wrap: wrap;
+        display:flex; 
+        justify-content: center;
       }
     }
     .image-wrapper {
