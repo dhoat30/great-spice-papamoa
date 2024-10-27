@@ -35,7 +35,7 @@ export default function BackgroundImageRowSection({
         <div className={`wrapper ${contentAlignmentClass}`}>
           <div className="content-wrapper border-radius-12">
             {/* <Madala className="pattern" /> */}
-            <Image src="patterns/package-pattern.svg" alt="Pattern" fill className="pattern" /> 
+            {/* <Image src="patterns/package-pattern.svg" alt="Pattern" fill className="pattern" />  */}
 
             <div className="title-description-wrapper">
               <Typography variant="h4" component="h2" className="title mt-8">
@@ -108,22 +108,21 @@ const Section = styled.section`
         }
         .pattern {
           position: absolute;
-          top: 0;
-          z-index: -1;
-          width: 600px;
-          height: 600px;
-          left: 0;
-          top: -50%;
-          /* add rotation animation */
-          animation: rotate 100s linear infinite; /* Slower spin */
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 600px;
+  height: 600px;
+  transform-origin: center; /* Set the origin point to the center */
+  animation: rotate 100s linear infinite; /* Slower spin */
           @keyframes rotate {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
-          }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
         }
         .subtitle {
           margin: 0 0 8px 0;
