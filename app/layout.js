@@ -15,7 +15,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 
 
 import { GoogleTagManager } from '@next/third-parties/google'
-import Loader from '@/components/UI/Loader/Loader';
+// import Loader from '@/components/UI/Loader/Loader';
 
 // fonts settings
 

@@ -6,14 +6,14 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import React from "react";
 import dynamic from "next/dynamic";
-const Madala = dynamic(() => import("../Patterns/Madala"));
+// const Madala = dynamic(() => import("../Patterns/Madala"));
 
 export default function FooterCta({ title, description, cta }) {
   return (
     <Section component="section">
       <Container maxWidth="xl">
         <div className="wrapper">
-          <Madala className="pattern" />
+          {/* <Madala className="pattern" /> */}
           <div className="content-wrapper">
             <Typography
               component="h2"

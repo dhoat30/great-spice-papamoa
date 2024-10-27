@@ -9,7 +9,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 import Stats from "../../Stats/Stats";
 import dynamic from "next/dynamic";
-const Madala = dynamic(() => import("../../Patterns/Madala"));
+// const Madala = dynamic(() => import("../../Patterns/Madala"));
 
 export default function BackgroundImageRowSection({
   title,
@@ -34,7 +34,7 @@ export default function BackgroundImageRowSection({
       <Container maxWidth="xl" className="container">
         <div className={`wrapper ${contentAlignmentClass}`}>
           <div className="content-wrapper border-radius-12">
-            <Madala className="pattern" />
+            {/* <Madala className="pattern" /> */}
             <Image src="patterns/package-pattern.svg" alt="Pattern" fill className="pattern" /> 
 
             <div className="title-description-wrapper">

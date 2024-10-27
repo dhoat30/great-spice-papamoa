@@ -7,12 +7,12 @@ import Tabs from "@mui/material/Tabs";
 import Package from "../../Card/Package";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import dynamic from "next/dynamic";
-const Madala = dynamic(() => import("../../Patterns/Madala"));
+// const Madala = dynamic(() => import("../../Patterns/Madala"));
 
 export default function CateringPackageSection({ title, description, cards }) {
   return (
     <Section className="mt-8">
-      <Madala className="pattern" />
+      {/* <Madala className="pattern" /> */}
       <Container maxWidth="xl" className="container">
         <PatternHeading
           title={title}
