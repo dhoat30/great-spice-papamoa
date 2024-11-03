@@ -2,8 +2,13 @@ export const headerLinks = [
 
     {
         id: 2,
-        label: "HOME",
-        url: "/"
+        label: "RESERVATION",
+        url: "/reservation"
+    },
+    {
+        id: 2,
+        label: "ORDER ONLINE",
+        url: "https://www.ordermeal.co.nz/great-spice-papamoa-east"
     },
     {
         id: 6,

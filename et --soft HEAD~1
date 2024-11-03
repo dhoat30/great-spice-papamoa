@@ -1,0 +1,113 @@
+[33mcommit 1b7537306762edde4270679f0544e6d8caaa0b26[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Mon Oct 28 09:09:05 2024 +1300
+
+    fixed the layout issue
+
+[33mcommit 3c16f41ce24f97fe073c8bbf84d1b9b8f4f8184d[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 19:32:41 2024 +1300
+
+    added redirection
+
+[33mcommit e87bdb5d85ae6e08ff6fba716eab13dc6d47644b[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 19:22:40 2024 +1300
+
+    added map
+
+[33mcommit a7a21638f6267d5bb9eb18443433a63b284df92c[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 17:01:45 2024 +1300
+
+    remove / in layout
+
+[33mcommit de1f1c4f9e906ffc2a44b6a5b1d6cbc4357707bd[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 14:24:38 2024 +1300
+
+    removed pattern from the backgrond row component
+
+[33mcommit 894bf0c78bf856380076271844676b4922484e58[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 14:17:59 2024 +1300
+
+    remove Madala pattern because of FCP issues
+
+[33mcommit 4be162def2970addafbc93fcde3996f513bd81e1[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 14:08:59 2024 +1300
+
+    removed loader as it was conflicting
+
+[33mcommit cc131735490a22b9998df8b0499a483bc8740950[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 13:57:09 2024 +1300
+
+    fixed form submission issue
+
+[33mcommit fa765b6b51e8aba4f56201acf24f1d6be14dd739[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sun Oct 27 13:33:53 2024 +1300
+
+    added loader
+
+[33mcommit 9d1f9d6614863c128b9c3a6d475cf272ae0b91bd[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sat Oct 26 19:53:23 2024 +1300
+
+    added widget fixed height to impore cls
+
+[33mcommit 292e49e300044ce5576c8404a808b3000a99c288[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sat Oct 26 19:43:35 2024 +1300
+
+    fixed res diary widget
+
+[33mcommit 3f271c9b62de04010836eecee960cd7a742861ce[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Sat Oct 26 16:02:31 2024 +1300
+
+    added package dynamic cta
+
+[33mcommit 64f779ed013aee5945bd173cd7fdb2926d1c4bff[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Fri Oct 25 20:10:37 2024 +1300
+
+    fixed menu error
+
+[33mcommit 88aa5b2061be8b31a64a1553153a02c4df56a383[m
+Author: dhoat30 <dhoat30@gmail.com>
+Date:   Fri Oct 25 19:59:37 2024 +1300
+
+    fixed the mein icons
+
+[33mcommit dc2a6242cf157ffb90ffe007ccb3624ef4f3352d[m
+Author: Gurpreet <dhoat30@gmail.com>
+Date:   Wed Oct 23 14:51:12 2024 +1300
+
+    trying to fix LCP
+
+[33mcommit 2f98a08d57b8a663f11598b4e4a5462f4bfb2f28[m
+Author: Gurpreet <dhoat30@gmail.com>
+Date:   Tue Oct 22 16:46:29 2024 +1300
+
+    optimized hero section to fix the LCP issue
+
+[33mcommit 7681198fceb6f01deadef674cf90506d5f6a381c[m
+Author: Gurpreet <dhoat30@gmail.com>
+Date:   Tue Oct 22 16:10:05 2024 +1300
+
+    added menu pages
+
+[33mcommit 9e0d40d8b59c432a5c8acb9d11d3d02324cf4ea1[m
+Author: Gurpreet <dhoat30@gmail.com>
+Date:   Mon Oct 21 19:05:12 2024 +1300
+
+    deploying to test domain
+
+[33mcommit 860c1e4241e63dd8c3bb3ecf8d2ab68f81a9cbf4[m
+Author: Gurpreet <dhoat30@gmail.com>
+Date:   Sat Oct 19 18:05:25 2024 +1300
+
+    first commit

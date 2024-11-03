@@ -3,9 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import EmailCircleIcon from "../Icons/EmailCircleIcon";
-import PhoneCircleIcon from "../Icons/PhoneCircleIcon";
-import LocationCircleIcon from "../Icons/LocationCircleIcon";
+
 import Image from "next/image";
 export default function ContactInfo({ contactInfo, className }) {
   if (!contactInfo || !contactInfo.info || contactInfo.info.length === 0)
@@ -20,9 +18,11 @@ export default function ContactInfo({ contactInfo, className }) {
           <Image src={info.icon.url} alt={info.icon.alt} fill />
         </span>
 
-        <Typography variant="body1" component="span" className="label">
-          {info.label}
-        </Typography>
+        {/* set div to load html  */}
+        <div
+            className="label body1"
+            dangerouslySetInnerHTML={{ __html: info.label }}
+          />
       </Link>
     );
   });
@@ -47,7 +47,12 @@ const Container = styled.div`
     cursor: pointer;
     .label {
       position: relative;
-      top: 3px;
+      top: 3px; 
+      margin: 0; 
+      p{ 
+        margin: 0; 
+        
+      }
     }
     &:hover {
       svg {

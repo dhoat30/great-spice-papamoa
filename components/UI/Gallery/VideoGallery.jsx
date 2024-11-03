@@ -49,13 +49,11 @@ const Section = styled.section`
   }
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
     padding: 0 0 24px 0;
     margin: 0 16px;
     gap: 16px;
-    @media (max-width: 1366px) {
-      grid-template-columns: 1fr 1fr;
-    }
+
     @media (max-width: 800px) {
       grid-template-columns: 1fr;
     }

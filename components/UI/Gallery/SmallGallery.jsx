@@ -44,16 +44,26 @@ export default function SmallGallery({ title, description, galleryData }) {
             );
           })}
         </div>
-        <Link href="/gallery" className="cta mt-24">
+        <div className="button-wrapper mt-24">
+        <Link href="/gallery/image-gallery" className="cta">
           <Button
             variant="contained"
             color="secondary"
             endIcon={<CallMadeOutlinedIcon />}
           >
-            View More
+           VIEW IMAGE GALLERY
           </Button>
         </Link>
-
+        <Link href="/gallery/video-gallery" className="cta">
+          <Button
+            variant="outlined"
+            color="secondary"
+            endIcon={<CallMadeOutlinedIcon />}
+          >
+            VIEW VIDEO GALLERY
+          </Button>
+        </Link>
+        </div>
         {/* Lightbox Component */}
         <Lightbox
           open={open}
@@ -90,8 +100,12 @@ const Section = styled.section`
       }
     }
   }
-  .cta {
-    display: flex;
+  .button-wrapper{ 
+    display:flex; 
+    gap: 16px; 
+    flex-wrap: wrap; 
+    align-items: center;
     justify-content: center;
   }
+
 `;
