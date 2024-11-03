@@ -252,9 +252,7 @@ const AppBarContainer = styled(AppBar)`
       @media (max-width: 1366px) {
         padding: 16px 16px;
       }
-      @media (max-width: 1366px) {
-        padding: 16px 8px;
-      }
+     
       .sublink-arrow{ 
         path{ 
           fill: var(--dark-on-surface-variant); 

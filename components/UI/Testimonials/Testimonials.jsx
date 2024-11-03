@@ -142,12 +142,13 @@ const Section = styled.section`
     display: flex;
     justify-content: flex-end;
   }
-  .carousel-wrapper {
-  }
+
   .cta-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+    display:flex; 
+    gap: 16px; 
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: center;  
   }
 
   

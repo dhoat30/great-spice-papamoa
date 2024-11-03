@@ -54,10 +54,12 @@ const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-padding-top: 80px; 
-padding-bottom: 40px; 
+  padding-top: 80px; 
+  padding-bottom: 40px; 
+  
   .container {
     background: var(--dark-surface-container);
+    border: 1px solid var(--dark-outline-variant);
     padding: 24px;
     border-radius: 12px;
     .image-container {
