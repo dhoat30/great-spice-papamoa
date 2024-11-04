@@ -187,7 +187,7 @@ export default function MobileNavbar() {
             </IconButton>
           </DrawerHeader>
           <ListContainer>{menuItems}</ListContainer>
-          <Link href="/reservation" style={{ margin: "16px" }}>
+          <Link href="/reservation" style={{ margin: "16px" }} target="_blank">
             <Button
               size="large"
               variant="outlined"

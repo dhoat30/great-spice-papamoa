@@ -3,12 +3,14 @@ export const headerLinks = [
     {
         id: 2,
         label: "RESERVATION",
-        url: "/reservation"
+        url: "/reservation",
+        target:"_blank"
     },
     {
         id: 2,
         label: "ORDER ONLINE",
-        url: "https://www.ordermeal.co.nz/great-spice-papamoa-east"
+        url: "https://www.ordermeal.co.nz/great-spice-papamoa-east", 
+        target:"_blank"
     },
     {
         id: 6,

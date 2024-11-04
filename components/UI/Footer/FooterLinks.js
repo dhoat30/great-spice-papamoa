@@ -2,7 +2,7 @@ export const menus = [
     { label: "Lunch Menu", url: "/menu/lunch-menu" },
     { label: "Takeaway Menu", url: "/menu/takeaway-menu" },
     { label: "Dine In Menu", url: "/menu/dine-in-menu" },
-    { label: "Combo Deals", url: "/menu/combo-deals" },
+    { label: "Combo Deals", url: "/combo-deals" },
     { label: "Gift Cards", url: "https://vouchers.resdiary.com/GreatSpicePapamoa", target:"_blank" },
 ]
 export const usefulLinks = [
@@ -13,8 +13,7 @@ export const usefulLinks = [
     { label: "Video Gallery", url: "/gallery/video-gallery" },
     { label: "FAQs", url: "/faq" },
     { label: "Contact", url: "/contact" },
-    { label: "Make Reservation", url: "/reservation" },
-    { label: "Make Reservation", url: "/reservation" },
+    { label: "Make Reservation", url: "/reservation",  target:"_blank" },
 {label: "Testimonials", url:"/all-testimonials"}
 ]
 

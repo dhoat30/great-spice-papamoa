@@ -86,7 +86,7 @@ function DesktopNavbar() {
         }
         onClick={item.subLinks ? (event) => toggleDropdown(event, index) : null}
       >
-        <Link href={item.url} className={isActive(item.url) ? "active" : ""}>
+        <Link href={item.url} className={isActive(item.url) ? "active" : ""} target={item.target}>
           <Typography component="span" variant="body1" align="center">
             {item.label}
           </Typography>

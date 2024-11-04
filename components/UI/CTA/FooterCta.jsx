@@ -35,7 +35,7 @@ export default function FooterCta({ title, description, cta }) {
               {description}
             </Typography>
             <div className="button-wrapper">
-              <Link href={cta.url}>
+              <Link href={cta.url} target="_blank">
                 <Button
                   size="large"
                   variant="contained"
