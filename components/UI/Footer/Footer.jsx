@@ -41,7 +41,7 @@ export default function Footer({
                 component="div"
                 sx={{ marginBottom: "8px" }}
               >
-                Certifications
+                Awards
               </Typography>
               <div className="certification-logos flex flex-wrap gap-8 align-center">
                 {certifications?.cards.map((item, index) => {

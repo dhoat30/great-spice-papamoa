@@ -68,6 +68,11 @@ const nextConfig = {
                 destination: '/menu/takeaway-menu',
                                 permanent: true,
             },
+            {
+                source: '/gallery',
+                destination: '/gallery/image-gallery',
+                permanent: true,
+            }, 
 
         ];
     },
