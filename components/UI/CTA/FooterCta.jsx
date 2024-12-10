@@ -39,13 +39,7 @@ export default function FooterCta({ title, description, cta }) {
                 <Button
                   size="large"
                   variant="contained"
-                  sx={{
-                    background: "white",
-                    color: "var(--dark-on-primary)",
-                    "&:hover": {
-                      background: "#eaeaea",
-                    },
-                  }}
+                
                 >
                   {cta.title}
                 </Button>

@@ -111,8 +111,8 @@ const Div = styled.div`
     display: block;
     button {
       width: 100%;
-      background: white;
-      color: var(--dark-on-primary);
+  
+
     }
   }
 

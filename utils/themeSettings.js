@@ -95,25 +95,24 @@ export const theme = createTheme({
                 },
                 contained: {
                     color: "var(--dark-on-primary)",
-                    background: "var(--dark-primary)",
+                    background: "#faef54",
                     transition: "all 0.3s ease-in-out",
-                    border: "1px solid var(--dark-primary)",
+                    border: "1px solid #faef54",
                     '&:hover': {
-                        border: "1px solid rgba(230,230,230,1)",
+                        border: "1px solid #d7cb1f",
 
                         color: "var(--dark-on-primary)",
-                        background: "rgba(230,230,230,1)",
+                        background: "#d7cb1f",
 
                     },
                 },
                 outlined: {
-                    border: "2px solid var(--dark-primary)",
-                    color: "var(--dark-primary)",
+                    border: "2px solid #faef54",
+                    color: "#faef54",
                     transition: "all 0.3s ease-in-out",
-
                     '&:hover': {
-                        border: "2px solid var(--dark-primary)",
-                        backgroundColor: 'var(--dark-primary)',
+                        border: "2px solid #d7cb1f",
+                        backgroundColor: '#d7cb1f',
                         color: 'var(--dark-on-primary)',
                     },
                 },
@@ -205,18 +204,17 @@ export const lightTheme = createTheme({
     },
     components: {
         MuiButton: {
-
             styleOverrides: {
                 root: {
                     borderRadius: "50px",
                     color: "var(--light-on-primary)",
                     paddingRight: "32px",
                     paddingLeft: "32px",
+                        background: "rgb(0,0,0)"
                 },
                 outlined: {
                     border: "1px solid var(--light-primary)",
                     color: "var(--light-primary)",
-
                 },
             }
         }
