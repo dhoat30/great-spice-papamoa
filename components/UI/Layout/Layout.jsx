@@ -3,9 +3,7 @@ import React from "react";
 import ZigZagCardsSection from "./Sections/ZigZagCardsSection";
 import RowSection from "./Sections/RowSection";
 import ServicesSection from "./Sections/ServicesSection";
-import ProcessSection from "./Sections/ProcessSection";
-import ProjectsSection from "./Sections/ProjectsSection";
-import ServiceTabs from "./Sections/ComboDealsSection";
+
 import Packages from "./Sections/Packages";
 import FaqAccordionSection from "./Sections/FaqAccordionSection";
 import ServiceChecklist from "./Sections/ServiceChecklist";
@@ -97,16 +95,7 @@ export default function Layout({
         />
       );
     }
-    if (section.acf_fc_layout === "process") {
-      return (
-        <ProcessSection
-          key={index}
-          title={section.title}
-          description={section.description}
-          cards={section.cards}
-        />
-      );
-    }
+ 
 
     if (section.acf_fc_layout === "packages") {
       return (

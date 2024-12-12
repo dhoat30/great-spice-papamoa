@@ -229,6 +229,10 @@ const AppBarContainer = styled(AppBar)`
   }
   .link {
     a {
+      span{ 
+        color: var(--dark-on-surface) !important; 
+
+      }
       &:hover {
         color: var(--dark-primary);
         svg {
@@ -255,7 +259,7 @@ const AppBarContainer = styled(AppBar)`
      
       .sublink-arrow{ 
         path{ 
-          fill: var(--dark-on-surface-variant); 
+          fill: var(--dark-on-surface); 
         }
       }
       &:hover{ 

@@ -63,9 +63,10 @@ export default async function Contact({ params }) {
         <>
             <Header />
             <main >
-                <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-                <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-                <Layout sections={postData[0]?.acf?.sections} />
+                {/* <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
+                <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} /> */}
+       
+                <Layout sections={postData[0]?.acf?.sections}  />
                 <Testimonials testimonialsData={options?.testimonials} />
                 <FaqAccordionSection title={options?.faq?.section_title} description={options.faq?.section_description} qaData={options.faq?.items} />
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />

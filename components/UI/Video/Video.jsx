@@ -29,7 +29,7 @@ export default function Video({
               onClick={handleImageClick}
               src={imageURL} // Replace with your placeholder image path
               fill
-              sizes="100vw"
+              sizes="80vw"
               quality="20"
               alt={placeholderImage.alt}
               placeholder="blur" // Add the blur placeholder attribute
