@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-import Skeleton from "../../Skeleton/Skeleton";
 import HeroContent from "./HeroContent";
 import styles from './Hero.module.css'
 import HeroImage from "./HeroImage";
@@ -44,6 +42,7 @@ export default async function OptimizedHero({ data, heroUSP, className }) {
             <section className={`${styles.heroSection} ${className}`}>
                 <div className={`${styles.container} max-width-xl`}>
                     <HeroContent title={heroData.title} subtitle={heroData.subtitle} description={heroData.description} ctaArray={heroData.ctaArray} heroUSP={heroUSP} />
+                
                     {graphicComponent}
                 </div>
             </section>

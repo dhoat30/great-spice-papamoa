@@ -64,9 +64,7 @@ export default async function Contact() {
                 <ContactHero data={postData[0]?.acf?.hero_section} contactInfoData={contactInfo} />
                 <Layout sections={postData[0]?.acf?.sections} />
                 <Testimonials testimonialsData={options?.testimonials} />
-
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
-
             </main>
             <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} showFooterCta={false} />
         </>

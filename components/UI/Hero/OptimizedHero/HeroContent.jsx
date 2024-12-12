@@ -11,6 +11,7 @@ import Link from "next/link";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import StaticUsp from "../../USP/StaticUsp";
 export default function HeroContent({
   title,
   subtitle,
@@ -110,6 +111,7 @@ export default function HeroContent({
       >
         {description}
       </Typography>
+      <StaticUsp/> 
       <div className="button-wrapper">{ctaComponent}</div>
       {heroUSPComponent}
     </Div>
