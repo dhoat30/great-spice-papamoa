@@ -1,4 +1,5 @@
 "use client";
+import {useState, useEffect} from "react"
 //import css file 
 import './globals.css'
 import './tokens.css'
@@ -15,6 +16,8 @@ import { usePathname, useSearchParams } from 'next/navigation';
 
 
 import { GoogleTagManager } from '@next/third-parties/google'
+import { fromJSON } from 'postcss';
+import Loading from "@/components/UI/Loader/loading";
 // import Loader from '@/components/UI/Loader/Loader';
 
 // fonts settings
@@ -33,6 +36,15 @@ const cormorant = Cormorant({
 })
 
 export default function RootLayout({ children }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust timing as needed
+    return () => clearTimeout(timer);
+  }, []);
+
 
   // const [loading, setLoading] = useState(false);
   // const pathname = usePathname();
@@ -55,11 +67,17 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${work_sans.variable} ${cormorant.variable}`}>
       <GoogleTagManager gtmId="GTM-NMB3V6C" />
       <body >
+        {isLoading ?
+<Loading/>
+        :
         <ThemeProvider theme={theme}>
-       {/* Wrap main content with Suspense */}
-         {children}
-
-        </ThemeProvider>
+        {/* Wrap main content with Suspense */}
+          {children}
+ 
+         </ThemeProvider>
+        
+        }
+      
 
       </body>
     </html>
