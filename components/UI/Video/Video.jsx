@@ -30,7 +30,7 @@ export default function Video({
               src={imageURL} // Replace with your placeholder image path
               fill
               sizes="100vw"
-              quality="40"
+              quality="20"
               alt={placeholderImage.alt}
               placeholder="blur" // Add the blur placeholder attribute
               blurDataURL={placeholderImage.sizes.thumbnail}
