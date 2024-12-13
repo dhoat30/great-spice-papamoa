@@ -14,6 +14,7 @@ import { theme } from '../utils/themeSettings'
 import { usePathname, useSearchParams } from 'next/navigation';
 // import { useState, useEffect, Suspense } from 'react';
 
+import ClientProvider from '@/components/Providers/ClientProvider';
 
 import { GoogleTagManager } from '@next/third-parties/google'
 import { fromJSON } from 'postcss';
@@ -36,49 +37,17 @@ const cormorant = Cormorant({
 })
 
 export default function RootLayout({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // Adjust timing as needed
-    return () => clearTimeout(timer);
-  }, []);
 
 
-  // const [loading, setLoading] = useState(false);
-  // const pathname = usePathname();
-  // const searchParams = useSearchParams();
-
-  // useEffect(() => {
-  //   setLoading(true);
-
-  //   // Artificially delay the loader visibility to create a better user experience
-  //   const timeout = setTimeout(() => {
-  //     setLoading(false);
-  //   }, 500);
-
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, [pathname, searchParams]);
+ 
 
   return (
     <html lang="en" className={`${work_sans.variable} ${cormorant.variable}`}>
       <GoogleTagManager gtmId="GTM-NMB3V6C" />
       <body >
-        {isLoading ?
-<Loading/>
-        :
-        <ThemeProvider theme={theme}>
-        {/* Wrap main content with Suspense */}
+      <ClientProvider>
           {children}
- 
-         </ThemeProvider>
-        
-        }
-      
-
+        </ClientProvider>
       </body>
     </html>
   )
