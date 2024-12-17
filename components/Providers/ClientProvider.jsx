@@ -13,7 +13,10 @@ export default function ClientProvider({ children }) {
 
 
 
-  return <ThemeProvider theme={theme}>
-    {isLoading && <Loading />}
-    {children}</ThemeProvider>;
+  return <>
+  {isLoading && <Loading />}
+  <ThemeProvider theme={theme}>
+  
+    {children}</ThemeProvider>
+    </>;
 }

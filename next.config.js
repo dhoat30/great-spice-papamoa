@@ -69,10 +69,45 @@ const nextConfig = {
                                 permanent: true,
             },
             {
-                source: '/gallery',
-                destination: '/gallery/image-gallery',
+                source: '/index.html',
+                destination: '/',
                 permanent: true,
             }, 
+            {
+                source: '/venue-booking',
+                destination: '/venue-hire',
+                permanent: true,
+            },     {
+                source: '/blog/2019/02/',
+                destination: '/',
+                permanent: true,
+            },     {
+                source: '/blog/services/naan/',
+                destination: '/',
+                permanent: true,
+            },     {
+                source: '/blog/tag/birthdays/',
+                destination: '/',
+                permanent: true,
+            },     {
+                source: '/qr_menu/naan-menu/',
+                destination: '/',
+                permanent: true,
+            },     {
+                source: '/buffet.html',
+                destination: '/',
+                permanent: true,
+            },     {
+                source: '/blog/tag/bureta/',
+                destination: '/',
+                permanent: true,
+            },      {
+                source: '/booking',
+                destination: '/reservation',
+                permanent: true,
+            },    
+       
+
 
         ];
     },
