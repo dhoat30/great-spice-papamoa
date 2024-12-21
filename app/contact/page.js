@@ -1,10 +1,10 @@
-import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
 import ContactHero from '@/components/UI/Hero/OptimizedHero/ContactHero'
 import SmallGallery from '@/components/UI/Gallery/SmallGallery'
-import Testimonials from '@/components/UI/Testimonials/Testimonials'
+import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
 
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
@@ -50,6 +50,7 @@ export default async function Contact() {
     const postData = await getSinglePostData("contact-us", "/wp-json/wp/v2/pages")
     const options = await getOptions()
     const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+    const googleReviewsData = await getGoogleReviews()  
 
     if (!postData) {
         return {
@@ -63,7 +64,7 @@ export default async function Contact() {
             <main>
                 <ContactHero data={postData[0]?.acf?.hero_section} contactInfoData={contactInfo} />
                 <Layout sections={postData[0]?.acf?.sections} />
-                <Testimonials testimonialsData={options?.testimonials} />
+    <GoogleReviewsCarousel data={googleReviewsData}/> 
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
             </main>
             <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} showFooterCta={false} />

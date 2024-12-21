@@ -10,9 +10,9 @@ import Link from "next/link";
 import Button from "@mui/material/Button";
 
 const staticDescription =
-  "Whether you need one-off cleaning, weekly, daily or want a monthly package, we will happily help you with what fits your bill. We cater to the client’s pain areas and assure them of desired outcomes while they sit back, relax and enjoy the day.";
+  "";
 export default function BlogsArchive({
-  title = "Cleaning Tips & Insights",
+  title = " Tips & Insights",
   description = staticDescription,
   sectionUI = false,
   blogsData,

@@ -36,11 +36,11 @@ var settings = {
   ],
 };
 
-export default function Testimonials({ testimonialsData, showGrid=false }) {
+export default function Testimonials({ testimonialsData, showGrid=false, data }) {
   // slider arrow functionality
   const sliderRef = useRef(null);
 
-  console.log(testimonialsData);
+  console.log(data);
   if (!testimonialsData) return null;
 
   const next = () => {
@@ -54,16 +54,17 @@ export default function Testimonials({ testimonialsData, showGrid=false }) {
       sliderRef.current.slickPrev();
     }
   };
-  const testimonialCardsJSX = testimonialsData.testimonial.map(
+  const testimonialCardsJSX = data.map(
     (item, index) => {
-      if (index > 5) return null;
+      if (index > 8) return null;
       return (
         <TestimonialCard
         className="card"
           key={index}
-          name={item.name}
-          description={item.content}
-          customerPic={item.profile_pic}
+          name={item.reviewer.displayName}
+          description={item.comment}
+    
+          customerPic={item.reviewer.profilePhotoUrl}
         />
       );
     }

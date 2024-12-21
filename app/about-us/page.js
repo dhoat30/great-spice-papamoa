@@ -1,12 +1,10 @@
-import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
-import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import BackgroundImageHero from '@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero'
 import SmallGallery from '@/components/UI/Gallery/SmallGallery'
 import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
-import Testimonials from '@/components/UI/Testimonials/Testimonials'
+import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
 
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
@@ -48,9 +46,9 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 export default async function Contact({ params }) {
-    const slug = params.slug
     const postData = await getSinglePostData("about-us", "/wp-json/wp/v2/pages")
     const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+    const googleReviewsData = await getGoogleReviews()  
 
     const options = await getOptions()
     if (!postData) {
@@ -63,11 +61,9 @@ export default async function Contact({ params }) {
         <>
             <Header />
             <main >
-                {/* <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
-                <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} /> */}
-       
+                <div className="mt-32 hide-desktop"></div>
                 <Layout sections={postData[0]?.acf?.sections}  />
-                <Testimonials testimonialsData={options?.testimonials} />
+            <GoogleReviewsCarousel data={googleReviewsData}/> 
                 <FaqAccordionSection title={options?.faq?.section_title} description={options.faq?.section_description} qaData={options.faq?.items} />
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
 

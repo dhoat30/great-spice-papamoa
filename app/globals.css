@@ -302,3 +302,11 @@ strong {
     display: none;
   }
 }
+
+/* hide desktop  */
+
+@media(min-width: 1200px){ 
+  .hide-desktop{ 
+    display: none; 
+  }
+}

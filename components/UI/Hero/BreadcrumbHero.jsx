@@ -3,18 +3,30 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
-
+import PatternHeading from "../Headings/PatternHeading";
 export default function BreadcrumbHero({
-  title,
+  title="All Reviews",
   description,
   showBreadcrumb = true,
+  showPattern=false
 }) {
   return (
     <TitleWrapper className="title-wrapper ">
-      <Container maxWidth="md" className="Container">
+        {showPattern ? 
+      <Container maxWidth="md" >
         {showBreadcrumb && <BreadCrumb className="justify-center" />}
-
-        <div className="title mt-16">
+         <PatternHeading
+              title={title}
+              description={description}
+              centerAlign="center-align"
+            />
+      </Container>
+        : 
+      <Container maxWidth="md" className="wrapper">
+        {showBreadcrumb && <BreadCrumb className="justify-center" />}
+     
+      
+          <div className="title mt-16">
           <Typography variant="h2" component="h1">
             {title}
           </Typography>
@@ -22,7 +34,10 @@ export default function BreadcrumbHero({
             {description}
           </Typography>
         </div>
-      </Container>
+        </Container>
+          }
+
+     
     </TitleWrapper>
   );
 }
@@ -36,7 +51,7 @@ const TitleWrapper = styled.div`
   @media (max-width: 900px) {
     padding-top: 72px;
   }
-  .container {
+  .wrapper {
     flex-direction: column;
     display: flex;
     align-items: center;

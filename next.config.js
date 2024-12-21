@@ -19,7 +19,14 @@ const nextConfig = {
             hostname: cmsDomain,
             port: '',
             pathname: '/**'
-        }],
+        }, 
+        { 
+            protocol: "https", 
+            hostname: "lh3.googleusercontent.com", 
+            port: '', 
+            pathname: '/**'
+        }
+    ],
     },
     env: {
         url: `${protocol}://${cmsDomain}`,

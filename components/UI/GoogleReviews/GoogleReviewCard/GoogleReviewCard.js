@@ -3,10 +3,9 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import StarIcon from "@mui/icons-material/Star";
-import GoogleIcon from "../Icons/GoogleIcon";
+import GoogleIcon from "../../Icons/GoogleIcon";
 
-export default function TestimonialCard({ name, description, customerPic, className, comment }) {
-  console.log(comment)
+export default function GoogleReviewCard({ name, description, customerPic, className, timeAgo }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const numberOfStars = 5;
   const starsJSX = Array.from({ length: numberOfStars }, (_, index) => (
@@ -17,12 +16,11 @@ export default function TestimonialCard({ name, description, customerPic, classN
     setIsExpanded((prev) => !prev);
   };
 
-  // Limit description to 25 words if not expanded
-  const wordLimit = 40;
-  const words = description?.split(" ");
+  // Limit description to 200 characters if not expanded
+  const charLimit = 180;
   const shortDescription =
-    words.length > wordLimit
-      ? words.slice(0, wordLimit).join(" ") + "..."
+    description.length > charLimit
+      ? description.slice(0, charLimit) + "..."
       : description;
 
   return (
@@ -38,14 +36,24 @@ export default function TestimonialCard({ name, description, customerPic, classN
           <Typography variant="subtitle1" component="h3">
             {name}
           </Typography>
-          {starsJSX}
+          <div className="flex gap-8 align-center">
+            <div>
+            {starsJSX}
+
+            </div>
+            <Typography variant="body2" component="div" className="time-ago">
+              {timeAgo}
+            </Typography>
+      
+          </div>
+        
         </div>
       </div>
       <div className="description-wrapper mt-16 mb-16">
         <Typography variant="body1" component="p">
           {isExpanded ? description : shortDescription}
         </Typography>
-        {words.length > wordLimit && (
+        {description.length > charLimit && (
           <button onClick={toggleExpand} className="read-more-button">
             {isExpanded ? "Read Less" : "Read More"}
           </button>
@@ -57,7 +65,7 @@ export default function TestimonialCard({ name, description, customerPic, classN
 }
 
 const Div = styled.div`
-  background: var(--dark-surface-container-lowest);
+  background: var(--dark-surface-container);
   padding: 16px;
   border: 1px solid var(--dark-outline-variant);
   max-width: calc(100% - 16px);
@@ -81,5 +89,11 @@ const Div = styled.div`
       font-weight: 500;
       text-decoration: underline;
     }
+  }
+  .time-ago{ 
+    color: var(--dark-on-surface); 
+    line-height: 0; 
+    position: relative; 
+    top: -2px;
   }
 `;

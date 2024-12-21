@@ -1,11 +1,12 @@
-import { getOptions, getSinglePostData } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
 import SmallGallery from '@/components/UI/Gallery/SmallGallery'
 import BackgroundImageHero from '@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero'
-import Testimonials from '@/components/UI/Testimonials/Testimonials'
+import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
+
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
     const slug = params.slug
@@ -50,6 +51,7 @@ export default async function Contact() {
     const postData = await getSinglePostData("catering", "/wp-json/wp/v2/pages")
     const options = await getOptions()
     const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+    const googleReviewsData = await getGoogleReviews()  
 
     if (!postData) {
         return {
@@ -65,7 +67,7 @@ export default async function Contact() {
                 <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
 
                 <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} cateringPackagesData={options.catering_packages} />
-                <Testimonials testimonialsData={options?.testimonials} />
+    <GoogleReviewsCarousel data={googleReviewsData}/> 
                 {/* <FaqAccordionSection title={options?.faq?.section_title} description={options.faq?.section_description} qaData={options.faq?.items} /> */}
 
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />

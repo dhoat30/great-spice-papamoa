@@ -1,13 +1,13 @@
-import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews, getSingleServicePackage } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
 import ContactHero from '@/components/UI/Hero/OptimizedHero/ContactHero'
 import SmallGallery from '@/components/UI/Gallery/SmallGallery'
-import Testimonials from '@/components/UI/Testimonials/Testimonials'
 import BreadcrumbHero from '@/components/UI/Hero/BreadcrumbHero'
 import Script from 'next/script';
 import ReservationForm from '@/components/UI/Forms/ReservationForm'
+import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
 
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
@@ -53,6 +53,7 @@ export default async function Contact() {
     const postData = await getSinglePostData("reservation", "/wp-json/wp/v2/pages")
     const options = await getOptions()
     const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+    const googleReviewsData = await getGoogleReviews()  
 
     if (!postData) {
         return {
@@ -67,7 +68,7 @@ export default async function Contact() {
                 <BreadcrumbHero title={postData[0].acf.hero_section.title} description={postData[0].acf.hero_section.description} />
                 <ReservationForm />
                 <Layout sections={postData[0]?.acf?.sections} />
-                <Testimonials testimonialsData={options?.testimonials} />
+                <GoogleReviewsCarousel data={googleReviewsData}/> 
 
                 <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
 

@@ -1,17 +1,12 @@
-import { getAllPosts, getOptions, getSinglePostData, getSinglePostDataWithID, getSingleServicePackage } from '@/utils/fetchData'
+import { getGoogleReviews, getOptions, getSinglePostData, getSinglePostDataWithID, getSingleServicePackage } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
-import TechLogos from '@/components/UI/TechLogos/TechLogos'
-import USP from '@/components/UI/USP/USP'
+
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import ServiceSelectorTabs from '@/components/UI/Tabs/ServicesSelectorTabs/ServiceSelectorTabs'
-import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
-import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
 import BackgroundImageHero from '@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero'
-import Testimonials from '@/components/UI/Testimonials/Testimonials'
-import Gallery from '@/components/UI/Gallery/Gallery'
 import SmallGallery from '@/components/UI/Gallery/SmallGallery'
+import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
 
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -58,6 +53,7 @@ export default async function Page() {
 
   const postData = await getSinglePostData("menu", "/wp-json/wp/v2/pages")
   const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
+    const googleReviewsData = await getGoogleReviews()  
 
   const options = await getOptions()
   if (!postData) {
@@ -71,12 +67,11 @@ export default async function Page() {
     <>
       <Header />
       <main>
-
         <BackgroundImageHero className="hero-desktop" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
         <OptimizedHero className="hero-mobile" data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
         <div className="pt-32" style={{ background: "var(--dark-surface-container-lowest" }}></div>
         <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} cateringPackagesData={options.catering_packages} />
-        <Testimonials testimonialsData={options?.testimonials} />
+    <GoogleReviewsCarousel data={googleReviewsData}/> 
 
         <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
         {/* <Gallery galleryData={galleryData[0]} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} /> */}

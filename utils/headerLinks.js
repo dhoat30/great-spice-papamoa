@@ -1,5 +1,10 @@
 export const headerLinks = [
-
+    {
+        id: 2,
+        label: "SPECIALS",
+        url: "/combo-deals",
+        target:"_blank"
+    },
     {
         id: 2,
         label: "RESERVATION",
@@ -25,15 +30,18 @@ export const headerLinks = [
         ]
     },
     {
-        id: 2,
-        label: "CATERING",
-        url: "/catering"
+        id: 6,
+        label: "SERVICES",
+        url: "/catering",
+        subLinks: [
+            { label: "CATERING", url: "/catering" },
+            { label: "VENUE HIRE", url: "/venue-hire" },
+
+
+        ]
     },
-    {
-        id: 2,
-        label: "VENUE HIRE",
-        url: "/venue-hire"
-    },
+  
+
     {
         id: 2,
         label: "ABOUT US",
