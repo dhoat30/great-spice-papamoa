@@ -8,17 +8,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "yet-another-react-lightbox/styles.css";
 import { Work_Sans, Cormorant } from 'next/font/google'
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '../utils/themeSettings'
 
-import { usePathname, useSearchParams } from 'next/navigation';
 // import { useState, useEffect, Suspense } from 'react';
 
 import ClientProvider from '@/components/Providers/ClientProvider';
 
 import { GoogleTagManager } from '@next/third-parties/google'
-import { fromJSON } from 'postcss';
-import Loading from "@/components/UI/Loader/loading";
+import Loader from "@/components/UI/Loader/Loader";
 // import Loader from '@/components/UI/Loader/Loader';
 
 // fonts settings
@@ -46,6 +42,7 @@ export default function RootLayout({ children }) {
       <GoogleTagManager gtmId="GTM-NMB3V6C" />
       <body >
       <ClientProvider>
+     
           {children}
         </ClientProvider>
       </body>

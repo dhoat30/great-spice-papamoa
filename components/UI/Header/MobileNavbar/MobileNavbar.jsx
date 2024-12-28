@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { styled as style, useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -35,6 +35,7 @@ export default function MobileNavbar() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(-1); // To track which submenu is open
+  const [ progress, setProgress ] = useState(false);
   const pathname = usePathname();
   const router = useRouter(); // To programmatically navigate
 
@@ -45,30 +46,33 @@ export default function MobileNavbar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   const handleClick = (event, item, index, target) => {
     event.preventDefault();
 
     // Check if the link has sublinks
     if (item.subLinks && item.subLinks.length > 0) {
-      console.log(target)
+      setProgress(true)
+
       // If the same submenu is open, navigate to the link
       if (showMenu === index) {
+        handleDrawerClose(); // Close the drawer after navigation
+
         if (target === "_blank") {
           window.open(item.url, '_blank');
 
         }
         else {
           router.push(item.url);
-
         }
-        handleDrawerClose(); // Close the drawer after navigation
 
       } else {
         // Open the submenu
         setShowMenu(index);
+      
       }
     } else {
+      handleDrawerClose();
+
       // If no sublinks, just navigate and close the drawer
       if (target === "_blank") {
         console.log(target)
@@ -79,7 +83,6 @@ export default function MobileNavbar() {
         router.push(item.url);
 
       }
-      handleDrawerClose();
     }
   };
 
@@ -96,6 +99,8 @@ export default function MobileNavbar() {
             }`}
           onClick={(event) => handleClick(event, item, index, target)}
           target={item.target}
+          data-disable-nprogress={progress}
+          data-prevent-nprogress={progress}
         >
           {item.label}
           {item.subLinks && <ArrowIcon className="arrow" />}

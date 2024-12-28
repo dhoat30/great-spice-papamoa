@@ -17,28 +17,28 @@ function MenuItem({
 
   const dietaryIcons = dietaryInformation.map((item,index)=>{ 
     if(item.value==='vegetarian'){ 
-      return  <Tooltip title="Vegetarian" arrow>
+      return  <Tooltip title="Vegetarian" arrow key={index}>
       <Button>
         <VegetarianIcon className="inline-block" />
       </Button>
     </Tooltip>
     }
     if(item.value==="vegan"){ 
-      return  <Tooltip title="Vegan" arrow>
+      return  <Tooltip title="Vegan" arrow key={index}>
                   <Button>
                     <VeganIcon className="inline-block" />
                   </Button>
                 </Tooltip>
     }
     if(item.value==="glutenFree"){ 
-      return  <Tooltip title="Gluten Free" arrow>
+      return  <Tooltip title="Gluten Free" arrow key={index}>
       <Button>
         <GlutenFreeIcon className="inline-block" />
       </Button>
     </Tooltip>
     }
     if(item.value==="dairyFree"){ 
-      return  <Tooltip title="Dairy Free" arrow>
+      return  <Tooltip title="Dairy Free" arrow key={index}>
       <Button>
         <DairyFreeIcon className="inline-block" />
       </Button>
