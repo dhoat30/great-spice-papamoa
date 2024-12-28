@@ -15,11 +15,7 @@ export default async function OptimizedHero({ data, heroUSP, className }) {
     };
     let graphicComponent = null;
     if (data.show_video) {
-        if (data.video_options === "enter_youtube_id") {
-            if (data.youtube_id) {
-                graphicComponent = <Video videoID={data.youtube_id} placeholderImage={data.image} showCompressedImage={true} />
-            }
-        }
+    
         if (data.video_options === "upload_video") {
             if (data.youtube_id) {
                 graphicComponent = <Video videoID={data.youtube_id} placeholderImage={data.image} showCompressedImage={true} />

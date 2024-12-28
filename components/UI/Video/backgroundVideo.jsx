@@ -4,6 +4,8 @@ import ReactPlayer from "react-player";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import PlayIcon from "../Icons/PlayIcon";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 export default function BackgroundVideo({
   videoURL,
   placeholderImage,
@@ -11,6 +13,8 @@ export default function BackgroundVideo({
   showCompressedImage,
 }) {
 const [hideBackgroundImage, setHideBackgroundImage] =useState(false)
+const matches = useMediaQuery('(min-width:1000px)');
+if(!matches) return null
   // Add a callback function to trigger when the video is ready
   const handleVideoReady = () => {
     setTimeout(()=> { 
