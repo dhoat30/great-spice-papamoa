@@ -1,6 +1,12 @@
 export const headerLinks = [
     {
         id: 2,
+        label: "Home",
+        url: "/",
+     
+    },
+    {
+        id: 2,
         label: "SPECIALS",
         url: "/combo-deals",
      
@@ -58,12 +64,7 @@ export const headerLinks = [
             { label: "Video Gallery", url: "/gallery/video-gallery" },
         ]
     },
-    {
-        id: 6,
-        label: "FAQs",
-        url: "/faq",
-
-    },
+   
     {
         id: 6,
         label: "CONTACT",

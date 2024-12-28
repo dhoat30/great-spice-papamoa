@@ -288,11 +288,14 @@ strong {
 }
 
 /* mobile & desktop hero  */
-.hero-desktop {
-  display: none;
-}
-.hero-mobile {
-  display: block;
+
+@media(max-width: 1000px) {
+  .hero-desktop {
+    display: none;
+  }
+  .hero-mobile {
+    display: block;
+  }
 }
 @media (min-width: 1000px) {
   .hero-desktop {
