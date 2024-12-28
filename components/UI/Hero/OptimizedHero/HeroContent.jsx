@@ -26,7 +26,6 @@ export default function HeroContent({
       // Determine the icon based on the URL
       let secondIcon = <LocalMallOutlinedIcon />;
       if (cta.cta_link.url === "/contact") {
-        console.log(cta.cta_link.url);
         secondIcon = <LocalPhoneOutlinedIcon />;
       }
 

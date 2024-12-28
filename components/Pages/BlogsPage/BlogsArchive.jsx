@@ -19,7 +19,6 @@ export default function BlogsArchive({
   show = 1000,
 }) {
   if (!blogsData) {
-    console.log("no page data");
     return null;
   }
   const heroData = {

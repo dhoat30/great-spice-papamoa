@@ -14,7 +14,6 @@ export default function Video({
     ? placeholderImage.sizes.medium_large
     : placeholderImage.url;
   const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
-  console.log(placeholderImage);
   // Function to load and play the video
   const handleImageClick = () => {
     setVideoLoaded(true);

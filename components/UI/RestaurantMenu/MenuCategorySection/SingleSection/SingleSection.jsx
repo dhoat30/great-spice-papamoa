@@ -5,7 +5,6 @@ import MenuItem from "../../MenuItem/MenuItem";
 // import MenuItemImage from "@/components/UI/Menu/MenuItem/MenuItemWithImage";
 
 function SingleSection({ singleSectionData }) {
-  console.log(singleSectionData);
   // split the array to get the first item with an image
   let singleImageItem = null;
   let imageItemSet = false;

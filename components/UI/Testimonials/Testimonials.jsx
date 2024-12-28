@@ -40,7 +40,6 @@ export default function Testimonials({ testimonialsData, showGrid=false, data })
   // slider arrow functionality
   const sliderRef = useRef(null);
 
-  console.log(data);
   if (!testimonialsData) return null;
 
   const next = () => {

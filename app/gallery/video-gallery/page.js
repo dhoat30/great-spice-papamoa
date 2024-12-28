@@ -27,6 +27,9 @@ export async function generateMetadata({ params, searchParams }, parent) {
       title: seoData.title,
       description: seoData.description,
       metadataBase: new URL(process.env.siteUrl),
+      alternates: {
+        canonical: `${process.env.siteUrl}/gallery/video-gallery`, 
+      },
       openGraph: {
         title: seoData.title,
         description: seoData.description,
@@ -61,7 +64,6 @@ export default async function Contact() {
       notFound: true,
     };
   }
-  console.log(postData[0]?.acf);
   return (
     <>
       <Header />

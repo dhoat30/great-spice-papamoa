@@ -4,7 +4,6 @@ import HeroImage from "./HeroImage";
 import BackgroundVideo from "../../Video/backgroundVideo";
 export default async function BackgroundImageHero({ data, heroUSP, className }) {
     if (!data || !data.image) return null
-    console.log(data.before_after_images?.after_image)
 
     const heroData = {
         subtitle: data.subtitle,

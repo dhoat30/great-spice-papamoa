@@ -26,11 +26,15 @@ export async function generateMetadata({ params, searchParams }, parent) {
             title: seoData.title,
             description: seoData.description,
             metadataBase: new URL(process.env.siteUrl),
+            alternates: {
+                canonical: `${process.env.siteUrl}/gallery/image-gallery`, 
+              },
             openGraph: {
                 title: seoData.title,
                 description: seoData.description,
                 url: process.env.siteUrl,
                 siteName: process.env.name,
+             
                 images: [
                     {
                         url: seoData?.og_image && seoData?.og_image[0]?.url,

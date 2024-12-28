@@ -31,7 +31,8 @@ const nextConfig = {
     env: {
         url: `${protocol}://${cmsDomain}`,
         siteUrl: "https://greatspice.co.nz",
-        name: "Great Spice Papamoa",
+        name: "Great Spice Papamoa"
+    
     },
     async redirects() {
         return [

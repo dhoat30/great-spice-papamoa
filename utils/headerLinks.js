@@ -3,7 +3,7 @@ export const headerLinks = [
         id: 2,
         label: "SPECIALS",
         url: "/combo-deals",
-        target:"_blank"
+     
     },
     {
         id: 2,

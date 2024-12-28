@@ -17,7 +17,6 @@ import Typography from "@mui/material/Typography";
 const Alert = dynamic(() => import("@mui/material/Alert"));
 
 export default function CheckoutForm({ className, formName = "Checkout Form", packageName, serviceName }) {
-    console.log(packageName, serviceName)
     const router = useRouter()
 
     const [formData, setFormData] = useState({ typeOfService: [], formName: "Checkout Form" });

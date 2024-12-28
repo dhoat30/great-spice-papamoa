@@ -8,7 +8,6 @@ import Container from "@mui/material/Container";
 import Image from "next/image";
 import MenuItem from "./MenuItem/MenuItem";
 export default function RestaurantMenu({ menuData, orderOnlineLink }) {
-  console.log(menuData)
   const [value, setValue] = useState(0);
 
   if (!menuData) return null;
@@ -64,7 +63,6 @@ export default function RestaurantMenu({ menuData, orderOnlineLink }) {
 
                 <ul className="menu-items mt-24">
                   {menuSection.menu_item.map((item, itemIndex) => {
-                                        console.log(item)
                                         return  (
                                           <MenuItem
                                             key={itemIndex}

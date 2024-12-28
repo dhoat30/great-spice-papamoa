@@ -46,9 +46,7 @@ function MenuItem({
     }
   })
 
-  // console.log(dietaryInformation);
 
-  // console.log(glutenFree, vegetarian, vegan, dairyFree);
   return (
     <Container className="menu-item ">
       <div className="dish-wrapper">

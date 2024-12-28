@@ -6,7 +6,6 @@ import StarIcon from "@mui/icons-material/Star";
 import GoogleIcon from "../Icons/GoogleIcon";
 
 export default function TestimonialCard({ name, description, customerPic, className, comment }) {
-  console.log(comment)
   const [isExpanded, setIsExpanded] = useState(false);
   const numberOfStars = 5;
   const starsJSX = Array.from({ length: numberOfStars }, (_, index) => (

@@ -46,27 +46,45 @@ export default function MobileNavbar() {
     setOpen(false);
   };
 
-  const handleClick = (event, item, index) => {
+  const handleClick = (event, item, index, target) => {
     event.preventDefault();
 
     // Check if the link has sublinks
     if (item.subLinks && item.subLinks.length > 0) {
+      console.log(target)
       // If the same submenu is open, navigate to the link
       if (showMenu === index) {
-        router.push(item.url); // Navigate to the link
+        if (target === "_blank") {
+          window.open(item.url, '_blank');
+
+        }
+        else {
+          router.push(item.url);
+
+        }
         handleDrawerClose(); // Close the drawer after navigation
+
       } else {
         // Open the submenu
         setShowMenu(index);
       }
     } else {
       // If no sublinks, just navigate and close the drawer
-      router.push(item.url);
+      if (target === "_blank") {
+        console.log(target)
+        window.open(item.url, '_blank');
+
+      }
+      else {
+        router.push(item.url);
+
+      }
       handleDrawerClose();
     }
   };
 
   const menuItems = headerLinks.map((item, index) => {
+    let target = item.target
     return (
       <li
         className="flex-auto text-center relative parent-list-item"
@@ -74,10 +92,10 @@ export default function MobileNavbar() {
       >
         <Link
           href={item.url}
-          className={`parent-link body1 ${
-            pathname === item.url ? "active" : ""
-          }`}
-          onClick={(event) => handleClick(event, item, index)}
+          className={`parent-link body1 ${pathname === item.url ? "active" : ""
+            }`}
+          onClick={(event) => handleClick(event, item, index, target)}
+          target={item.target}
         >
           {item.label}
           {item.subLinks && <ArrowIcon className="arrow" />}
@@ -85,9 +103,8 @@ export default function MobileNavbar() {
 
         {item.subLinks && (
           <ul
-            className={`${
-              showMenu === index ? "block" : "hidden"
-            } bg-primary-dark text-surface-dark top-8 dropdown`}
+            className={`${showMenu === index ? "block" : "hidden"
+              } bg-primary-dark text-surface-dark top-8 dropdown`}
           >
             {item.subLinks.map((subLink, subIndex) => (
               <li key={subIndex} className="text-left child-list-item">
@@ -95,7 +112,7 @@ export default function MobileNavbar() {
                   key={subIndex + 100}
                   style={{ borderColor: "rgba(255,255,255,0.1)" }}
                 />
-                <Link href={subLink.url} className="child-link body1">
+                <Link href={subLink.url} className="child-link body1" target={subLink.target}>
                   {subLink.label}
                 </Link>
               </li>

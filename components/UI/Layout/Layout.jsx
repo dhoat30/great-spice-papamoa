@@ -19,7 +19,6 @@ export default function Layout({
   className,
 }) {
   if (!sections) return null;
-  console.log(sections);
 
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {
@@ -68,7 +67,6 @@ export default function Layout({
       );
     }
     if (section.acf_fc_layout === "stats_row") {
-      console.log(section);
       return (
         <RowStatusSection
           key={index}

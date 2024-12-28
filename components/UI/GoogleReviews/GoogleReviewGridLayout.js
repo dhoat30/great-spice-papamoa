@@ -34,11 +34,9 @@ export default function GoogleReviewGridLayout({data}) {
       typeof item.comment === "string"
       )
   });
-console.log(filteredReviewData)
   const testimonialCardsJSX = filteredReviewData.map(
     
     (item, index) => {
-      console.log(timeAgo(item.createTime))
   
       return (
         <GoogleReviewCard
