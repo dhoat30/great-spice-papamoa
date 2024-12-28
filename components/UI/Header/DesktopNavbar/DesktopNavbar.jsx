@@ -185,9 +185,9 @@ const AppBarContainer = styled(AppBar)`
   padding: 4px 0;
   transition: transform 0.3s ease-in-out;
   position: ${({ scrollposition }) => {
-    if (scrollposition < 300) {
+    if (scrollposition < 100) {
       return "absolute";
-    } else if (scrollposition < 600) {
+    } else if (scrollposition < 200) {
       return "absolute";
     } else {
       return "fixed";
@@ -199,18 +199,18 @@ const AppBarContainer = styled(AppBar)`
   width: 100%;
 
   background: ${({ scrollposition }) => {
-    if (scrollposition < 300) {
+    if (scrollposition < 100) {
       return "none";
-    } else if (scrollposition < 600) {
+    } else if (scrollposition < 200) {
       return "none";
     } else {
       return "var(--dark-surface-container-highest)";
     }
   }};
   transform: ${({ scrollposition }) => {
-    if (scrollposition < 300) {
+    if (scrollposition < 100) {
       return "translateY(0)";
-    } else if (scrollposition < 600) {
+    } else if (scrollposition < 200) {
       return "translateY(-100%)";
     } else {
       return "translateY(0)";

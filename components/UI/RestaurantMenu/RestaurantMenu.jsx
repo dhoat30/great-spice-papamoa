@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Image from "next/image";
 import MenuItem from "./MenuItem/MenuItem";
+import Paper from "@mui/material/Paper";
 export default function RestaurantMenu({ menuData, orderOnlineLink }) {
   const [value, setValue] = useState(0);
 
@@ -34,23 +35,27 @@ export default function RestaurantMenu({ menuData, orderOnlineLink }) {
         );
 
   return (
-    <Section>
-      <Container maxWidth="xl" className="container">
+    <Section id="menu-items" >
+      <Paper className="tabs-container" >
+        <Container maxWidth="xl" >
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="scrollable auto tabs"
+            textColor="secondary"
+            indicatorColor="secondary"
+            className="tabs-wrapper"
+          >
+            {uniqueCategories.map((category, index) => (
+              <Tab key={index} label={category.label} role="navigation" href="#menu-items" />
+            ))}
+          </Tabs>
+        </Container>
+      </Paper>
+      <Container maxWidth="xl" className="container " >
         {/* Tabs for filtering */}
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs"
-          textColor="secondary"
-          indicatorColor="secondary"
-          className="tabs-wrapper"
-        >
-          {uniqueCategories.map((category, index) => (
-            <Tab key={index} label={category.label} />
-          ))}
-        </Tabs>
 
         {/* Filtered Menu Section */}
         <div className="menu-section mt-40">
@@ -61,17 +66,17 @@ export default function RestaurantMenu({ menuData, orderOnlineLink }) {
                   {menuSection.menu_category.label}
                 </Typography>
 
-                <ul className="menu-items mt-24">
+                <ul className="menu-items mt-24" >
                   {menuSection.menu_item.map((item, itemIndex) => {
-                                        return  (
-                                          <MenuItem
-                                            key={itemIndex}
-                                            dishName={item.dish_name}
-                                            dishDescription={item.dish_description}
-                                            dishPrice={item.dish_price}
-                                            dietaryInformation={item.dietry_information}
-                                          />
-                                        )
+                    return (
+                      <MenuItem
+                        key={itemIndex}
+                        dishName={item.dish_name}
+                        dishDescription={item.dish_description}
+                        dishPrice={item.dish_price}
+                        dietaryInformation={item.dietry_information}
+                      />
+                    );
                   })}
                 </ul>
               </div>
@@ -105,21 +110,33 @@ export default function RestaurantMenu({ menuData, orderOnlineLink }) {
 
 const Section = styled.section`
   background: var(--dark-surface-container-lowest);
-  padding: 16px 0;
-  .tabs-wrapper {
-    .MuiTabs-flexContainer {
-    }
-    svg {
-      path {
-        fill: var(--dark-on-surface);
+  padding: 0 0 16px 0;
+  .tabs-container {
+    background: var(--dark-surface-container-highest);
+    position: sticky;
+    top: 72px;
+    z-index: 1000;
+    @media ( max-width: 1000px) {
+      top: 64px; 
+    } 
+    .tabs-wrapper {
+     
+      .MuiTabs-flexContainer {
+      }
+      svg {
+        path {
+          fill: var(--dark-on-surface);
+        }
+      }
+      button {
+        border-bottom: 1px solid var(--dark-on-surface);
       }
     }
-    button {
-      border-bottom: 1px solid var(--dark-on-surface);
-    }
   }
+
   .container {
     .menu-section {
+      margin-top: 80px; 
       .menu-category-wrapper {
         margin-bottom: 40px;
         display: grid;
