@@ -12,6 +12,8 @@ import ComboDealsSection from "./Sections/ComboDealsSection";
 import RowStatusSection from "./Sections/RowStatusSection";
 import BackgroundImageRowSection from "./Sections/BackgroundImageRowSection";
 import CateringPackageSection from "./Sections/CateringPackageSection";
+import JustImageHero from "../Hero/JustImageHero/JustImageHero";
+import PosterSection from "./Sections/PosterSection";
 export default function Layout({
   sections,
   comboDealsData,
@@ -19,7 +21,7 @@ export default function Layout({
   className,
 }) {
   if (!sections) return null;
-
+console.log(sections)
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {
       return (
@@ -160,6 +162,24 @@ export default function Layout({
           cards={cateringPackagesData.combo_info}
         />
       );
+    }
+    if (section.acf_fc_layout === "hero_section") {
+     
+      return <JustImageHero 
+      key={index}
+      desktopImage={section.desktop_image}
+      mobileImage={section.mobile_image}
+      cta={section.cta}
+      /> 
+    }
+    if (section.acf_fc_layout === "poster_section") {
+     
+      return <PosterSection
+      key={index}
+      title={section.title}
+      cards={section.cards}
+      themeStyle = {section.theme_style}
+      /> 
     }
   });
 

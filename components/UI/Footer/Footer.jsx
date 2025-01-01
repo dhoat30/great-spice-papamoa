@@ -18,6 +18,7 @@ export default function Footer({
   certifications,
   contactInfo,
   socialData,
+  showFooterMap = true
 }) {
   return (
     <>
@@ -28,7 +29,10 @@ export default function Footer({
           cta={footerCtaData.cta_link}
         />
       )}
-    <Map/> 
+      {showFooterMap && 
+        <Map/> 
+      }
+  
       
 
       <FooterSection>

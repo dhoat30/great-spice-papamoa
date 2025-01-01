@@ -112,6 +112,7 @@ function DesktopNavbar() {
               display: `${showMenu === index ? "block" : "none"} `,
               background: "var(--dark-surface-container)",
               borderRadius: "0",
+              zIndex: 1200
             }}
           >
             {item.subLinks.map((subLink, subIndex) => (
@@ -195,7 +196,7 @@ const AppBarContainer = styled(AppBar)`
   }};
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1200;
   width: 100%;
 
   background: ${({ scrollposition }) => {

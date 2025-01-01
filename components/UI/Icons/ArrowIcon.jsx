@@ -1,6 +1,6 @@
 import React from "react";
 
-function ArrowIcon({ className }) {
+function ArrowIcon({ className, color }) {
   return (
     <svg
       className={className}
@@ -12,7 +12,7 @@ function ArrowIcon({ className }) {
     >
       <path
         d="M5.64 29.64L24 11.32L42.36 29.64L48 24L24 0L0 24L5.64 29.64Z"
-        fill="white"
+        fill={color}
       />
     </svg>
   );

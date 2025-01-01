@@ -144,61 +144,63 @@ export const lightTheme = createTheme({
         ].join(','),
         h1: {
             fontSize: '5rem',
-            fontWeight: 600,
+            fontWeight: 500,
             color: "var(--light-on-surface)",
-
+            fontFamily: 'var(--font-cormorant)',
             '@media (max-width:900px)': {
                 fontSize: '3rem',
             },
         },
         h2: {
-            fontWeight: 600,
-            fontSize: '3rem',
-            lineHeight: "3.4rem",
+            fontWeight: 500,
             color: "var(--light-on-surface)",
-
+            fontFamily: 'var(--font-cormorant)',
             '@media (max-width:600px)': {
                 fontSize: '2.5rem',
-                lineHeight: "2.8rem",
-
             },
         },
         h3: {
             fontWeight: 600,
             letterSpacing: "0.05rem",
             color: "var(--light-on-surface)",
-            '@media (max-width:600px)': {
-                fontSize: '1.7rem',
-                lineHeight: "2.2rem",
+            fontFamily: 'var(--font-cormorant)',
 
-            },
         },
         h4: {
             fontWeight: 500,
             color: "var(--light-on-surface)",
+            fontFamily: 'var(--font-cormorant)',
 
+            '@media (max-width:900px)': {
+                fontSize: '1.5rem',
+            },
         },
         h5: {
             fontWeight: 400,
             letterSpacing: "0.02rem",
+            fontFamily: 'var(--font-cormorant)',
 
             color: "var(--light-on-surface)",
 
         },
 
         h6: {
+            fontWeight: 400,
+            letterSpacing: "0.02rem",
             color: "var(--light-on-surface)",
+            fontFamily: 'var(--font-cormorant)',
         },
         body1: {
-
-            color: "var( --light-on-surface-variant)"
+            color: "var( --light-on-surface-variant)",
+            fontWeight: 300,
         },
         body2: {
-
+            fontWeight: 300,
+            letterSpacing: "0.05rem",
         },
         subtitle1: {
             color: "var(--light-on-surface)",
-            fontWeight: 500,
+
         }
 
     },

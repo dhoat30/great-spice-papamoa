@@ -5,12 +5,7 @@ export const headerLinks = [
         url: "/",
      
     },
-    {
-        id: 2,
-        label: "SPECIALS",
-        url: "/combo-deals",
-     
-    },
+  
     {
         id: 2,
         label: "RESERVATION",
@@ -36,6 +31,22 @@ export const headerLinks = [
         ]
     },
     {
+        id: 2,
+        label: "COMBO SPECIALS",
+        url: "/combo-deals",
+     
+    },
+    {
+        id: 2,
+        label: "DEALS",
+        url: "#", 
+        subLinks: [
+            { label: "Dining Takeaway Specials", url: "/deals/papamoa-dining-takeaway-specials" },
+            { label: "Happy Hour Deals", url: "/deals/papamoa-happy-hour-deals" },
+        ]
+    },
+
+    {
         id: 6,
         label: "SERVICES",
         url: "/catering",
@@ -48,11 +59,7 @@ export const headerLinks = [
     },
   
 
-    {
-        id: 2,
-        label: "ABOUT US",
-        url: "/about-us"
-    },
+
 
 
     {
