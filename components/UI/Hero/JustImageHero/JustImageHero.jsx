@@ -6,6 +6,7 @@ import Link from "next/link";
 export default function JustImageHero({ desktopImage, mobileImage, cta }) {
   const matches = useMediaQuery('(min-width:500px)');
   const imagePadding = matches ? ((desktopImage?.height / desktopImage?.width) * 100) : ((mobileImage?.height / mobileImage?.width) * 100);
+  console.log('cta', cta);
   return (
     <Section
     

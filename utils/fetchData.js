@@ -2,9 +2,11 @@ const { google } = require('googleapis');
 
 // new way of doing it 
 //get single post with slug 
-export const getSinglePostData = async (slug, apiRoute) => {
+export const getSinglePostData = async (slug, apiRoute, revalidation = 60 * 60 * 24 ) => {
+
+ 
     let response = await fetch(`${process.env.url}/${apiRoute}?slug=${slug}&acf_format=standard`, {
-        next: { revalidate: 60 * 60 * 24 },
+        next: { revalidate: revalidation },
     });
     let data = await response.json();
     return data

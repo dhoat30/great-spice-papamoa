@@ -1,12 +1,8 @@
-import { getOptions, getSinglePostData, getGoogleReviews } from '@/utils/fetchData'
+import { getOptions, getSinglePostData } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import BreadcrumbHero from '@/components/UI/Hero/BreadcrumbHero'
-import RestaurantMenu from '@/components/UI/RestaurantMenu/RestaurantMenu'
-import SmallGallery from '@/components/UI/Gallery/SmallGallery'
-import Testimonials from '@/components/UI/Testimonials/Testimonials'
-import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
+
 
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -14,7 +10,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     const slug = params.slug
 
     // fetch data
-    const data = await getSinglePostData(slug, "/wp-json/wp/v2/deals")
+    const data = await getSinglePostData(slug, "/wp-json/wp/v2/deals", 2)
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -54,7 +50,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export default async function Contact({ params }) {
     const slug = params.slug
 
-    const postData = await getSinglePostData(slug, "/wp-json/wp/v2/deals")
+    const postData = await getSinglePostData(slug, "/wp-json/wp/v2/deals", 2 )
 
     const options = await getOptions()
     if (!postData) {
