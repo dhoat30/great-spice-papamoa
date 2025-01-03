@@ -69,7 +69,7 @@ export default function PosterSection({ title, cards, themeStyle }) {
     const padding = (item.image.height / item.image.width) * 100;
     return (
       <Link
-        href="/"
+        href={item.cta.url ? item.cta.url : "#"}
         key={index}
         className="card"
         style={{ gridColumn: `span ${item.how_many_columns_to_use.value}` }}

@@ -287,7 +287,8 @@ const AppBarContainer = styled(AppBar)`
   }
   .sublinks-container {
     padding: 8px 0;
-    width: 250px;
+    width: 280px;
+
     .subLink {
       display: block;
       padding: 8px 16px;
