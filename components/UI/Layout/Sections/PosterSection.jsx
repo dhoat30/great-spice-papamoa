@@ -66,12 +66,16 @@ export default function PosterSection({ title, cards, themeStyle }) {
 
   const cardsJSX = cards.map((item, index) => {
     console.log(item);
+    const shouldOpenInNewTab = item.cta?.url?.includes('reservation');
+
     const padding = (item.image.height / item.image.width) * 100;
     return (
       <Link
         href={item.cta.url ? item.cta.url : "#"}
         key={index}
         className="card"
+        target={shouldOpenInNewTab ? '_blank' : '_self'}
+
         style={{ gridColumn: `span ${item.how_many_columns_to_use.value}` }}
       >
         <div className="image-wrapper" style={{ paddingBottom: `${padding}%` }}>

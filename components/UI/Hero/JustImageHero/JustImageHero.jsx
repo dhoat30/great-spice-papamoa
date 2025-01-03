@@ -7,10 +7,12 @@ export default function JustImageHero({ desktopImage, mobileImage, cta }) {
   const matches = useMediaQuery('(min-width:500px)');
   const imagePadding = matches ? ((desktopImage?.height / desktopImage?.width) * 100) : ((mobileImage?.height / mobileImage?.width) * 100);
   console.log('cta', cta);
+  const shouldOpenInNewTab = cta?.url.includes('reservation');
+
   return (
     <Section
-    
       href={cta?.url}
+      target={shouldOpenInNewTab ? '_blank' : '_self'}
     >
       <div className="desktop-image image-wrapper"   style={{
         paddingBottom: `${(desktopImage?.height / desktopImage?.width) * 100}%`,
