@@ -24,12 +24,17 @@ ul {
   height: 100%; 
   z-index: 1000;
   background: var(--dark-surface-container-lowest); 
-  display: flex; 
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 16px; 
   
+}
+@media(max-width: 1200px){ 
+  .loading-wrapper {
+   display: flex; 
+  }
 }
 .loading-wrapper .content-wrapper{ 
   width: 100%; 

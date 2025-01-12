@@ -5,10 +5,11 @@ import WifiIcon from '../Icons/WifiIcon';
 import BYOIcon from '../Icons/BYOIcon';
 import AwardIcons from '../Icons/AwardIcons';
 import WheelchairIcon from '../Icons/WheelchairIcon';
-export default function StaticUsp(){ 
+export default function StaticUsp({centerAlign = false}){ 
+    const gridJustify = centerAlign ? 'center' : 'flex-start';
     return (
-        <Div className="usp-wrapper mt-32">
-                            <ul>
+        <Div className="usp-wrapper mt-32" >
+                            <ul style={{justifyContent: gridJustify}}>
                                 <li>
                                     <ParkingIcon />
                                     <span> Free Parking</span>
@@ -43,6 +44,7 @@ const Div = styled.div`
         display: grid;
         grid-template-columns: 250px 250px;
         gap: 24px;
+        
         @media(max-width: 600px){
             grid-template-columns: 1fr;
         } 

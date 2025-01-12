@@ -88,7 +88,7 @@ export default function HeroContent({
         component="div"
         variant="h5"
         color="var(--light-on-primary-fixed-variant)"
-        align="center"
+      
       >
         {subtitle}
       </Typography>
@@ -97,7 +97,7 @@ export default function HeroContent({
         variant="h2"
         className="title"
         color="var(--light-on-primary-fixed-variant)"
-        align="center"
+      
       >
         {title}
       </Typography>
@@ -106,11 +106,11 @@ export default function HeroContent({
         variant="body1"
         color="var(--light-on-primary-fixed-variant)"
         className="description"
-        align="center"
+      
       >
         {description}
       </Typography>
-      <StaticUsp/> 
+      <StaticUsp centerAlign={true}/> 
       <div className="button-wrapper">{ctaComponent}</div>
       {heroUSPComponent}
     </Div>
