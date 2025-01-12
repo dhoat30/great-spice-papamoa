@@ -16,9 +16,7 @@
     "@mui/icons-material": "^5.14.7",
     "@mui/lab": "^5.0.0-alpha.142",
     "@mui/material": "^5.14.7",
-    "@next/bundle-analyzer": "^14.2.15",
-    "@next/third-parties": "^14.2.5",
-    "axios": "^1.5.0",
+       "axios": "^1.5.0",
     "dotenv": "^16.4.7",
     "eslint": "8.48.0",
     "eslint-config-next": "^14.2.4",
@@ -41,7 +39,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.29"
+    "postcss": "^8.4.29",
+    "@next/bundle-analyzer": "^14.2.15"
   },
   "engines": {
     "node": "18.17.1",
