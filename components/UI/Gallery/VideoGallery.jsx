@@ -1,9 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import BeforeAfterMasonry from "../BeforeAfterSlider/BeforeAfterMasonry";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
+
 import ReactPlayer from "react-player/youtube";
 
 export default function VideoGallery({ galleryData }) {
