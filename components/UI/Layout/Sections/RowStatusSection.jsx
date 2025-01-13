@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import Container from "@mui/material/Container";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 import Stats from "../../Stats/Stats";
 
 export default function RowStatusSection({

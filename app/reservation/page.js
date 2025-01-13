@@ -63,7 +63,7 @@ export default async function Contact() {
             notFound: true,
         }
     }
-    const contactInfo = options.contact_info
+
     return (
         <>
             <Header />

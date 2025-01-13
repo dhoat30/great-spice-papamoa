@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import Container from "@mui/material/Container";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
+// import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 
 export default function RowSection({
   title,
@@ -80,15 +80,7 @@ export default function RowSection({
             )}
           </div>
 
-          {/* image wrapper */}
-          {showBeforeAfterImages ? (
-            <div className="image-container">
-              <BeforeAfter
-                showTitle={false}
-                data={{ beforeImage, afterImage }}
-              />
-            </div>
-          ) : (
+        
             <div
               className="image-wrapper"
               style={{ paddingBottom: `${imgPadding}%` }}
@@ -100,7 +92,7 @@ export default function RowSection({
                 sizes="(max-width: 1100px) 100vw, 50vw"
               />
             </div>
-          )}
+       
         </div>
       </Container>
     </Section>

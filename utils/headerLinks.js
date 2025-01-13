@@ -1,7 +1,7 @@
 export const headerLinks = [
   {
     id: 2,
-    label: "Home",
+    label: "HOME",
     url: "/",
   },
 

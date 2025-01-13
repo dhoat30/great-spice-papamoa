@@ -2,7 +2,6 @@ import React from "react";
 import styled from "@emotion/styled";
 import LongArrowIcon from "../Icons/LongArrowIcon";
 export default function CarouselArrows({ next, previous, className,color }) {
-
   return (
     <Container className={`${className} flex justify-end  pb-8`}>
       <div className="wrapper flex gap-2 flex-initial ">
@@ -32,7 +31,7 @@ const Container = styled.div`
     &:hover {
       svg {
         path {
-         
+      
         }
       }
     }

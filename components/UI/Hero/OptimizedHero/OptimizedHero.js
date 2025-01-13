@@ -2,7 +2,6 @@ import HeroContent from "./HeroContent";
 import styles from './Hero.module.css'
 import HeroImage from "./HeroImage";
 import Video from "../../Video/Video";
-import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 export default async function OptimizedHero({ data, heroUSP, className }) {
     if (!data || !data.image) return null
 
@@ -22,13 +21,7 @@ export default async function OptimizedHero({ data, heroUSP, className }) {
             }
         }
     }
-    else if (data.show_before_after_images) {
-        const beforeAfterImage = {
-            beforeImage: data.before_after_images?.before_image,
-            afterImage: data.before_after_images?.after_image
-        }
-        graphicComponent = <div className="border-radius-12 overflow-hidden"><BeforeAfter data={beforeAfterImage} /></div>
-    }
+
     else {
         graphicComponent = <HeroImage image={data.image} />
     }

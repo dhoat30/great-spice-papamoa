@@ -99,7 +99,8 @@ export default function GoogleReviewsCarousel({ data }) {
                         Explore authentic customer feedback and see why people trust us. Each review reflects the quality and dedication we bring to every service we provide.        </Typography>
                 </div>
                 <div className="arrows-wrapper">
-                    <CarouselArrows next={next} previous={previous} />
+                    <CarouselArrows next={next} previous={previous}   color="var(--dark-on-surface-variant)"
+                    />
                 </div>
             </Container>
             <div className="carousel-wrapper mt-16">
