@@ -21,6 +21,7 @@ export default function Layout({
   className,
 }) {
   if (!sections) return null;
+  console.log("sections", sections);
 console.log(sections)
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {
@@ -164,12 +165,15 @@ console.log(sections)
       );
     }
     if (section.acf_fc_layout === "hero_section") {
-     
+    
       return <JustImageHero 
       key={index}
+      heroTitleImage={section.title_image}
+      description={section.description}
       desktopImage={section.desktop_image}
       mobileImage={section.mobile_image}
-      cta={section.cta}
+      ctaArr={section.cta_repeater}
+
       /> 
     }
     if (section.acf_fc_layout === "poster_section") {

@@ -65,7 +65,6 @@ export default function PosterSection({ title, cards, themeStyle }) {
   };
 
   const cardsJSX = cards.map((item, index) => {
-    console.log(item);
     const shouldOpenInNewTab = item.cta?.url?.includes('reservation');
 
     const padding = (item.image.height / item.image.width) * 100;
