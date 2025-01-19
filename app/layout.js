@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${work_sans.variable} ${cormorant.variable}`}>
 
-      {/* <Script
+      <Script
           id="gtm-script"
           strategy="lazyOnload" // or "lazyOnload" if you prefer
           dangerouslySetInnerHTML={{
@@ -54,17 +54,17 @@ export default function RootLayout({ children }) {
               })(window,document,'script','dataLayer','${GTM_ID}');
             `
           }}
-        /> */}
+        />
       <body >
             {/* 3) GTM noscript fallback */}
-            {/* <noscript>
+            <noscript>
           <iframe 
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} 
             height="0" 
             width="0" 
             style={{ display: 'none', visibility: 'hidden' }}
           />
-        </noscript> */}
+        </noscript>
       <ClientProvider>
      
           {children}
