@@ -33,7 +33,7 @@ export const getAllPosts = async (apiRoute) => {
 
 export const getOptions = async () => {
     let fetchData = await fetch(`${process.env.url}/wp-json/options/all`, {
-        next: { revalidate: 60 * 60 * 24 },
+        next: { revalidate: 60 },
     });
     let data = await fetchData.json();
     return data
