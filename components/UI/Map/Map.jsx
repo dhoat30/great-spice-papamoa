@@ -19,7 +19,7 @@ export default function Map() {
 
 const Section  = styled.section`
 position:relative; 
-height: 80vh; 
+height: 400px; 
 animation: skeleton-loading 1s linear infinite alternate;
     color: transparent;
 
@@ -34,6 +34,6 @@ animation: skeleton-loading 1s linear infinite alternate;
 iframe{ 
     border: none; 
     width: 100%; 
-    height: 100%; 
+    height: 400px; 
 }
 `

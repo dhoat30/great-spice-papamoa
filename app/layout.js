@@ -7,7 +7,7 @@ import './tokens.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "yet-another-react-lightbox/styles.css";
-import { Work_Sans, Cormorant } from 'next/font/google'
+import { Work_Sans, Yeseva_One  } from 'next/font/google'
 import Script from 'next/script'
 
 // import { useState, useEffect, Suspense } from 'react';
@@ -25,10 +25,12 @@ const work_sans = Work_Sans({
   variable: '--font-work-sans',
   preload: true
 })
-const cormorant = Cormorant({
+const cormorant = Yeseva_One({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-cormorant',
+    weight: '400', // ✅ must specify
+
   preload: true
 })
 

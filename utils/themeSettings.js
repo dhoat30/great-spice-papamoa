@@ -23,10 +23,11 @@ export const theme = createTheme({
             'sans-serif',
         ].join(','),
         h1: {
-            fontSize: '5rem',
+            fontSize: '4rem',
             fontWeight: 500,
             color: "var(--dark-on-surface)",
             fontFamily: 'var(--font-cormorant)',
+            lineHeight: "100%",
             '@media (max-width:900px)': {
                 fontSize: '3rem',
             },
@@ -35,12 +36,13 @@ export const theme = createTheme({
             fontWeight: 500,
             color: "var(--dark-on-surface)",
             fontFamily: 'var(--font-cormorant)',
+                        lineHeight: "100%",
+
             '@media (max-width:600px)': {
                 fontSize: '2.5rem',
             },
         },
         h3: {
-            fontWeight: 600,
             letterSpacing: "0.05rem",
             color: "var(--dark-on-surface)",
             fontFamily: 'var(--font-cormorant)',
@@ -65,17 +67,17 @@ export const theme = createTheme({
         },
 
         h6: {
-            fontWeight: 400,
+            fontWeight: 500,
             letterSpacing: "0.02rem",
             color: "var(--dark-on-surface)",
-            fontFamily: 'var(--font-cormorant)',
+            fontFamily: 'var(--font-work-sans)',
         },
         body1: {
-            color: "var( --dark-on-surface-variant)",
-            fontWeight: 300,
+            color: "var( --dark-on-surface)",
+            fontWeight: 400,
         },
         body2: {
-            fontWeight: 300,
+            fontWeight: 400,
             letterSpacing: "0.05rem",
         },
         subtitle1: {
@@ -89,30 +91,32 @@ export const theme = createTheme({
 
             styleOverrides: {
                 root: {
-                    borderRadius: "0",
+                    borderRadius: "50px",
                     paddingRight: "32px",
                     paddingLeft: "32px",
                 },
                 contained: {
                     color: "var(--dark-on-primary)",
-                    background: "#faef54",
+                    background: "#FF9200",
                     transition: "all 0.3s ease-in-out",
-                    border: "1px solid #faef54",
+                    border: "1px solid #FF9200",
                     '&:hover': {
-                        border: "1px solid #d7cb1f",
+                        border: "1px solid #e68200ff",
 
                         color: "var(--dark-on-primary)",
-                        background: "#d7cb1f",
+                        background: "#e68200ff",
 
                     },
                 },
                 outlined: {
-                    border: "2px solid #faef54",
-                    color: "#faef54",
+                    border: "2px solid white",
+                                        background: "white",
+
+                    color: "#1D1D1D",
                     transition: "all 0.3s ease-in-out",
                     '&:hover': {
-                        border: "2px solid #d7cb1f",
-                        backgroundColor: '#d7cb1f',
+                        border: "2px solid #f1f1f1",
+                        backgroundColor: '#f1f1f1',
                         color: 'var(--dark-on-primary)',
                     },
                 },

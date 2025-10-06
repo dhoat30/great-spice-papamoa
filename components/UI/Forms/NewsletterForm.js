@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import LoadingBtn from '../Buttons/LoadingBtn';
 import axios from 'axios';
 import dynamic from "next/dynamic";
+import { lightTheme } from '@/utils/themeSettings';
+import { ThemeProvider } from '@mui/material/styles';
 
 const TextField = dynamic(() => import("@mui/material/TextField"), {
     ssr: false,
@@ -101,39 +103,65 @@ function NewsletterForm({ emailTo, formName, emailRoute, btnLabel, className }) 
 
 
     return (
+          <ThemeProvider theme={lightTheme}>
+        
         <Container className={className}>
             <form className="form mt-8" >
                 <TextFieldStyle
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    onBlur={() => setEmailAddressTouched(true)}
-                    value={emailAddress}
-                    required
-                    id="email-input"
-                    label="Email"
-                    variant="outlined"
-                    name="email"
-                    fullWidth
-                    color="secondary"
-                    autoComplete="email"
-                    helperText={emailAddressIsInvalid && "Please enter your email address"}
-                    error={emailAddressIsInvalid}
-                />
+  onChange={(e) => setEmailAddress(e.target.value)}
+  onBlur={() => setEmailAddressTouched(true)}
+  value={emailAddress}
+  required
+  id="email-input"
+  label="Email Address"
+  variant="outlined"
+  name="email"
+  fullWidth
+  color="secondary"
+  autoComplete="email"
+  helperText={emailAddressIsInvalid && "Please enter your email address"}
+  error={emailAddressIsInvalid}
+  InputProps={{
+    endAdornment: (
+      <LoadingBtn
+        onClick={submitHandler}
+        isLoading={isLoading}
+        isSuccess={isSuccess}
+        variant="text"
+        className="submit-btn"
+        sx={{
+          ml: 1,
+          whiteSpace: "nowrap",
+          background: "linear-gradient(90deg, #46acdb, #8641d5)",
+          color: "#fff",
+          px: 3,
+          "&:hover": { background: "linear-gradient(90deg, #8641d5, #46acdb)" },
+        }}
+      >
+        {btnLabel}
+      </LoadingBtn>
+    ),
+  }}
+/>
 
-                {error && <Alert sx={{ margin: "8px 0" }} severity='error'>Try again</Alert>}
-
-
-                <LoadingBtn align="left" onClick={submitHandler} isLoading={isLoading} isSuccess={isSuccess} >{btnLabel}</LoadingBtn>
-                {isSuccess && <Alert sx={{ margin: "8px 0" }} severity='success'>Thanks</Alert>}
+{error && <Alert sx={{ margin: "8px 0" }} severity="error">Try again</Alert>}
+{isSuccess && <Alert sx={{ margin: "8px 0" }} severity="success">Thanks</Alert>}
             </form>
 
         </Container>
+        </ThemeProvider>
     )
 }
 
 export default NewsletterForm
 const Container = styled.div`
-min-height: 114px !important; 
- 
+min-height: 56px !important; 
+ .submit-btn{ 
+    background: white !important; 
+    color: black; 
+    padding: 0 16px 0 8px; 
+    font-weight: 600;
+ }
 `
 
 const LoadingBtnStyle = styled(LoadingBtn)`
@@ -142,5 +170,14 @@ const LoadingBtnStyle = styled(LoadingBtn)`
 
 `
 const TextFieldStyle = styled(TextField)`
+label{ 
+
+}
+.MuiOutlinedInput-root{ 
 width: 100% !important; 
+background: white; 
+border-radius: 50px;
+outline: none;
+}
+ 
 `

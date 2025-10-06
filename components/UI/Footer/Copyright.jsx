@@ -5,19 +5,37 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import React from "react";
 
-export default function Copyright() {
+export default function Copyright({copyrightMarketStorey}) {
   return (
     <PaperStyle>
       <Container maxWidth="xl" className="content-wrapper">
         <div className="copyright-wrapper">
           <Typography variant="body1" component="span">
-            © {new Date().getFullYear()} {process.env.name}. All rights reserved
+            © {new Date().getFullYear()} {process.env.name}. All rights reserved. 
           </Typography>
-          <a href="https://webduel.co.nz" rel="nofollow" target="_blank">
+           {copyrightMarketStorey ? 
+        <>
+     
+
+           <Typography variant="body1" component="span">
+           &nbsp;Designed by MarketStorey
+            </Typography>
+             <a href="https://webduel.co.nz" rel="nofollow" target="_blank">
+          
             <Typography variant="body1" component="span">
+             
+             Developed by web<strong>duel</strong>
+            </Typography>
+          </a></> : 
+            <a href="https://webduel.co.nz" rel="nofollow" target="_blank">
+          
+            <Typography variant="body1" component="span">
+             
               Designed & Developed by web<strong>duel</strong>
             </Typography>
           </a>
+          }
+        
         </div>
         <div className="policy-links">
           <Link href="/privacy-policy">

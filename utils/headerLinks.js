@@ -52,6 +52,10 @@ export const headerLinks = [
     subLinks: [
       { label: "Catering", url: "/catering" },
       { label: "Venue Hire", url: "/venue-hire" },
+            { label: "Group Catering", url: "/group-catering" },
+
+                  { label: "Event & Buffet", url: "/event-buffet" },
+
     ],
   },
 

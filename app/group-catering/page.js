@@ -13,7 +13,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const slug = params.slug
 
   // fetch data
-  const data = await getSinglePostData("home", "/wp-json/wp/v2/pages")
+  const data = await getSinglePostData("group-catering", "/wp-json/wp/v2/pages")
 
 
   // optionally access and extend (rather than replace) parent metadata
@@ -54,7 +54,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 export default async function Page() {
 
-  const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages")
+  const postData = await getSinglePostData("group-catering", "/wp-json/wp/v2/pages")
   const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
   const googleReviewsData = await getGoogleReviews()  
 

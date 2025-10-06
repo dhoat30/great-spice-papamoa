@@ -20,6 +20,7 @@ export default function HeroContent({
   className,
   heroUSP,
 }) {
+  console.log(description)
   let ctaComponent = null;
   if (ctaArray.length > 0) {
     ctaComponent = ctaArray.map((cta, index) => {
@@ -91,7 +92,15 @@ export default function HeroContent({
       >
         {title}
       </Typography>
-
+      <Typography
+        component="p"
+        variant="h6"
+        className="title"
+        color="var(--light-on-primary-fixed-variant)"
+        align="center"
+      >
+        {description}
+      </Typography>
       <div className="button-wrapper">{ctaComponent}</div>
       {heroUSPComponent}
     </Div>
@@ -106,7 +115,7 @@ const Div = styled.div`
   transform: translate(-50%, -50%);
   z-index: 10;
   padding: 0 16px;
-  max-width: 1200px;
+  max-width: 900px;
 
   .subtitle {
     @media (max-width: 600px) {

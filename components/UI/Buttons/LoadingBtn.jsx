@@ -12,8 +12,10 @@ function LoadingBtn({
   children,
   newSubmission,
   id,
+  variant
 }) {
   let labelText = children ? children : "Submit";
+  console.log(variant);
   return (
     <LoadingButtonStyle
       sx={{
@@ -24,7 +26,7 @@ function LoadingBtn({
       onClick={onClick}
       align={align}
       size="large"
-      variant="contained"
+      variant={variant ? variant : "contained"}
       disableElevation
       disabled={isSuccess}
       loading={isLoading}

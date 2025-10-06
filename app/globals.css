@@ -196,7 +196,12 @@ ul {
   font-size: 1.2rem;
   margin-top: 16px;
 }
+.body1.body1-dark p { 
+  
+  color: var(--light-on-surface);
 
+ 
+}
 .body2 {
   font-weight: 400;
   color: var(--dark-on-surface-variant);
@@ -222,6 +227,21 @@ strong {
 }
 .mt-40 {
   margin-top: 40px;
+}
+.mt-48 {
+  margin-top: 48px;
+}
+.mt-56 {
+  margin-top: 56px;
+}
+.mt-64 {
+  margin-top: 64px;
+}
+.mt-72 {
+  margin-top: 72px;
+}
+.mt-80 {
+  margin-top: 80px;
 }
 .mb-8 {
   margin-bottom: 8px;
@@ -261,14 +281,27 @@ strong {
   padding-bottom: 16px;
 }
 
+.block{ 
+  display: block; 
+}
+.inline-block{ 
+  display: inline-block; 
+}
 .flex {
   display: flex;
 }
+.grid{ 
+  display: grid; 
+}
+
 .align-center {
   align-items: center;
 }
 .justify-center {
   justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
 }
 .flex-wrap {
   flex-wrap: wrap;
@@ -282,6 +315,25 @@ strong {
 .gap-16 {
   gap: 16px;
 }
+.gap-24 {
+  gap: 24px;
+}
+.gap-32 {
+  gap: 32px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.gap-48 {
+  gap: 48px;
+}
+.gap-56 {
+  gap: 56px;
+}
+.gap-64 {
+  gap: 64px;
+}
+
 /* overlay */
 .overlay {
   position: absolute;

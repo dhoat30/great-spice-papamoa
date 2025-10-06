@@ -19,7 +19,7 @@ export default function RowStatusSection({
 }) {
   const imgPadding = (image.height / image.width) * 100;
   return (
-    <Section className="mt-8">
+    <Section>
       <Container maxWidth="xl">
         <div className="wrapper">
           <div className="content-wrapper">
@@ -30,7 +30,12 @@ export default function RowStatusSection({
                 width={120}
                 height={51}
               />
-              <Typography variant="h2" component="h2" className="title mt-8">
+              <Typography
+                variant="h2"
+                component="h2"
+                className="title mt-8"
+                color={"#1D1D1D"}
+              >
                 {title}
               </Typography>
               <div
@@ -73,7 +78,7 @@ export default function RowStatusSection({
                 sizes="(max-width: 1100px) 100vw, 70vw"
               />
             </div>
-            {firstSmallImage && secondSmallImage && (
+            {/* {firstSmallImage && secondSmallImage && (
               <div className="small-image-wrapper">
                 <Image
                   src={firstSmallImage.sizes.medium}
@@ -88,7 +93,7 @@ export default function RowStatusSection({
                   height={216}
                 />
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </Container>
@@ -97,14 +102,14 @@ export default function RowStatusSection({
 }
 
 const Section = styled.section`
-  background: var(--dark-surface-container-lowest);
-  padding: 80px 0;
+  background: #EFDDB1;
+  padding: 0 0 40px 0;
   @media (max-width: 900px) {
-    padding: 40px 0;
+    padding: 0 0 8px 0;
   }
   .wrapper {
     display: grid;
-    grid-template-columns: 500px 1fr;
+    grid-template-columns: 600px 1fr;
     grid-template-rows: 1fr;
     gap: 120px;
     align-items: start;
@@ -118,8 +123,17 @@ const Section = styled.section`
       display: grid;
     }
     .content-wrapper {
+      @media(max-width: 1100px) { 
+              text-align: center;
+      } 
+    }
       .subtitle {
         margin: 0 0 8px 0;
+      }
+      .description{ 
+        p{ 
+          color: #1D1D1D;
+        }
       }
       .cta {
         margin-top: 16px;
@@ -129,15 +143,22 @@ const Section = styled.section`
         display: flex;
         flex-direction: column;
         gap: 16px;
-      }
+              @media (max-width: 1100px) {
+                        margin: 32px auto; 
+           border: 1px solid rgba(255, 255, 255, 0.20);
+        background: rgba(255, 255, 255, 0.20);
+        padding: 16px;
+        border-radius: 8px;
+        max-width: 400px;
     }
+      }
+    
 
     .image-container {
       position: relative;
-      /* @media (min-width: 1100px) {
-        position: sticky;
-        top: 100px;
-      } */
+      @media (max-width: 1100px) {
+      display: none; 
+      }
       .small-image-wrapper {
         @media (max-width: 1300px) {
           display: none;

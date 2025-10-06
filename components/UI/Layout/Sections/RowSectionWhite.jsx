@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 // import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 
-export default function RowSection({
+export default function RowSectionWhite({
   title,
   subtitle,
   description,
@@ -44,12 +44,12 @@ export default function RowSection({
               </Typography>
             )}
 
-            <Typography variant="h3" component="h2" className="title mt-8">
+            <Typography variant="h3" component="h2" className="title mt-8" color={"#1D1D1D"}>
               {title}
             </Typography>
 
             <div
-              className="description body1 mb-16 mt-16"
+              className="description body1 body1-dark mb-16 mt-16"
               dangerouslySetInnerHTML={{ __html: description }}
             />
 
@@ -102,7 +102,7 @@ export default function RowSection({
 }
 
 const Section = styled.section`
-  background: var(--dark-surface-container-lowest);
+  background: var(--light-surface-container-lowest);
   padding: 40px 0;
   @media (max-width: 900px) {
     padding: 40px 0;
@@ -132,7 +132,7 @@ const Section = styled.section`
     }
     .image-wrapper,
     .image-container {
-      border-radius: 12px;
+      border-radius: 8px;
       @media (min-width: 1100px) {
         grid-row: 1 / 2;
       }

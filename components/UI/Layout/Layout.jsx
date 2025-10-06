@@ -8,12 +8,21 @@ import Packages from "./Sections/Packages";
 import FaqAccordionSection from "./Sections/FaqAccordionSection";
 import ServiceChecklist from "./Sections/ServiceChecklist";
 import MenuSection from "./Sections/MenuSection";
+import MenuSection2 from "./Sections/MenuSection2";
+
 import ComboDealsSection from "./Sections/ComboDealsSection";
 import RowStatusSection from "./Sections/RowStatusSection";
 import BackgroundImageRowSection from "./Sections/BackgroundImageRowSection";
 import CateringPackageSection from "./Sections/CateringPackageSection";
 import JustImageHero from "../Hero/JustImageHero/JustImageHero";
 import PosterSection from "./Sections/PosterSection";
+import ImageGridSection from "./Sections/ImageGridSection";
+import BeigeSection from "./Sections/BeigeSection";
+import ProcessSection from "./Sections/ProcessSection";
+import BulkCurryOptions from "./Sections/BulkCurryOptions";
+import CenterAlignedRow from "./Sections/CenterAlignedRow";
+import CelebrationSection from "./Sections/CelebrationSection";
+import RowSectionWhite from "./Sections/RowSectionWhite";
 export default function Layout({
   sections,
   comboDealsData,
@@ -22,7 +31,6 @@ export default function Layout({
 }) {
   if (!sections) return null;
   console.log("sections", sections);
-console.log(sections)
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {
       return (
@@ -34,9 +42,74 @@ console.log(sections)
         />
       );
     }
+    if(section.acf_fc_layout === "process"){ 
+      return <ProcessSection 
+      key={index}
+      title={section.title}
+      description={section.description}
+      backgroundImage = {section.background_image}
+      cards={section.cards}
+      extraInfoGroup={section.extra_info_group}
+      /> 
+    }
+    if(section.acf_fc_layout === "bulk_curry_options"){
+     return <BulkCurryOptions
+        key={index}
+      title={section.title}
+      termsAndConditions={section.terms_and_conditions}
+      link = {section.link}
+      cards={section.cards}
+     /> 
+    } 
+    if(section.acf_fc_layout === "celebration_section"){
+      return <CelebrationSection
+        key={index}
+        title={section.title}
+        description={section.description}
+        images={section.images}
+      />
+    }
+    if(section.acf_fc_layout === "center_aligned_row"){
+      return <CenterAlignedRow 
+      key={index}
+      title={section.title}
+      link={section.link}
+      />; 
+    }
+    if(section.acf_fc_layout === "beige_section"){ 
+      return (<BeigeSection 
+      key={index}
+      title={section.title}
+      description={section.description}
+      backgroundImage={section.background_image}
+ 
+      /> )
+    } 
     if (section.acf_fc_layout === "row") {
       return (
         <RowSection
+          key={index}
+          title={section.title}
+          description={section.description}
+          imageAlignment={section.image_alignment}
+          image={section.image}
+          ctaGroup={section.cta_group}
+          bulletPoints={section.bullet_points}
+          showBeforeAfterImages={section.show_before_after_images}
+          beforeImage={
+            section.show_before_after_images &&
+            section.before_after_images.before_image
+          }
+          afterImage={
+            section.show_before_after_images &&
+            section.before_after_images.after_image
+          }
+        />
+      );
+    }
+       if (section.acf_fc_layout === "white_row") {
+      return (
+        <RowSectionWhite
           key={index}
           title={section.title}
           description={section.description}
@@ -136,6 +209,21 @@ console.log(sections)
           title={section.title}
           description={section.description}
           cards={section.items}
+          backgroundImage = {section.background_image}
+        />
+      );
+    }
+        if (section.acf_fc_layout === "menu_section_2") {
+      return (
+        <MenuSection2
+          key={index}
+          title={section.title}
+          description={section.description}
+          cards={section.items}
+          backgroundImage = {section.background_image}
+          termsAndConditions={section.terms_and_conditions}
+          link={section.link}
+          extraInfoGroup={section.extra_info_group}
         />
       );
     }
@@ -147,10 +235,21 @@ console.log(sections)
           title={comboDealsData.title}
           description={comboDealsData.description}
           cards={comboDealsData.combo_info}
+          
         />
       );
     }
+    if(section.acf_fc_layout === "image_grid_section"){
+      return <ImageGridSection 
+      key={index} 
+      title={section.title}
+      description={section.description}
+      mainImage={section.main_image} 
+        images={section.images}
+      link = {section.link}
 
+      /> 
+    } 
     if (section.acf_fc_layout === "catering_packages") {
       if (!cateringPackagesData || section.show_catering_packages === false) {
         return null;

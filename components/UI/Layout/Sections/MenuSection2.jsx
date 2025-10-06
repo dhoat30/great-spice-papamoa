@@ -5,11 +5,12 @@ import Container from "@mui/material/Container";
 import Image from "next/image";
 import { Typography } from "@mui/material";
 import PatternHeading from "../../Headings/PatternHeading";
-import MenuCard from "../../Card/MenuCard";
+import MenuCard2 from "../../Card/MenuCard2";
 import { useRef, useCallback } from "react";
 import CarouselArrows from "../../CarouselArrows/CarouselArrows";
 import Slider from "react-slick";
-
+import Link from "next/link";
+import Button from "@mui/material/Button";
 var settings = {
     dots: false,
     arrows: false,
@@ -31,7 +32,7 @@ var settings = {
             },
         },
         {
-            breakpoint: 600,
+            breakpoint: 750,
             settings: {
                 slidesToShow: 1,
                                   slidesToScroll: 1, 
@@ -42,12 +43,15 @@ var settings = {
     ],
 };
 
-export default function MenuSection({
+export default function MenuSection2({
   title,
   description,
   cards,
   className,
   backgroundImage,
+  termsAndConditions, 
+  link, 
+  extraInfoGroup
 }) {
       const sliderRef = useRef(null);
 
@@ -67,13 +71,14 @@ export default function MenuSection({
     };
   const cardsComponent = cards.map((card, index) => {
     return (
-      <MenuCard
+      <MenuCard2
         key={index}
         title={card.item_title}
         description={card.item_description}
         image={card.image}
         cta={card.link}
       />
+     
     );
   });
   return (
@@ -93,19 +98,30 @@ export default function MenuSection({
           />
         )}
         <Container className="container" maxWidth="lg">
-          <div className="grid title-grid title-description-wrapper ">
-            <Typography variant="h2" component="h2" color={"#1D1D1D"}>
+          <div className="title-description-wrapper ">
+            <Typography variant="h2" component="h2" color={"#1D1D1D"} align="center">
               {title}
             </Typography>
 
             {description && (
               <Typography
-                variant="body1"
+                variant="h4"
                 component="p"
                 className="description mt-16"
                 color={"#1D1D1D"}
               >
                 {description}
+              </Typography>
+            )}
+            {termsAndConditions && (
+              <Typography
+                variant="body2"
+                component="p"
+                className="description mt-16"
+                color={"#1D1D1D"}
+                align="center"
+              >
+                {termsAndConditions}
               </Typography>
             )}
           </div>
@@ -115,6 +131,23 @@ export default function MenuSection({
             {cardsComponent}
                </Slider>
             </div>
+
+            <div className="extra-info-wrapper mt-32">
+              <Typography variant="h5" component="h3" 
+              color={"#1D1D1D"}
+              >
+                {extraInfoGroup?.title}
+              </Typography>
+                <Typography variant="body1" component="p"  className="mt-8"             color={"#1D1D1D"}
+>
+                {extraInfoGroup?.description}
+              </Typography>
+                <Link href={link?.url} className="mt-16" style={{ display: 'inline-block' }}>
+                  <Button variant="contained" color="primary">
+                    {link?.title}
+                  </Button>
+                </Link>
+              </div> 
         </Container>
       </div>
     </Section>
@@ -135,17 +168,20 @@ height: 100%;
     position: relative;
     z-index: 2;
     .title-description-wrapper {
-        display: grid; 
-          grid-template-columns: auto 1fr;
-    align-items: center;
-        gap: 40px;
-        @media (max-width: 1000px) {
-                    grid-template-columns:  1fr;
-        gap: 0;
-        text-align: center;
-        }
+          text-align: center;
+
+      
     }
     .cards-wrapper {
+      .slick-track {
+  display: flex !important;
+  align-items: stretch;
+}
+.slick-slide > div {
+  height: 100%;
+ 
+
+}
 .slick-slide > div {
   margin: 0 12px;
   
@@ -162,5 +198,12 @@ height: 100%;
 }
 
     }
+  }
+  .extra-info-wrapper{ 
+    text-align: center; 
+    position: relative; 
+
+    max-width: 900px; 
+    margin: 40px auto 24px auto;
   }
 `;

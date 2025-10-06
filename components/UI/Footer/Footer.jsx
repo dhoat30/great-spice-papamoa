@@ -12,31 +12,45 @@ import Map from "../Map/Map";
 import Copyright from "./Copyright";
 import ContactInfo from "./ContactInfo";
 import FooterCta from "../CTA/FooterCta";
+import TripAdvisorSection from "../Layout/Sections/TripAdvisorSection";
 export default function Footer({
   footerCtaData,
   showFooterCta = true,
   certifications,
   contactInfo,
   socialData,
-  showFooterMap = true
+  showFooterMap = true,
+  lightCTA = false,
+  tripAdvisorData, 
+  copyrightMarketStorey
 }) {
+  console.log(tripAdvisorData)
   return (
     <>
+    {tripAdvisorData && 
+    <TripAdvisorSection title={tripAdvisorData.title} subtitle={tripAdvisorData.subtitle }
+      logo={tripAdvisorData.logo}
+      description={tripAdvisorData.description}
+      link={tripAdvisorData.link}
+      uspItems = {tripAdvisorData.usp_items}
+      image={tripAdvisorData.image}
+    /> 
+    }
       {showFooterCta && footerCtaData && (
         <FooterCta
           title={footerCtaData.title}
           description={footerCtaData.description}
           cta={footerCtaData.cta_link}
+          image={footerCtaData.image}
+          lightCTA={lightCTA}
         />
       )}
-      {showFooterMap && 
-        <Map/> 
-      }
+   
   
       
 
       <FooterSection>
-        <ContainerStyled maxWidth="lg" className="row">
+        <ContainerStyled maxWidth="xl" className="row">
           {/* logo wrapper */}
           <div className="footer-wrapper">
             <div className="certification-wrapper">
@@ -61,13 +75,15 @@ export default function Footer({
                 })}
               </div>
               <div className="newsletter-wrapper mt-40">
-                <Typography
-                  variant="subtitle1"
-                  component="div"
-                  sx={{ marginBottom: "8px" }}
-                >
-                  Sign up to get events and promotions information every month
+                <Typography variant="h6" component="div">
+                  Subscribe Now 
                 </Typography>
+                <Typography
+                  variant="body1"
+                  component="div"
+                  className="mt-8"
+                >
+Signup to get events & promotion info every month.                </Typography>
                 <NewsletterForm
                   className="newsletter-form"
                   formName="Newsletter Form"
@@ -76,6 +92,32 @@ export default function Footer({
                   emailTo={process.env.MAILGUN_TO_EMAIL}
                   btnLabel="Subscribe"
                 />
+              </div>
+                 <div className="social-wrapper mt-24 ">
+                <Typography variant="h6" component="div">
+                  Follow Us
+                </Typography>
+                <div className="social-links mt-8 flex gap-4">
+                  {socialData &&
+                    socialData.length > 0 &&
+                    socialData.map((social, index) => {
+                      return (
+                        <Link
+                          key={index}
+                          aria-label={social.social_media_name}
+                          href={social.link}
+                          target="_blank"
+                        >
+                          <Image
+                            src={social.social_media_icon.url}
+                            alt={social.social_media_name}
+                            width="32"
+                            height="32"
+                          />
+                        </Link>
+                      );
+                    })}
+                </div>
               </div>
             </div>
             <div className="footer-useful-links links-container">
@@ -124,38 +166,16 @@ export default function Footer({
                 <ContactInfo contactInfo={contactInfo} />
               </div>
 
-              <div className="social-wrapper">
-                <Typography variant="h6" component="div">
-                  Follow Us
-                </Typography>
-                <div className="social-links mt-8">
-                  {socialData &&
-                    socialData.length > 0 &&
-                    socialData.map((social, index) => {
-                      return (
-                        <Link
-                          key={index}
-                          aria-label={social.social_media_name}
-                          href={social.link}
-                          target="_blank"
-                        >
-                          <Image
-                            src={social.social_media_icon.url}
-                            alt={social.social_media_name}
-                            width="32"
-                            height="32"
-                          />
-                        </Link>
-                      );
-                    })}
-                </div>
-              </div>
+           
             </div>
+            <div className="map-wrapper">
+                 <Map/> 
+              </div> 
           </div>
         </ContainerStyled>
       </FooterSection>
       {/* copyright container */}
-      <Copyright />
+      <Copyright copyrightMarketStorey={copyrightMarketStorey} />
     </>
   );
 }
@@ -171,16 +191,17 @@ const ContainerStyled = styled(Container)`
     display: grid;
     gap: 40px;
     justify-content: space-between;
-    grid-template-columns: 250px 200px 200px 250px;
+    grid-template-columns: 300px auto auto auto auto;
+    align-items: start;
     @media (max-width: 1366px) {
       gap: 24px;
     }
     @media (max-width: 1250px) {
-      grid-template-columns: 250px 1fr 1fr 1fr;
+      grid-template-columns: 300px 1fr 1fr 1fr;
     }
     @media (max-width: 1000px) {
       gap: 32px;
-      grid-template-columns: 250px 1fr 1fr;
+      grid-template-columns: 300px 1fr 1fr;
     }
     @media (max-width: 800px) {
       gap: 32px;
@@ -204,13 +225,7 @@ const ContainerStyled = styled(Container)`
       }
     }
   }
-
-  .contact-wrapper {
-    /* @media (max-width: 900px) {
-      grid-column: span 2;
-    } */
-
-    .social-wrapper {
+   .social-wrapper {
       margin-top: 24px;
       .social-links {
         a {
@@ -225,5 +240,11 @@ const ContainerStyled = styled(Container)`
         }
       }
     }
+  .contact-wrapper {
+    /* @media (max-width: 900px) {
+      grid-column: span 2;
+    } */
+
+ 
   }
 `;

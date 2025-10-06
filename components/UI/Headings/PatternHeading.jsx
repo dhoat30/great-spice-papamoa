@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
-export default function PatternHeading({ title, description, centerAlign }) {
+export default function PatternHeading({ title, description, centerAlign, hidePattern = false }) {
   return (
     <Div
       className={`${
@@ -11,12 +11,15 @@ export default function PatternHeading({ title, description, centerAlign }) {
       } title-description-wrapper`}
     >
       <div className={`title-wrapper`}>
-        <Image
+        {!hidePattern &&
+         <Image
           src="/title-pattern.png"
           alt="title pattern"
           width="120"
           height="51"
         />
+        }
+       
         <Typography
           variant="h1"
           component="h2"

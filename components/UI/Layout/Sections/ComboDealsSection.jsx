@@ -38,6 +38,7 @@ export default function ComboDealsSection({ title, description, cards }) {
           title={title}
           description={description}
           centerAlign={true}
+          hidePattern={true}
         />
         <div className="tabs mt-24">
           {/* Tabs for filtering */}
@@ -47,9 +48,20 @@ export default function ComboDealsSection({ title, description, cards }) {
             variant={isTablet ? "scrollable" : "fullWidth"} // Use scrollable on mobile and fullWidth on desktop
             scrollButtons="auto"
             aria-label="scrollable auto tabs"
-            textColor="secondary"
+          
             indicatorColor="secondary"
             className="tabs-wrapper"
+             sx={{
+    '& .MuiTabs-indicator': {
+      backgroundColor: '#FF9200', // 👈 your custom hex
+    },
+    '& .MuiTab-root': {
+      color: '#c8c8c8', // 👈 normal tab text color
+    },
+    '& .Mui-selected': {
+      color: '#FF9200 !important', // 👈 selected tab text color
+    },
+  }}
           >
             {uniqueTags.map((tag, index) => (
               <Tab key={index} label={tag.label} />
@@ -65,8 +77,9 @@ export default function ComboDealsSection({ title, description, cards }) {
                 packagePrice={item.price}
                 packageItems={item.included}
                 termsAndConditions={item.terms_and_conditions}
-                isItPopular={item.is_this_combo_popular}
+                // isItPopular={item.is_this_combo_popular}
                 cta={item.cta}
+                image ={item.image}
               />
             ))}
           </div>
@@ -80,7 +93,7 @@ const Section = styled.section`
   position: relative;
 
   overflow: hidden;
-
+  background-color: var(--dark-surface-container-lowest);
   .pattern {
     position: absolute;
     z-index: -1;
@@ -141,7 +154,7 @@ const Section = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
-    align-items: start;
+    align-items: stretch;
     @media (max-width: 1000px) {
       grid-template-columns: 1fr 1fr;
       gap: 16px;

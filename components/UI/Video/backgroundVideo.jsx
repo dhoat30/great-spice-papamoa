@@ -43,7 +43,7 @@ if(!matches) return null
               priority // Ensure image loads as soon as possible
               onLoad={handleVideoReady}
               style={{
-                objectFit: "cover", // cover, contain, none
+                objectFit: "cover",
               }}
             />
           </>

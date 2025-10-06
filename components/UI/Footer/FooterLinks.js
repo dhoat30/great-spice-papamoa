@@ -14,6 +14,10 @@ export const usefulLinks = [
     { label: "FAQs", url: "/faq" },
     { label: "Contact", url: "/contact" },
     { label: "Make Reservation", url: "/reservation",  target:"_blank" },
-{label: "Testimonials", url:"/all-testimonials"}
+{label: "Testimonials", url:"/all-testimonials"}, 
+   { label: "Group Catering", url: "/group-catering" },
+
+                  { label: "Event & Buffet", url: "/event-buffet" },
+
 ]
 
