@@ -25,7 +25,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
       description: seoData?.description,
       metadataBase: new URL(process.env.siteUrl),
          alternates: {
-          canonical: `${process.env.siteUrl}`, 
+          canonical: `${process.env.siteUrl}/event-buffet`, 
         },
       openGraph: {
         title: seoData?.title,
