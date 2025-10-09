@@ -78,7 +78,7 @@ export default async function Page() {
         {/* <Gallery galleryData={galleryData[0]} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} /> */}
         {/* <USP showTitle={true} statsArray={options?.stats?.items} cards={options?.usp?.items} title={options.usp?.section_title} description={options.usp?.section_description} /> */}
       </main>
-      <Footer copyrightMarketStorey={true} tripAdvisorData={options.trip_advisor} lightCTA={false} footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
+      <Footer copyrightMarketStorey={true} tripAdvisorData={options.trip_advisor} lightCTA={false} footerCtaData={options.footer_cta_dark} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
     </>
 
   )
