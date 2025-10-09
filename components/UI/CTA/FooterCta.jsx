@@ -11,7 +11,7 @@ import Image from "next/image";
 
 export default function FooterCta({ title, description, cta, lightCTA, image }) {
   return (
-    <Section component="section" sx={{background: lightCTA ? "#EFDDB1" : "var(--dark-surface-container-low)"}}>
+    <Section component="section" sx={{background: lightCTA ? "#EFDDB1" : "#000F30"}}>
       {image && 
       <div className="image-container">
   <div className={"image-wrapper"} style={{ paddingBottom: `${image.height / image.width * 100}%` }}>
@@ -25,8 +25,8 @@ export default function FooterCta({ title, description, cta, lightCTA, image }) 
           <div className="content-wrapper">
            <Image
                          src="/logo.png"
-                         width={96}
-                         height={37}
+                         width={96*1.7}
+                         height={37*1.7}
                          alt={`Great Spice Papamoa Logo`}
                       
                        />

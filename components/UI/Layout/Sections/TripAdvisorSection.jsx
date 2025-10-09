@@ -20,7 +20,7 @@ export default function TripAdvisorSection({
       <Container maxWidth="lg" className="container">
         <div className={"content-wrapper"}>
           <div className="logo-wrapper">
-            <Image src={logo.url} alt={logo.alt} width={128} height={27} />
+            <Image src={logo.url} alt={logo.alt} width={128*2} height={27*2} />
           </div>
           <Typography variant="subtitle1" component="div" className="mt-8">
             {subtitle}
@@ -96,7 +96,9 @@ export default function TripAdvisorSection({
 const Section = styled.section`
   padding: 64px 0;
 position: relative; 
-overflow: hidden;
+   @media(max-width: 1200px){ 
+        overflow: hidden;
+    }
 .content-wrapper{ 
     position: relative; 
     z-index: 20; 
@@ -115,7 +117,10 @@ overflow: hidden;
     right: 0; 
     top: 0; 
         width: 50%;
-    z-index: 10;
+    z-index: 20;
+    .image-wrapper{ 
+      z-index: 30;
+    }
     @media(max-width: 1200px){ 
         width: 80%;
          right: -40%; 

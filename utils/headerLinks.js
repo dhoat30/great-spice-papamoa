@@ -1,24 +1,43 @@
 export const headerLinks = [
   {
     id: 2,
+        isItLogo: false,
+
     label: "HOME",
     url: "/",
   },
 
   {
     id: 2,
+        isItLogo: false,
+
     label: "RESERVATION",
     url: "/reservation",
     target: "_blank",
   },
   {
     id: 2,
+        isItLogo: false,
+
     label: "ORDER ONLINE",
     url: "https://www.ordermeal.co.nz/great-spice-papamoa-east",
     target: "_blank",
   },
   {
     id: 6,
+        isItLogo: false,
+
+    label: "MENU",
+    url: "/menu",
+    subLinks: [
+      { label: "Combo Lunch Menu", url: "/menu/lunch-menu" },
+      { label: "Takeaway Menu", url: "/menu/takeaway-menu" },
+      { label: "Dine-In Menu", url: "/menu/dine-in-menu" },
+    ],
+  },
+    {
+    id: 6,
+    isItLogo: true,
     label: "MENU",
     url: "/menu",
     subLinks: [
@@ -29,6 +48,8 @@ export const headerLinks = [
   },
   {
     id: 2,
+        isItLogo: false,
+
     label: "DEALS",
     url: "#",
     subLinks: [
@@ -47,6 +68,8 @@ export const headerLinks = [
 
   {
     id: 6,
+        isItLogo: false,
+
     label: "SERVICES",
     url: "/catering",
     subLinks: [
@@ -61,6 +84,8 @@ export const headerLinks = [
 
   {
     id: 6,
+        isItLogo: false,
+
     label: "GALLERY",
     url: "/gallery",
     subLinks: [
@@ -71,6 +96,8 @@ export const headerLinks = [
 
   {
     id: 6,
+        isItLogo: false,
+
     label: "CONTACT",
     url: "/contact",
   },

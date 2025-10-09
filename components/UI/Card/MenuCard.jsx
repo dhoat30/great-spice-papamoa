@@ -61,6 +61,7 @@ z-index: 10;
   
   }
   .content-wrapper {
+    border-radius: 8px;
     position: relative;
     top: -150px; 
     bottom: 150px; 

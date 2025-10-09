@@ -160,6 +160,16 @@ ul {
 .overflow-hidden {
   overflow: hidden;
 }
+
+/* headings  */
+.h2 h2{ 
+      line-height: 110% !important;
+    font-size: 3.75rem !important;
+    color: #1D1D1D;
+    font-weight: 700 !important;
+    font-family: var(--font-cormorant);
+
+}
 /* body 1 */
 .body1,
 .body1 p,

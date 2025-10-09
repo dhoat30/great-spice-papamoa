@@ -67,6 +67,8 @@ export default function RowStatusSection({
 
           {/* image wrapper */}
           <div className="image-container">
+
+            
             <div
               className="image-wrapper main-image"
               style={{ paddingBottom: `${imgPadding}%` }}
@@ -104,10 +106,13 @@ export default function RowStatusSection({
 const Section = styled.section`
   background: #EFDDB1;
   padding: 0 0 40px 0;
+  position: relative;
+  overflow: hidden;
   @media (max-width: 900px) {
     padding: 0 0 8px 0;
   }
   .wrapper {
+
     display: grid;
     grid-template-columns: 600px 1fr;
     grid-template-rows: 1fr;
@@ -156,9 +161,17 @@ const Section = styled.section`
 
     .image-container {
       position: relative;
+      right: -220px;
+        @media (max-width: 1700px) {
+          right: -130px;
+      }
+       @media (max-width: 1600px) {
+          right: -70px;
+      }
       @media (max-width: 1100px) {
       display: none; 
       }
+    
       .small-image-wrapper {
         @media (max-width: 1300px) {
           display: none;

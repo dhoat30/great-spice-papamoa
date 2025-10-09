@@ -72,6 +72,19 @@ function DesktopNavbar() {
 
   // render menu items
   const menuItems = headerLinks.map((item, index) => {
+    if(item.isItLogo){ 
+      return (
+        <Link href="/" key={index}>
+               <Image
+                src="/logo.png"
+                width={96}
+                height={37}
+                alt={`${process.env.name} Logo`}
+                style={{ cursor: "pointer" }}
+              />
+        </Link>
+      )
+    }
     return (
       <Box
         className="link"
@@ -146,7 +159,7 @@ function DesktopNavbar() {
         <Container maxWidth="xl">
           <Toolbar disableGutters className="grid-links-wrapper">
             {/* logo  */}
-            <Link href="/">
+            {/* <Link href="/">
               <Image
                 src="/logo.png"
                 width={96}
@@ -154,7 +167,7 @@ function DesktopNavbar() {
                 alt={`${process.env.name} Logo`}
                 style={{ cursor: "pointer" }}
               />
-            </Link>
+            </Link> */}
             {/* menu */}
             <div className="links-wrapper">
               <Box
@@ -223,10 +236,16 @@ const AppBarContainer = styled(AppBar)`
     justify-content: space-between;
   }
   .links-wrapper {
+    width: 100%; 
     display: flex;
     align-items: center;
     gap: 16px;
     justify-content: space-between;
+        >ul{ 
+          width: 100%;
+          justify-content: space-between;
+        }
+
   }
   .link {
     a {

@@ -28,15 +28,10 @@ export default function ImageGridSection({
             <Image src={mainImage.url} alt={mainImage.alt} fill />
           </div>
           <div className="content-wrapper">
-            <Typography
-              variant="h2"
-              component="h2"
-              className="title"
-              color={"#1D1D1D"}
-            >
-      
-              {title}
-            </Typography>
+          
+            <div className="title h2" dangerouslySetInnerHTML={{ __html: title }}>
+
+            </div>
             <div
             className="mobile-image-wrapper image-wrapper main-image mt-24"
             style={{

@@ -94,6 +94,7 @@ export const theme = createTheme({
                     borderRadius: "50px",
                     paddingRight: "32px",
                     paddingLeft: "32px",
+                    boxShadow: "none",
                 },
                 contained: {
                     color: "var(--dark-on-primary)",
