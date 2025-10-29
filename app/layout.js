@@ -7,7 +7,7 @@ import './tokens.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "yet-another-react-lightbox/styles.css";
-import { Work_Sans, Yeseva_One  } from 'next/font/google'
+import { Poppins, Yeseva_One  } from 'next/font/google'
 import Script from 'next/script'
 
 // import { useState, useEffect, Suspense } from 'react';
@@ -19,10 +19,12 @@ import Loader from "@/components/UI/Loader/Loader";
 
 // fonts settings
 
-const work_sans = Work_Sans({
+const work_sans = Poppins({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-work-sans',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'], // 👈 multiple weights here
+
   preload: true
 })
 const cormorant = Yeseva_One({

@@ -64,7 +64,7 @@ export default function ComboDealsSection({ title, description, cards }) {
   }}
           >
             {uniqueTags.map((tag, index) => (
-              <Tab key={index} label={tag.label} />
+              <Tab key={index} label={tag.label} className="mt-24" />
             ))}
           </Tabs>
 
@@ -150,7 +150,7 @@ const Section = styled.section`
     }
   }
   .cards {
-    margin-top: 56px;
+  margin-top: 48px; 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;

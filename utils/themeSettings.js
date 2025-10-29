@@ -2,7 +2,6 @@ import { createTheme } from '@mui/material/styles';
 //export theme settings
 // mui theme settings 
 export const theme = createTheme({
-
     palette: {
         mode: 'dark',
         primary: {
@@ -87,6 +86,24 @@ export const theme = createTheme({
 
     },
     components: {
+        MuiContainer:  { 
+             defaultProps: {
+      // So you don't have to pass maxWidth on every <Container/>
+      maxWidth: 'xl',
+    },
+    styleOverrides: {
+      // Ensure it never grows past 1440px on large screens
+      root: {
+        '@media (min-width:1440px)': {
+          maxWidth: 1440,
+        },
+      },
+      // (Optional) also override the built-in xl class
+      maxWidthXl: {
+        maxWidth: 1440,
+      },
+    },
+        }, 
         MuiButton: {
 
             styleOverrides: {
@@ -95,6 +112,7 @@ export const theme = createTheme({
                     paddingRight: "32px",
                     paddingLeft: "32px",
                     boxShadow: "none",
+                    textTransform: "none",
                 },
                 contained: {
                     color: "var(--dark-on-primary)",
@@ -102,10 +120,10 @@ export const theme = createTheme({
                     transition: "all 0.3s ease-in-out",
                     border: "1px solid #FF9200",
                     '&:hover': {
-                        border: "1px solid #e68200ff",
+                        border: "1px solid #FCF30B",
 
                         color: "var(--dark-on-primary)",
-                        background: "#e68200ff",
+                        background: "#FCF30B",
 
                     },
                 },
@@ -210,6 +228,24 @@ export const lightTheme = createTheme({
 
     },
     components: {
+           MuiContainer:  { 
+             defaultProps: {
+      // So you don't have to pass maxWidth on every <Container/>
+      maxWidth: 'xl',
+    },
+    styleOverrides: {
+      // Ensure it never grows past 1440px on large screens
+      root: {
+        '@media (min-width:1440px)': {
+          maxWidth: 1440,
+        },
+      },
+      // (Optional) also override the built-in xl class
+      maxWidthXl: {
+        maxWidth: 1440,
+      },
+    },
+        }, 
         MuiButton: {
             styleOverrides: {
                 root: {

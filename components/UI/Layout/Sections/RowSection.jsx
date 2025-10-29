@@ -49,7 +49,7 @@ export default function RowSection({
             </Typography>
 
             <div
-              className="description body1 mb-16 mt-16"
+              className="description body1 mb-16 mt-48"
               dangerouslySetInnerHTML={{ __html: description }}
             />
 

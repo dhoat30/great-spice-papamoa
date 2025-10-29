@@ -61,7 +61,7 @@ export default function Footer({
               >
                 Awards
               </Typography>
-              <div className="certification-logos flex flex-wrap gap-8 align-center">
+              <div className="certification-logos flex flex-wrap gap-8 align-center mt-24">
                 {certifications?.cards.map((item, index) => {
                   return (
                     <Image
@@ -189,7 +189,7 @@ const FooterSection = styled.section`
 const ContainerStyled = styled(Container)`
   .footer-wrapper {
     display: grid;
-    gap: 40px;
+    gap: 32px;
     justify-content: space-between;
     grid-template-columns: 300px auto auto auto auto;
     align-items: start;

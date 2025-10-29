@@ -29,7 +29,7 @@ export default function PatternHeading({ title, description, centerAlign, hidePa
           {title}
         </Typography>
       </div>
-      <div className="description-wrapper">
+      <div className="description-wrapper mt-48">
         <Typography
           variant="body1"
           component="p"

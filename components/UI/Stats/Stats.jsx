@@ -16,8 +16,9 @@ export default function Stats({ className, label, value }) {
 const Div = styled.div`
   display: flex;
   align-items: center;
-  max-width: 400px;
+  max-width: 500px;
 text-align: left;
+gap:24px; 
    @media (max-width: 500px) {
   max-width: 300px;
     }
@@ -31,7 +32,7 @@ text-align: left;
 
   }
   .label {
-    width: 200px;
+    width: 220px;
     @media (max-width: 500px) {
       width: 120px;
     }

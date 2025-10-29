@@ -30,6 +30,7 @@ export default function Layout({
   className,
 }) {
   if (!sections) return null;
+  
   console.log("sections", sections);
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {

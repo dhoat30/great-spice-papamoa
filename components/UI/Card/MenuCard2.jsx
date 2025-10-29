@@ -39,7 +39,7 @@ export default function MenuCard2({ title, description, image, cta }) {
         </Typography>
 
         <div
-          className="body1 body1-dark description"
+          className="body1 body1-dark description mt-40"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
@@ -48,47 +48,45 @@ export default function MenuCard2({ title, description, image, cta }) {
 }
 
 const Div = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 100%; /* 👈 ensures full equal height inside slider */
-  @media(min-width: 1024px){
-min-height: 600px;
-  }
-  .image-container {
-    padding: 0 24px;
-    flex-shrink: 0;
-  }
+ position: relative;
 
+.image-container{ 
+  padding: 0 24px; 
+}
   .image-wrapper {
     overflow: hidden;
     position: relative;
-    z-index: 10;
-    border-radius: 8px;
+z-index: 10;
     img {
-      object-fit: cover;
-      object-position: center top;
       transition: transform 0.5s ease-in-out;
+   
     }
   }
-
+  .content-link-wrapper{ 
+   
+  
+  }
   .content-wrapper {
- flex: 1; /* 👈 allows content to grow evenly */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: center;
-    margin-top: -120px; /* 👈 replaces top offset (relative to image height) */
-    padding: 140px 16px 24px 16px;
-    background: rgba(255, 255, 255, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
-    box-sizing: border-box;
+    position: relative;
+    top: -150px; 
+    bottom: 150px; 
+   background: rgba(255, 255, 255, 0.40);
+border: 2px solid rgba(255, 255, 255, 0.40);
+@media (max-width: 1000px) {
+  
+    padding: 164px 16px 32px 16px;
 
-    .description {
-      text-align: center;
-      margin-top: 8px;
-    }
+}
+@media (min-width: 1000px) {
+      height: 450px;
+    padding: 164px 32px 0 32px;
+
+}
+.description{ 
+  text-align: center;
+}
+
   }
+
 `;

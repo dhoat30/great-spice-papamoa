@@ -33,7 +33,7 @@ export default function FooterCta({ title, description, cta, lightCTA, image }) 
             <Typography
               component="h2"
               variant="h2"
-                        className="title mt-16"
+                        className="title mt-48"
                  align="center"
                  color={lightCTA ? "#1D1D1D" : "white"}
             >
@@ -43,12 +43,12 @@ export default function FooterCta({ title, description, cta, lightCTA, image }) 
               component="p"
               variant="body1"
                  color={lightCTA ? "#1D1D1D" : "white"}
-              className="description mt-16"
+              className="description mt-48"
               align="center"
             >
               {description}
             </Typography>
-            <div className="button-wrapper">
+            <div className="button-wrapper mt-48">
               <Link href={cta.url} target="_blank">
                 <Button
                   size="large"
@@ -131,7 +131,6 @@ z-index: 15;
       .title {
       }
       .button-wrapper {
-        margin-top: 32px;
         flex-wrap: wrap;
         display:flex; 
         justify-content: center;

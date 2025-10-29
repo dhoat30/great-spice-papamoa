@@ -39,7 +39,7 @@ export default function RowStatusSection({
                 {title}
               </Typography>
               <div
-                className="description body1 mb-16 mt-16"
+                className="description body1 mb-16 mt-48"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>
@@ -51,7 +51,7 @@ export default function RowStatusSection({
               </Link>
             )}
             {statsArray?.length > 0 && statsArray && (
-              <div className="stats-wrapper">
+              <div className="stats-wrapper mt-48">
                 {statsArray.map((stat, index) => {
                   return (
                     <Stats
@@ -117,7 +117,7 @@ const Section = styled.section`
     grid-template-columns: 600px 1fr;
     grid-template-rows: 1fr;
     gap: 120px;
-    align-items: start;
+    align-items: center;
     @media (max-width: 1300px) {
       grid-template-columns: 1fr 1fr;
       gap: 32px;
@@ -147,7 +147,7 @@ const Section = styled.section`
       .stats-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 40px;
               @media (max-width: 1100px) {
                         margin: 32px auto; 
            border: 1px solid rgba(255, 255, 255, 0.20);

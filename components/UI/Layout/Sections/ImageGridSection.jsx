@@ -44,13 +44,13 @@ export default function ImageGridSection({
             <Typography
               variant="body1"
               component="p"
-              className="description mt-16"
+              className="description mt-48"
               color={"#1D1D1D"}
             >
             
               {description}
             </Typography>
-            <div className="mt-32">  
+            <div className="mt-48">  
               <Link href={link.url} >
                 <Button variant="contained" color="primary">
                 {link.title}

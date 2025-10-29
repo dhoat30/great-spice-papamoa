@@ -132,17 +132,17 @@ export default function MenuSection2({
                </Slider>
             </div>
 
-            <div className="extra-info-wrapper mt-32">
+            <div className="extra-info-wrapper">
               <Typography variant="h5" component="h3" 
               color={"#1D1D1D"}
               >
                 {extraInfoGroup?.title}
               </Typography>
-                <Typography variant="body1" component="p"  className="mt-8"             color={"#1D1D1D"}
+                <Typography variant="body1" component="p"  className="mt-48"             color={"#1D1D1D"}
 >
                 {extraInfoGroup?.description}
               </Typography>
-                <Link href={link?.url} className="mt-16" style={{ display: 'inline-block' }}>
+                <Link href={link?.url} className="mt-48" style={{ display: 'inline-block' }}>
                   <Button variant="contained" color="primary">
                     {link?.title}
                   </Button>
@@ -204,6 +204,6 @@ height: 100%;
     position: relative; 
 
     max-width: 900px; 
-    margin: 40px auto 24px auto;
+    margin: -80px auto 24px auto;
   }
 `;

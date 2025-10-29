@@ -8,13 +8,13 @@ export default function BeigeSection({title, description, backgroundImage }) {
   return (
 <Section>
         {backgroundImage && 
-        <div className="image-wrapper" style={{ paddingBottom: `${backgroundImage.height / backgroundImage.width * 100}%` }}>
+        <div className="image-wrapper" style={{ paddingBottom: `400px` }}>
           <Image src={backgroundImage.url} alt={title} fill />
         </div>
         }
     <Container maxWidth="lg" className="container ">
       <Typography variant="h2" component={"h2"} color={"#1d1d1d"}>{title}</Typography>
-      <Typography  className="mt-24" variant="body1" component={"p"} color={"#1d1d1d"}> {description}</Typography>
+      <Typography  className="mt-48" variant="body1" component={"p"} color={"#1d1d1d"}> {description}</Typography>
     </Container>
   </Section>
   ) 

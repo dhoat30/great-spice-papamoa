@@ -56,7 +56,7 @@ export default function ProcessSection({ title, description, cards, backgroundIm
     <>
     <Section> 
 
-      <div className="image-wrapper background-image-wrapper" style={{ paddingBottom: `${backgroundImage.height / backgroundImage.width * 100}%` }}>
+      <div className="background-image-wrapper" >
           <Image src={backgroundImage.url} alt={title} fill />
         </div>
       <Container maxWidth="lg" className="container">
@@ -67,17 +67,17 @@ export default function ProcessSection({ title, description, cards, backgroundIm
           <Typography
             variant="body1"
             component="p"
-            className="description mt-16"
+            className="description mt-48"
           >
             {description}
           </Typography>
           </div>
-          <div className="carousel-wrapper mt-32">
+          <div className="carousel-wrapper mt-48">
                 <Slider {...settings}>
                     {cardsJSX}
                 </Slider>
             </div>
-          <div className="extra-info-wrapper mt-32">
+          <div className="extra-info-wrapper mt-48">
             {extraInfoGroup && 
               <div className="">
                 <Typography variant="h6" component="h4" color={"#FFFFFF"}>{extraInfoGroup.title}</Typography>
@@ -92,40 +92,17 @@ export default function ProcessSection({ title, description, cards, backgroundIm
 }
 const Section = styled.section`
 position: relative; 
-
+  padding-top: 120px; 
+  padding-bottom: 120px;
+  
 .background-image-wrapper{ 
-  @media (max-width: 1230px) { 
-    padding-bottom: 80% !important; 
-  }
-   @media (max-width: 950px) { 
-    padding-bottom:100% !important; 
-  }
-    @media (max-width: 850px) { 
-    padding-bottom:140% !important; 
-  }
-      @media (max-width: 650px) { 
-    padding-bottom:170% !important; 
-  }
-    @media (max-width: 550px) { 
-    padding-bottom:220% !important; 
-  }
-      @media (max-width: 460px) { 
-    padding-bottom:260% !important; 
-  }
-    @media (max-width: 420px) { 
-    padding-bottom:300% !important; 
-  }
-    @media (max-width: 360px) { 
-    padding-bottom:350% !important; 
-  }
+
+ 
 }
 
 
 .container{ 
-  position: absolute; 
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   .title-wrapper {
     text-align: center; 
     max-width: 900px;

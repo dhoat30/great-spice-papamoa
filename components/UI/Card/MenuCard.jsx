@@ -21,7 +21,7 @@ export default function MenuCard({ title, description, image, cta }) {
         <Typography
           variant="h5"
           component="h3"
-          className="title mt-8"
+          className="title mt-40"
           align="center"
            color={"#1D1D1D"}
         >
@@ -30,7 +30,7 @@ export default function MenuCard({ title, description, image, cta }) {
         <Typography
           variant="body1"
           component="p"
-          className="description mt-24"
+          className="description mt-40"
           align="center"
            color={"#1D1D1D"}
         >
@@ -65,9 +65,18 @@ z-index: 10;
     position: relative;
     top: -150px; 
     bottom: 150px; 
-    padding: 164px 16px 24px 16px;
    background: rgba(255, 255, 255, 0.40);
 border: 2px solid rgba(255, 255, 255, 0.40);
+@media (max-width: 1000px) {
+  
+    padding: 164px 16px 32px 16px;
+
+}
+@media (min-width: 1000px) {
+      height: 400px;
+    padding: 164px 32px 0 32px;
+
+}
 
   }
 `;
