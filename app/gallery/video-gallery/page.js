@@ -1,3 +1,5 @@
+export const revalidate = 2592000; // applies to both page and metadata
+
 import {
   getOptions,
   getSinglePostData,
@@ -28,7 +30,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
       description: seoData.description,
       metadataBase: new URL(process.env.siteUrl),
       alternates: {
-        canonical: `${process.env.siteUrl}/gallery/video-gallery`, 
+        canonical: `${process.env.siteUrl}/gallery/video-gallery`,
       },
       openGraph: {
         title: seoData.title,
@@ -56,7 +58,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export default async function Contact() {
   const postData = await getSinglePostData(
     "video-gallery",
-    "/wp-json/wp/v2/pages"
+    "/wp-json/wp/v2/pages",
   );
   const options = await getOptions();
   if (!postData) {

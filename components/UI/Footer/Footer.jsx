@@ -21,21 +21,22 @@ export default function Footer({
   socialData,
   showFooterMap = true,
   lightCTA = false,
-  tripAdvisorData, 
-  copyrightMarketStorey
+  tripAdvisorData,
+  copyrightMarketStorey,
 }) {
-  console.log(tripAdvisorData)
   return (
     <>
-    {tripAdvisorData && 
-    <TripAdvisorSection title={tripAdvisorData.title} subtitle={tripAdvisorData.subtitle }
-      logo={tripAdvisorData.logo}
-      description={tripAdvisorData.description}
-      link={tripAdvisorData.link}
-      uspItems = {tripAdvisorData.usp_items}
-      image={tripAdvisorData.image}
-    /> 
-    }
+      {tripAdvisorData && (
+        <TripAdvisorSection
+          title={tripAdvisorData.title}
+          subtitle={tripAdvisorData.subtitle}
+          logo={tripAdvisorData.logo}
+          description={tripAdvisorData.description}
+          link={tripAdvisorData.link}
+          uspItems={tripAdvisorData.usp_items}
+          image={tripAdvisorData.image}
+        />
+      )}
       {showFooterCta && footerCtaData && (
         <FooterCta
           title={footerCtaData.title}
@@ -45,9 +46,6 @@ export default function Footer({
           lightCTA={lightCTA}
         />
       )}
-   
-  
-      
 
       <FooterSection>
         <ContainerStyled maxWidth="xl" className="row">
@@ -76,14 +74,11 @@ export default function Footer({
               </div>
               <div className="newsletter-wrapper mt-40">
                 <Typography variant="h6" component="div">
-                  Subscribe Now 
+                  Subscribe Now
                 </Typography>
-                <Typography
-                  variant="body1"
-                  component="div"
-                  className="mt-8"
-                >
-Signup to get events & promotion info every month.                </Typography>
+                <Typography variant="body1" component="div" className="mt-8">
+                  Signup to get events & promotion info every month.{" "}
+                </Typography>
                 <NewsletterForm
                   className="newsletter-form"
                   formName="Newsletter Form"
@@ -93,7 +88,7 @@ Signup to get events & promotion info every month.                </Typography>
                   btnLabel="Subscribe"
                 />
               </div>
-                 <div className="social-wrapper mt-24 ">
+              <div className="social-wrapper mt-24 ">
                 <Typography variant="h6" component="div">
                   Follow Us
                 </Typography>
@@ -132,7 +127,11 @@ Signup to get events & promotion info every month.                </Typography>
                 {menus.map((link, index) => {
                   return (
                     <li key={index}>
-                      <Link href={link.url} className="body2" target={link.target && link.target}>
+                      <Link
+                        href={link.url}
+                        className="body2"
+                        target={link.target && link.target}
+                      >
                         {link.label}
                       </Link>
                     </li>
@@ -152,7 +151,11 @@ Signup to get events & promotion info every month.                </Typography>
                 {usefulLinks.map((link, index) => {
                   return (
                     <li key={index}>
-                      <Link href={link.url} className="body2" target={link.target && link.target}>
+                      <Link
+                        href={link.url}
+                        className="body2"
+                        target={link.target && link.target}
+                      >
                         {link.label}
                       </Link>
                     </li>
@@ -165,12 +168,10 @@ Signup to get events & promotion info every month.                </Typography>
               <div className="contact-section">
                 <ContactInfo contactInfo={contactInfo} />
               </div>
-
-           
             </div>
             <div className="map-wrapper">
-                 <Map/> 
-              </div> 
+              <Map />
+            </div>
           </div>
         </ContainerStyled>
       </FooterSection>
@@ -225,26 +226,24 @@ const ContainerStyled = styled(Container)`
       }
     }
   }
-   .social-wrapper {
-      margin-top: 24px;
-      .social-links {
-        a {
-          margin: 0 8px 0 0;
-          &:hover {
-            svg {
-              path {
-                fill: var(--dark-primary);
-              }
+  .social-wrapper {
+    margin-top: 24px;
+    .social-links {
+      a {
+        margin: 0 8px 0 0;
+        &:hover {
+          svg {
+            path {
+              fill: var(--dark-primary);
             }
           }
         }
       }
     }
+  }
   .contact-wrapper {
     /* @media (max-width: 900px) {
       grid-column: span 2;
     } */
-
- 
   }
 `;

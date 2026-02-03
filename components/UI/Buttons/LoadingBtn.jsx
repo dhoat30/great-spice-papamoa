@@ -12,10 +12,9 @@ function LoadingBtn({
   children,
   newSubmission,
   id,
-  variant
+  variant,
 }) {
   let labelText = children ? children : "Submit";
-  console.log(variant);
   return (
     <LoadingButtonStyle
       sx={{
@@ -43,7 +42,7 @@ function LoadingBtn({
 export default LoadingBtn;
 const LoadingButtonStyle = styled(LoadingButton)`
   margin: ${(props) => (props.align === "right" ? "16px 0 0 auto" : "16px 0")};
-text-transform: none !important;
+  text-transform: none !important;
   .MuiLoadingButton-loadingIndicator {
     top: 15px;
   }

@@ -1,31 +1,35 @@
-import { getGoogleReviews, getOptions, getSinglePostData } from '@/utils/fetchData'
-import Layout from '@/components/UI/Layout/Layout'
+export const revalidate = 2592000; // applies to both page and metadata
 
-import Header from '@/components/UI/Header/Header'
-import Footer from '@/components/UI/Footer/Footer'
+import {
+  getGoogleReviews,
+  getOptions,
+  getSinglePostData,
+} from "@/utils/fetchData";
+import Layout from "@/components/UI/Layout/Layout";
 
-import SmallGallery from '@/components/UI/Gallery/SmallGallery'
-import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
+import Header from "@/components/UI/Header/Header";
+import Footer from "@/components/UI/Footer/Footer";
 
+import SmallGallery from "@/components/UI/Gallery/SmallGallery";
+import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
-  const slug = params.slug
+  const slug = params.slug;
 
   // fetch data
-  const data = await getSinglePostData("specials", "/wp-json/wp/v2/pages")
-
+  const data = await getSinglePostData("specials", "/wp-json/wp/v2/pages");
 
   // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || []
+  const previousImages = (await parent).openGraph?.images || [];
   if (data.length > 0) {
-    const seoData = data[0].yoast_head_json
+    const seoData = data[0].yoast_head_json;
     return {
       title: seoData?.title,
       description: seoData?.description,
       metadataBase: new URL(process.env.siteUrl),
       alternates: {
-        canonical: `${process.env.siteUrl}/combo-deals`, 
+        canonical: `${process.env.siteUrl}/combo-deals`,
       },
       openGraph: {
         title: seoData?.title,
@@ -37,48 +41,60 @@ export async function generateMetadata({ params, searchParams }, parent) {
             url: seoData?.og_image && seoData?.og_image[0]?.url,
             width: 800,
             height: 600,
-          }, {
+          },
+          {
             url: seoData?.og_image && seoData?.og_image[0].url,
             width: 1800,
             height: 1600,
           },
-
         ],
-        type: 'website',
+        type: "website",
       },
-    }
+    };
   }
-
 }
 
 export default async function Page() {
+  const postData = await getSinglePostData("specials", "/wp-json/wp/v2/pages");
+  const galleryData = await getSinglePostData(
+    "gallery",
+    "/wp-json/wp/v2/pages",
+  );
+  const googleReviewsData = await getGoogleReviews();
 
-  const postData = await getSinglePostData("specials", "/wp-json/wp/v2/pages")
-  const galleryData = await getSinglePostData("gallery", "/wp-json/wp/v2/pages")
-  const googleReviewsData = await getGoogleReviews()  
-
-  const options = await getOptions()
+  const options = await getOptions();
   if (!postData) {
     return {
       notFound: true,
-    }
+    };
   }
-
 
   return (
     <>
       <Header />
       <main>
-        <div className='pt-32'></div>
-        <Layout sections={postData[0]?.acf?.sections} comboDealsData={options.combo_specials} cateringPackagesData={options.catering_packages} />
-    <GoogleReviewsCarousel data={googleReviewsData}/> 
+        <div className="pt-32"></div>
+        <Layout
+          sections={postData[0]?.acf?.sections}
+          comboDealsData={options.combo_specials}
+          cateringPackagesData={options.catering_packages}
+        />
+        <GoogleReviewsCarousel data={googleReviewsData} />
 
-        <SmallGallery galleryData={galleryData[0].acf.gallery} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} />
+        <SmallGallery
+          galleryData={galleryData[0].acf.gallery}
+          title={galleryData[0].acf.hero_section.title}
+          description={galleryData[0].acf.hero_section.description}
+        />
         {/* <Gallery galleryData={galleryData[0]} title={galleryData[0].acf.hero_section.title} description={galleryData[0].acf.hero_section.description} /> */}
         {/* <USP showTitle={true} statsArray={options?.stats?.items} cards={options?.usp?.items} title={options.usp?.section_title} description={options.usp?.section_description} /> */}
       </main>
-      <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
+      <Footer
+        footerCtaData={options.footer_cta}
+        certifications={options.certifications}
+        contactInfo={options.contact_info}
+        socialData={options.social_links}
+      />
     </>
-
-  )
+  );
 }

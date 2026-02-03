@@ -20,7 +20,6 @@ export default function HeroContent({
   className,
   heroUSP,
 }) {
-  console.log(description)
   let ctaComponent = null;
   if (ctaArray.length > 0) {
     ctaComponent = ctaArray.map((cta, index) => {

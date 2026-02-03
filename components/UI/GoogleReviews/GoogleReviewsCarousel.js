@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useRef, useCallback } from "react";
 import Container from "@mui/material/Container";
@@ -29,133 +29,128 @@ var settings = {
   responsive: [
     {
       breakpoint: 1024,
-      settings: { slidesToShow: 2,},
+      settings: { slidesToShow: 2 },
     },
     {
       breakpoint: 600,
-      settings: { slidesToShow: 1,  },
+      settings: { slidesToShow: 1 },
     },
   ],
 };
 
-const timeAgo = (dateString) =>  { 
+const timeAgo = (dateString) => {
   const now = new Date();
   const createdDate = new Date(dateString);
   const secondsAgo = Math.floor((now - createdDate) / 1000);
 
   const intervals = [
-      { label: "year", seconds: 31536000 },
-      { label: "month", seconds: 2592000 },
-      { label: "week", seconds: 604800 },
-      { label: "day", seconds: 86400 },
-      { label: "hour", seconds: 3600 },
-      { label: "minute", seconds: 60 },
-      { label: "second", seconds: 1 },
+    { label: "year", seconds: 31536000 },
+    { label: "month", seconds: 2592000 },
+    { label: "week", seconds: 604800 },
+    { label: "day", seconds: 86400 },
+    { label: "hour", seconds: 3600 },
+    { label: "minute", seconds: 60 },
+    { label: "second", seconds: 1 },
   ];
   for (const interval of intervals) {
     const count = Math.floor(secondsAgo / interval.seconds);
     if (count >= 1) {
-        return `${count} ${interval.label}${count > 1 ? "s" : ""} ago`;
+      return `${count} ${interval.label}${count > 1 ? "s" : ""} ago`;
     }
-}
+  }
   return "just now";
-
-}
+};
 export default function GoogleReviewsCarousel({ data }) {
+  if (!data && data.length === 0) return null;
 
-    // slider arrow functionality
-    const sliderRef = useRef(null);
+  // slider arrow functionality
+  const sliderRef = useRef(null);
 
-    if (!data) return null;
+  if (!data) return null;
 
-    const next = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickNext();
-        }
-    };
+  const next = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
 
-    const previous = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickPrev();
-        }
-    };
-    // filter review comment 
-    const filteredReviewData = data.filter((item) => {
-        return (item.starRating === "FIVE" &&
-            typeof item.comment === "string" && // Ensure comment is a string
-            item.comment.length > 250 // Check length of the comment
-        )
-    });
+  const previous = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
+  };
+  // filter review comment
+  const filteredReviewData = data.filter((item) => {
+    return item.rating === 5 && typeof item.snippet === "string";
+  });
 
-
-    const testimonialCardsJSX = filteredReviewData.map(
-        (item, index) => {
-            if (index > 10) return null;
-            return (
-                <GoogleReviewCard
-                    key={index}
-                    name={item.reviewer.displayName}
-                    description={item.comment}
-                    customerPic={item.reviewer.profilePhotoUrl}
-                            timeAgo={timeAgo(item.createTime)}
-
-
-                />
-            );
-        }
-    );
-
+  const testimonialCardsJSX = filteredReviewData.map((item, index) => {
+    if (index > 10) return null;
     return (
-        <Section>
-            <Container maxWidth="xl">
-                <div className="title-row">
-                    <Typography
-                        variant="h2"
-                        component="h2"
-                        className="title"
-                        align="center"
-                    >
-Guests Love Us                    </Typography>
-                    <Typography
-                        variant="body1"
-                        component="p"
-                        className="description mt-16"
-                        align="center"
-                    >
-At Great Spice Papamoa East, we take pride in delivering exceptional dining experiences. See what our guests from Papamoa, Tauranga, and the Bay of Plenty say about our authentic Indian cuisine and warm hospitality.     </Typography>
-                </div>
-              
-                 <div className="carousel-wrapper mt-32">
-                <Slider ref={sliderRef} {...settings}>
-                    {testimonialCardsJSX}
-                </Slider>
-            </div>
-            </Container>
-           
-            <Container maxWidth="xl" className="cta-wrapper mt-32">
-                <Link href={"https://g.page/r/CU4J4rdwdR0mEAE/review"} target="_blank">
-                    <Button variant={`contained`} endIcon={<CallMadeOutlinedIcon />}>
-                        Leave a Review
-                    </Button>
-                </Link>
-                <Link href="/all-testimonials">
-                    <Button variant={`outlined`}>
-                        Read More Reviews
-                    </Button>
-                </Link>
-            </Container>
-        </Section>
+      <GoogleReviewCard
+        key={index}
+        name={item.user.name}
+        description={item.snippet}
+        customerPic={item.user.thumbnail}
+        characterLimit={80}
+      />
     );
+  });
+  console.log(filteredReviewData);
+  return (
+    <Section>
+      <Container maxWidth="xl">
+        <div className="title-row">
+          <Typography
+            variant="h2"
+            component="h2"
+            className="title"
+            align="center"
+          >
+            Guests Love Us
+          </Typography>
+          <Typography
+            variant="body1"
+            component="p"
+            className="description mt-16"
+            align="center"
+          >
+            At Great Spice Papamoa East, we take pride in delivering exceptional
+            dining experiences. See what our guests from Papamoa, Tauranga, and
+            the Bay of Plenty say about our authentic Indian cuisine and warm
+            hospitality.{" "}
+          </Typography>
+        </div>
+
+        <div className="carousel-wrapper mt-32">
+          <Slider ref={sliderRef} {...settings}>
+            {testimonialCardsJSX}
+          </Slider>
+        </div>
+      </Container>
+
+      <Container maxWidth="xl" className="cta-wrapper mt-32">
+        <Link href={"https://g.page/r/CU4J4rdwdR0mEAE/review"} target="_blank">
+          <Button variant={`contained`} endIcon={<CallMadeOutlinedIcon />}>
+            Leave a Review
+          </Button>
+        </Link>
+        <Link href="/all-testimonials">
+          <Button variant={`outlined`}>Read More Reviews</Button>
+        </Link>
+      </Container>
+    </Section>
+  );
 }
 
 const Section = styled.section`
-background:var(--dark-surface-container);
+  background: var(--dark-surface-container);
 
   padding: 80px 0;
   @media (max-width: 600px) {
     padding: 40px 0;
   }
-  .title-row{ 
+  .title-row {
     max-width: 900px;
     margin: 0 auto;
   }
@@ -164,22 +159,20 @@ background:var(--dark-surface-container);
     justify-content: flex-end;
   }
   .slick-slide {
-        @media (min-width: 600px) {
-             opacity: 1;
-  transform: scale(0.9);
-  transition: all 0.3s ease;
-        } 
- 
-}
-
-.slick-center {
     @media (min-width: 600px) {
-         opacity: 1;
-  transform: scale(1.05); /* 👈 slightly bigger */
-  z-index: 5;
-    } 
- 
-}
+      opacity: 1;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
+  }
+
+  .slick-center {
+    @media (min-width: 600px) {
+      opacity: 1;
+      transform: scale(1.05); /* 👈 slightly bigger */
+      z-index: 5;
+    }
+  }
   .carousel-wrapper {
     padding: 0 32px;
   }
@@ -187,10 +180,9 @@ background:var(--dark-surface-container);
     display: flex;
     justify-content: center;
     gap: 16px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
 `;
-
 
 function NextArrow(props) {
   const { onClick } = props;
