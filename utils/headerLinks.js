@@ -1,7 +1,7 @@
 export const headerLinks = [
   {
     id: 2,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "HOME",
     url: "/",
@@ -9,7 +9,7 @@ export const headerLinks = [
 
   {
     id: 2,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "RESERVATION",
     url: "/reservation",
@@ -17,7 +17,7 @@ export const headerLinks = [
   },
   {
     id: 2,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "ORDER ONLINE",
     url: "https://www.ordermeal.co.nz/great-spice-papamoa-east",
@@ -25,7 +25,7 @@ export const headerLinks = [
   },
   {
     id: 6,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "MENU",
     url: "/menu",
@@ -35,7 +35,7 @@ export const headerLinks = [
       { label: "Dine-In Menu", url: "/menu/dine-in-menu" },
     ],
   },
-    {
+  {
     id: 6,
     isItLogo: true,
     label: "MENU",
@@ -48,15 +48,15 @@ export const headerLinks = [
   },
   {
     id: 2,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "DEALS",
     url: "#",
     subLinks: [
-        {
-            label: "Combo Deals",
-            url: "/combo-deals",
-          },
+      {
+        label: "Combo Deals",
+        url: "/combo-deals",
+      },
       {
         label: "Takeaway & Dine-in Specials",
         url: "/deals/papamoa-dining-takeaway-specials",
@@ -64,27 +64,25 @@ export const headerLinks = [
       { label: "Happy Hour Deals", url: "/deals/papamoa-happy-hour-deals" },
     ],
   },
- 
 
   {
     id: 6,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "SERVICES",
     url: "/catering",
     subLinks: [
-      { label: "Catering", url: "/catering" },
-      { label: "Venue Hire", url: "/venue-hire" },
-            { label: "Group Catering", url: "/group-catering" },
+      // { label: "Catering", url: "/catering" },
+      // { label: "Venue Hire", url: "/venue-hire" },
+      { label: "Group Catering", url: "/group-catering" },
 
-                  { label: "Event & Buffet", url: "/event-buffet" },
-
+      { label: "Event & Buffet", url: "/event-buffet" },
     ],
   },
 
   {
     id: 6,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "GALLERY",
     url: "/gallery",
@@ -96,7 +94,7 @@ export const headerLinks = [
 
   {
     id: 6,
-        isItLogo: false,
+    isItLogo: false,
 
     label: "CONTACT",
     url: "/contact",
