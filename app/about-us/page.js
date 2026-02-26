@@ -1,16 +1,13 @@
 export const revalidate = 2592000; // applies to both page and metadata
 
-import {
-  getOptions,
-  getSinglePostData,
-  getGoogleReviews,
-} from "@/utils/fetchData";
+import { getOptions, getSinglePostData } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import SmallGallery from "@/components/UI/Gallery/SmallGallery";
 import FaqAccordionSection from "@/components/UI/Layout/Sections/FaqAccordionSection";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -59,7 +56,6 @@ export default async function Contact({ params }) {
     "gallery",
     "/wp-json/wp/v2/pages",
   );
-  const googleReviewsData = await getGoogleReviews();
 
   const options = await getOptions();
   if (!postData) {
@@ -74,7 +70,7 @@ export default async function Contact({ params }) {
       <main>
         <div className="mt-32 hide-desktop"></div>
         <Layout sections={postData[0]?.acf?.sections} />
-        <GoogleReviewsCarousel data={googleReviewsData} />
+        <GoogleReviewsCarousel data={reviewsData} />
         <FaqAccordionSection
           title={options?.faq?.section_title}
           description={options.faq?.section_description}

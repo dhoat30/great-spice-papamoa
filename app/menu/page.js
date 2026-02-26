@@ -1,7 +1,6 @@
 export const revalidate = 2592000; // applies to both page and metadata
 
 import {
-  getGoogleReviews,
   getOptions,
   getSinglePostData,
   getSinglePostDataWithID,
@@ -15,6 +14,7 @@ import Footer from "@/components/UI/Footer/Footer";
 import BackgroundImageHero from "@/components/UI/Hero/BackgroundImageHero/BackgroundImageHero";
 import SmallGallery from "@/components/UI/Gallery/SmallGallery";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -63,7 +63,6 @@ export default async function Page() {
     "gallery",
     "/wp-json/wp/v2/pages",
   );
-  const googleReviewsData = await getGoogleReviews();
 
   const options = await getOptions();
   if (!postData) {
@@ -95,7 +94,7 @@ export default async function Page() {
           comboDealsData={options.combo_specials}
           cateringPackagesData={options.catering_packages}
         />
-        <GoogleReviewsCarousel data={googleReviewsData} />
+        <GoogleReviewsCarousel data={reviewsData} />
 
         <SmallGallery
           galleryData={galleryData[0].acf.gallery}

@@ -3,43 +3,24 @@
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
 import GoogleReviewCard from "./GoogleReviewCard/GoogleReviewCard";
-const timeAgo = (dateString) => {
-  const now = new Date();
-  const createdDate = new Date(dateString);
-  const secondsAgo = Math.floor((now - createdDate) / 1000);
-
-  const intervals = [
-    { label: "year", seconds: 31536000 },
-    { label: "month", seconds: 2592000 },
-    { label: "week", seconds: 604800 },
-    { label: "day", seconds: 86400 },
-    { label: "hour", seconds: 3600 },
-    { label: "minute", seconds: 60 },
-    { label: "second", seconds: 1 },
-  ];
-  for (const interval of intervals) {
-    const count = Math.floor(secondsAgo / interval.seconds);
-    if (count >= 1) {
-      return `${count} ${interval.label}${count > 1 ? "s" : ""} ago`;
-    }
-  }
-  return "just now";
-};
 
 export default function GoogleReviewGridLayout({ data }) {
-  // filter review comment
-  const filteredReviewData = data.filter((item) => {
-    return item.rating === 5 && typeof item.snippet === "string";
+  console.log(data);
+  if (!data && data.reviews.length === 0) return null;
+
+  const filteredReviewData = data.reviews.filter((item) => {
+    return item.stars === 5 && typeof item.text === "string";
   });
 
+  console.log(filteredReviewData);
   const testimonialCardsJSX = filteredReviewData.map((item, index) => {
-    if (index > 32) return null;
+    if (index > 100) return null;
     return (
       <GoogleReviewCard
         key={index}
-        name={item.user.name}
-        description={item.snippet}
-        customerPic={item.user.thumbnail}
+        name={item.name}
+        description={item.text}
+        customerPic={item.reviewerPhotoUrl}
         characterLimit={80}
       />
     );

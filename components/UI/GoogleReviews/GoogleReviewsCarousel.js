@@ -61,7 +61,7 @@ const timeAgo = (dateString) => {
   return "just now";
 };
 export default function GoogleReviewsCarousel({ data }) {
-  if (!data && data.length === 0) return null;
+  if (!data && data.reviews.length === 0) return null;
 
   // slider arrow functionality
   const sliderRef = useRef(null);
@@ -80,8 +80,8 @@ export default function GoogleReviewsCarousel({ data }) {
     }
   };
   // filter review comment
-  const filteredReviewData = data.filter((item) => {
-    return item.rating === 5 && typeof item.snippet === "string";
+  const filteredReviewData = data.reviews.filter((item) => {
+    return item.stars === 5 && typeof item.text === "string";
   });
 
   const testimonialCardsJSX = filteredReviewData.map((item, index) => {
@@ -89,9 +89,9 @@ export default function GoogleReviewsCarousel({ data }) {
     return (
       <GoogleReviewCard
         key={index}
-        name={item.user.name}
-        description={item.snippet}
-        customerPic={item.user.thumbnail}
+        name={item.name}
+        description={item.text}
+        customerPic={item.reviewerPhotoUrl}
         characterLimit={80}
       />
     );

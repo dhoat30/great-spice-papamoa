@@ -1,10 +1,6 @@
 export const revalidate = 2592000; // applies to both page and metadata
 
-import {
-  getOptions,
-  getSinglePostData,
-  getGoogleReviews,
-} from "@/utils/fetchData";
+import { getOptions, getSinglePostData } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import OptimizedHero from "@/components/UI/Hero/OptimizedHero/OptimizedHero";
 import Header from "@/components/UI/Header/Header";
@@ -14,6 +10,7 @@ import BackgroundImageHero from "@/components/UI/Hero/BackgroundImageHero/Backgr
 import Testimonials from "@/components/UI/Testimonials/Testimonials";
 import FaqAccordionSection from "@/components/UI/Layout/Sections/FaqAccordionSection";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -67,7 +64,6 @@ export default async function Contact() {
     "/wp-json/wp/v2/pages",
   );
   // google reviews data fetch
-  const googleReviewsData = await getGoogleReviews();
   if (!postData) {
     return {
       notFound: true,
@@ -94,7 +90,7 @@ export default async function Contact() {
           comboDealsData={options.combo_specials}
           cateringPackagesData={options.catering_packages}
         />
-        <GoogleReviewsCarousel data={googleReviewsData} />
+        <GoogleReviewsCarousel data={reviewsData} />
 
         {/* <FaqAccordionSection title={options?.faq?.section_title} description={options.faq?.section_description} qaData={options.faq?.items} /> */}
 

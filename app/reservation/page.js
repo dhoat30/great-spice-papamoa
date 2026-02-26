@@ -3,7 +3,6 @@ export const revalidate = 2592000; // applies to both page and metadata
 import {
   getOptions,
   getSinglePostData,
-  getGoogleReviews,
   getSingleServicePackage,
 } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
@@ -15,6 +14,7 @@ import BreadcrumbHero from "@/components/UI/Hero/BreadcrumbHero";
 import Script from "next/script";
 import ReservationForm from "@/components/UI/Forms/ReservationForm";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -67,7 +67,6 @@ export default async function Contact() {
     "gallery",
     "/wp-json/wp/v2/pages",
   );
-  const googleReviewsData = await getGoogleReviews();
 
   if (!postData) {
     return {
@@ -85,7 +84,7 @@ export default async function Contact() {
         />
         <ReservationForm />
         <Layout sections={postData[0]?.acf?.sections} />
-        <GoogleReviewsCarousel data={googleReviewsData} />
+        <GoogleReviewsCarousel data={reviewsData} />
 
         <SmallGallery
           galleryData={galleryData[0].acf.gallery}
