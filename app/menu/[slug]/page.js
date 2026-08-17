@@ -1,6 +1,6 @@
 export const revalidate = 2592000; // applies to both page and metadata
 
-import { getOptions, getSinglePostData } from "@/utils/fetchData";
+import { getAllPosts, getOptions, getSinglePostData } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
@@ -10,6 +10,14 @@ import SmallGallery from "@/components/UI/Gallery/SmallGallery";
 import Testimonials from "@/components/UI/Testimonials/Testimonials";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
 import reviewsData from "@/data/google-reviews.json";
+
+export async function generateStaticParams() {
+  const menuItems = await getAllPosts("/wp-json/wp/v2/menu");
+
+  return menuItems.map((item) => ({
+    slug: item.slug,
+  }));
+}
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params

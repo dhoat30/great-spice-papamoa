@@ -1,9 +1,17 @@
 export const revalidate = 2592000; // applies to both page and metadata
 
-import { getOptions, getSinglePostData } from "@/utils/fetchData";
+import { getAllPosts, getOptions, getSinglePostData } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
+
+export async function generateStaticParams() {
+  const deals = await getAllPosts("/wp-json/wp/v2/deals");
+
+  return deals.map((deal) => ({
+    slug: deal.slug,
+  }));
+}
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
