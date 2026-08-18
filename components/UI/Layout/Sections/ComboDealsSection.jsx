@@ -1,38 +1,13 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
 import Container from "@mui/material/Container";
 import PatternHeading from "../../Headings/PatternHeading";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import Package from "../../Card/Package";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import dynamic from "next/dynamic";
-// const Madala = dynamic(() => import("../../Patterns/Madala"));
 
 export default function ComboDealsSection({ title, description, cards }) {
-  const [value, setValue] = useState(0);
-  const isTablet = useMediaQuery("(max-width:750px)"); // Use 'sm' for small screens
-
   if (!cards) return null;
-  // Extract unique tags for the tabs without the "Show All" option
-  const uniqueTags = Array.from(
-    new Set(cards.map((item) => item.tag.value)) // Get unique tag values
-  ).map((tagValue) => {
-    const tag = cards.find((item) => item.tag.value === tagValue)?.tag; // Find the first matching tag object
-    return tag;
-  });
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  // Filter gallery items based on selected tab
-  const filterDealsData = cards.filter(
-    (item) => item.tag.value === uniqueTags[value].value
-  );
 
   return (
     <Section className="mt-8">
-      {/* <Madala className="pattern" /> */}
       <Container maxWidth="xl" className="container">
         <PatternHeading
           title={title}
@@ -40,49 +15,19 @@ export default function ComboDealsSection({ title, description, cards }) {
           centerAlign={true}
           hidePattern={true}
         />
-        <div className="tabs mt-24">
-          {/* Tabs for filtering */}
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant={isTablet ? "scrollable" : "fullWidth"} // Use scrollable on mobile and fullWidth on desktop
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs"
-          
-            indicatorColor="secondary"
-            className="tabs-wrapper"
-             sx={{
-    '& .MuiTabs-indicator': {
-      backgroundColor: '#FF9200', // 👈 your custom hex
-    },
-    '& .MuiTab-root': {
-      color: '#c8c8c8', // 👈 normal tab text color
-    },
-    '& .Mui-selected': {
-      color: '#FF9200 !important', // 👈 selected tab text color
-    },
-  }}
-          >
-            {uniqueTags.map((tag, index) => (
-              <Tab key={index} label={tag.label} className="mt-24" />
-            ))}
-          </Tabs>
-
-          {/* Filtered combo deals grid */}
-          <div className="cards grid-wrapper">
-            {filterDealsData.map((item, index) => (
-              <Package
-                key={index}
-                packageName={item.combo_name}
-                packagePrice={item.price}
-                packageItems={item.included}
-                termsAndConditions={item.terms_and_conditions}
-                // isItPopular={item.is_this_combo_popular}
-                cta={item.cta}
-                image ={item.image}
-              />
-            ))}
-          </div>
+        <div className={`cards grid-wrapper count-${cards.length}`}>
+          {cards.map((item, index) => (
+            <Package
+              key={index}
+              packageName={item.combo_name}
+              packagePrice={item.price}
+              packageItems={item.included}
+              termsAndConditions={item.terms_and_conditions}
+              addOn={item.add_on}
+              cta={item.cta}
+              image={item.image}
+            />
+          ))}
         </div>
       </Container>
     </Section>
@@ -134,34 +79,27 @@ const Section = styled.section`
       margin-top: 16px;
     }
   }
-  /* tabs buttons */
-  .tabs-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    .MuiTabs-flexContainer {
-    }
-    svg {
-      path {
-        fill: var(--dark-on-surface);
-      }
-    }
-    button {
-      border-bottom: 1px solid var(--dark-on-surface);
-    }
-  }
   .cards {
-  margin-top: 48px; 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 32px;
     align-items: stretch;
+    > * {
+      width: min(100%, 440px);
+      flex: 0 1 440px;
+      display: flex;
+    }
     @media (max-width: 1000px) {
-      grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
     @media (max-width: 650px) {
-      grid-template-columns: 1fr;
       gap: 32px;
+      > * {
+        width: 100%;
+        flex-basis: 100%;
+      }
     }
   }
 `;

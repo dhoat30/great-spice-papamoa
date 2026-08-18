@@ -12,6 +12,7 @@ export default function Package({
   packageDescription,
   packageItems,
   termsAndConditions,
+  addOn,
   image, 
   cta,
   isItPopular,
@@ -76,6 +77,16 @@ export default function Package({
             *{termsAndConditions}
           </Typography>
         )}
+        {addOn && (
+          <Typography
+            color="var(--dark-primary)"
+            component="p"
+            variant="body2"
+            className="add-on-info mt-8"
+          >
+            {addOn}
+          </Typography>
+        )}
       </div>
       <ul className="included-services-wrapper mt-24">
         {packageItems?.map((item, index) => {
@@ -104,39 +115,94 @@ export default function Package({
   );
 }
 const Div = styled.div`
+  width: 100%;
   height: 100%;
   border: 1px solid var(--material-theme-sys-dark-surface-container-highest, #03327a);
   border-radius: 12px;
   background: var(--dark-surface-container);
-  /* overflow: hidden; */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 
   .image-wrapper {
     position: relative;
     width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 12px 12px 0 0;
   }
 
   .content-container {
-    flex: 1; /* take full height below image */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 0 16px 24px;
+    padding: 0 20px 20px;
     text-align: center;
 
     .content-wrapper {
-      flex-grow: 1; /* push button down */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding-top: 24px;
+    }
+
+    .package-title {
+      max-width: 14ch;
+      min-height: 2.6em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-wrap: balance;
+    }
+
+    .price-wrapper {
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .terms-and-conditions,
+    .add-on-info {
+      display: block;
+      max-width: 28ch;
+      line-height: 1.45;
+    }
+
+    .add-on-info {
+      font-weight: 600;
+    }
+
+    .included-services-wrapper {
+      width: 100%;
+      max-width: 22ch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      flex: 1;
+    }
+
+    .included-services-wrapper li {
+      margin: 0;
     }
 
     .cta-wrapper {
-      margin-top: 24px; /* add spacing between content and button */
+      margin-top: 24px;
       width: 100%;
       display: block;
       button {
         width: 100%;
+        border-radius: 999px;
       }
     }
   }
