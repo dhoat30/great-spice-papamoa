@@ -14,6 +14,12 @@ function MenuItem({
   condition,
   dietaryInformation,
 }) {
+  const formattedPrice =
+    typeof dishPrice === "string" &&
+    dishPrice.trim() &&
+    !/[A-Za-z$]/.test(dishPrice)
+      ? `$${dishPrice}`
+      : dishPrice;
 
   const dietaryIcons = dietaryInformation.map((item,index)=>{ 
     if(item.value==='vegetarian'){ 
@@ -63,9 +69,9 @@ function MenuItem({
             </Typography>
           )}
         </div>
-        {dishPrice && 
+        {formattedPrice && 
          <Typography variant="subtitle1" component="div" className="dish-price">
-         ${dishPrice}
+         {formattedPrice}
        </Typography>
         }
        
@@ -132,4 +138,3 @@ const Container = styled.li`
     opacity: 0.6;
   }
 `;
-
