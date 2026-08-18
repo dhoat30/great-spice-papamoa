@@ -344,6 +344,11 @@ const Shell = styled.header`
     list-style: none;
   }
 
+  .nav-item.has-submenu {
+    padding-bottom: 8px;
+    margin-bottom: -8px;
+  }
+
   .nav-link {
     min-height: 48px;
     display: inline-flex;
@@ -376,7 +381,7 @@ const Shell = styled.header`
 
   .submenu {
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 0;
     min-width: 260px;
     margin: 0;
@@ -472,13 +477,15 @@ const Shell = styled.header`
     left: 0;
     bottom: 0;
     width: min(360px, 88vw);
-    padding: 20px 18px 24px;
+    padding: 18px 18px 24px;
     background: var(--dark-surface-container-high);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 18px 0 42px rgba(0, 0, 0, 0.32);
     transform: translateX(-100%);
     transition: transform 0.22s ease;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
     overflow-y: auto;
   }
 
@@ -491,6 +498,8 @@ const Shell = styled.header`
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .mobile-nav ul,
@@ -500,8 +509,16 @@ const Shell = styled.header`
     padding: 0;
   }
 
-  .mobile-item {
+  .mobile-nav {
+    margin-top: -8px;
+  }
+
+  .mobile-nav > ul > li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-item {
+    position: relative;
   }
 
   .mobile-trigger,
@@ -521,6 +538,11 @@ const Shell = styled.header`
     font: inherit;
   }
 
+  .mobile-nav > ul > li > a {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
   .mobile-trigger.active,
   .mobile-nav a.active {
     color: var(--dark-primary);
@@ -538,16 +560,24 @@ const Shell = styled.header`
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease;
+    margin: 0 -18px;
+    padding: 0 18px;
+    background: rgba(255, 255, 255, 0.03);
   }
 
   .mobile-item.open .mobile-submenu {
-    max-height: 320px;
+    max-height: 420px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .mobile-submenu a {
     min-height: 44px;
-    padding: 10px 4px 10px 20px;
+    padding: 12px 4px 12px 20px;
     color: rgba(255, 255, 255, 0.76);
+  }
+
+  .mobile-submenu li + li {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .mobile-cta {
