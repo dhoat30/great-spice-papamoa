@@ -122,7 +122,13 @@ const nextConfig = {
         source: "/blog",
         destination: "/",
         permanent: true,
+      }, {
+        source: "/deals/papamoa-happy-hour-deals",
+        destination: "/",
+        permanent: true,
       },
+           
+
     ];
   },
 };

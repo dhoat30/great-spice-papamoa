@@ -61,7 +61,6 @@ export const headerLinks = [
         label: "Takeaway & Dine-in Specials",
         url: "/deals/papamoa-dining-takeaway-specials",
       },
-      { label: "Happy Hour Deals", url: "/deals/papamoa-happy-hour-deals" },
     ],
   },
 
